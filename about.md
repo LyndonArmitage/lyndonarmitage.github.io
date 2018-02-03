@@ -3,28 +3,19 @@ layout: page
 title: About
 ---
 
+
 <p class="message">
-  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
+This website was set up after not renewing the domain lyndonarmitage.com which 
+has since been bought by who I assume to be domain squatters.
 </p>
 
-In the novel, *The Strange Case of Dr. Jeykll and Mr. Hyde*, Mr. Poole is Dr. Jekyll's virtuous and loyal butler. Similarly, Poole is an upstanding and effective butler that helps you build Jekyll themes. It's made by [@mdo](https://twitter.com/mdo).
+The main purpose of this site is to showcase various pieces of technical 
+knowledge and things I (Lyndon Armitage) find interesting.
 
-There are currently two themes built on Poole:
+This website is built upon the static site generator Jeykll and the theme 
+[Hyde](http://hyde.getpoole.com) which is a project based on the
+[Poole](https://github.com/poole) example theme.
+After having used Wordpress in the past for my original blog I opted for 
+something different which should hopefully be simpler to maintain and add 
+content to.
 
-* [Hyde](http://hyde.getpoole.com)
-* [Lanyon](http://lanyon.getpoole.com)
-
-Learn more and contribute on [GitHub](https://github.com/poole).
-
-## Setup
-
-Some fun facts about the setup of this project include:
-
-* Built for [Jekyll](http://jekyllrb.com)
-* Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com)
-* Coded with [Sublime Text 2](http://sublimetext.org), an amazing code editor
-* Designed and developed while listening to music like [Blood Bros Trilogy](https://soundcloud.com/maddecent/sets/blood-bros-series)
-
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/poole/issues/new) or [ask me on Twitter](https://twitter.com/mdo).
-
-Thanks for reading!
