@@ -52,7 +52,7 @@ obstacles could prove to be quite a challenge on it's own but I haven't
 mentioned the fact that battles are triggered whilst in the over-world forcing 
 you to fight wild Pokémon or other trainer's Pokémon!
 
-<iframe src='https://gfycat.com/ifr/TornDeepBactrian' frameborder='0' scrolling='no' width='160' height='144' allowfullscreen style="margin-left: auto;margin-right: auto;"></iframe>
+<iframe src='https://gfycat.com/ifr/TornDeepBactrian' frameborder='0' scrolling='no' width='160' height='144' allowfullscreen style="margin-left: auto;margin-right: auto;display: block;"></iframe>
 
 ## Battles
 
@@ -61,7 +61,7 @@ you to fight wild Pokémon or other trainer's Pokémon!
 Battles commence with a wipe to black animation (that differs depending upon if 
 it's a wild Pokémon, Trainer or Gym Leader).
 
-<iframe src='https://gfycat.com/ifr/CanineSilkyEgg' frameborder='0' scrolling='no' width='160' height='144' allowfullscreen style="margin-left: auto;margin-right: auto;"></iframe>
+<iframe src='https://gfycat.com/ifr/CanineSilkyEgg' frameborder='0' scrolling='no' width='160' height='144' allowfullscreen style="margin-left: auto;margin-right: auto;display: block;"></iframe>
 
 Then you are presented with the opponent Pokémon, your own Pokémon and 4 
 options:
@@ -169,7 +169,7 @@ enemies ATTACK stat. Some also inflict status effects as mentioned previously.
 
 Below is an example of a battle (in which I almost lose):
 
-<iframe src='https://gfycat.com/ifr/PalatableShadyAmericancrow' frameborder='0' scrolling='no' width='160' height='144' allowfullscreen style="margin-left: auto;margin-right: auto;"></iframe>
+<iframe src='https://gfycat.com/ifr/PalatableShadyAmericancrow' frameborder='0' scrolling='no' width='160' height='144' allowfullscreen style="margin-left: auto;margin-right: auto;display: block;"></iframe>
 
 # Building a Bot
 
