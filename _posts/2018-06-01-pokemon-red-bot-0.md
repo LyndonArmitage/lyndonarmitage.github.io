@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Pokemon Red Bot: Part 0
+title: Pokémon Red Bot Part 0
 ---
 
 For quite some time I have had the idea of making a simple bot that could play 
