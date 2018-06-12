@@ -25,3 +25,6 @@ version:          1.0.0
 
 github:
   repo:           https://github.com/lyndonarmitage/lyndonarmitage.github.io
+
+plugins:
+  - jekyll-seo-tag
