@@ -7,7 +7,7 @@ title: About
 <p class="message">
 This website was set up after not renewing the domain lyndonarmitage.com which 
 had previously been bought by domain squatters, it now redirects to 
-[lyndon.codes](https://lyndon.codes).
+<a href='https://lyndon.codes'>lyndon.codes</a>.
 </p>
 
 The main purpose of this site is to showcase various pieces of technical 
@@ -45,5 +45,5 @@ something different which should hopefully be simpler to maintain and add
 content to.
 
 The source code to this site is currently maintained on GitHub at: 
-https://github.com/LyndonArmitage/lyndonarmitage.github.io
+[https://github.com/LyndonArmitage/lyndonarmitage.github.io](https://github.com/LyndonArmitage/lyndonarmitage.github.io)
 
