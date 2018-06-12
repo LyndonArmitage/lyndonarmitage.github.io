@@ -6,7 +6,7 @@ title: Pokémon Red Bot Part 0
 For quite some time I have had the idea of making a simple bot that could play 
 one of my favourite (old) games; Pokémon Red for the Nintendo GameBoy.
 
-<img alt='Pokémon Red Title Screen' src='{{ "assets/pokemon/pokemon-red-title.png" | absolute_url }}' style="margin-left: auto;margin-right: auto;">
+<img alt='Pokémon Red Title Screen' src='{{ "assets/pokemon/pokemon-red-title.png" | absolute_url }}' class='blog-image'>
 
 Given that Pokémon Red and Blue were released in 1996 in Japan, (1999 here in 
 the UK) they couldn't be too hard to program a bot for right?  
@@ -32,41 +32,41 @@ over-world and battling Pokémon/Trainers:
 
 ## The Over-World
 
-<img alt='Pallet Town' src='{{ "assets/pokemon/overworld-pallet-town.png" | absolute_url }}' style="margin-left: auto;margin-right: auto;">
+<img alt='Pallet Town' src='{{ "assets/pokemon/overworld-pallet-town.png" | absolute_url }}' class='blog-image'>
 
 The over-world itself is quite expansive with 10 towns, dozens of routes and, 
 many more areas to explore. Each of these areas is made up of a gridded map with
 both static and mobile objects that can be collided with.
 
-<img alt='Overworld Map' src='{{ "assets/pokemon/overworld-map.png" | absolute_url }}' style="margin-left: auto;margin-right: auto;">
+<img alt='Overworld Map' src='{{ "assets/pokemon/overworld-map.png" | absolute_url }}' class='blog-image'>
 
 The player explores these areas by moving around using the directional buttons
 and A button to interactive with objects. There are also special moves (HMs) 
 that become available as you progress opening up access to before closed off 
 areas.
 
-<img alt='Choppable Tree' src='{{ "assets/pokemon/overworld-tree.png" | absolute_url }}' style="margin-left: auto;margin-right: auto;">
+<img alt='Choppable Tree' src='{{ "assets/pokemon/overworld-tree.png" | absolute_url }}' class='blog-image'>
 
 Building a bot that can automatically run through the game and deal with these 
 obstacles could prove to be quite a challenge on it's own but I haven't 
 mentioned the fact that battles are triggered whilst in the over-world forcing 
 you to fight wild Pokémon or other trainer's Pokémon!
 
-<iframe src='https://gfycat.com/ifr/TornDeepBactrian' frameborder='0' scrolling='no' width='160' height='144' allowfullscreen style="margin-left: auto;margin-right: auto;display: block;"></iframe>
+<iframe src='https://gfycat.com/ifr/TornDeepBactrian' frameborder='0' scrolling='no' width='160' height='144' allowfullscreen class='blog-image'></iframe>
 
 ## Battles
 
-<img alt='Wild Pidgey Appeared!' src='{{ "assets/pokemon/wild-pidgey.png" | absolute_url }}' style="margin-left: auto;margin-right: auto;">
+<img alt='Wild Pidgey Appeared!' src='{{ "assets/pokemon/wild-pidgey.png" | absolute_url }}' class='blog-image'>
 
 Battles commence with a wipe to black animation (that differs depending upon if 
 it's a wild Pokémon, Trainer or Gym Leader).
 
-<iframe src='https://gfycat.com/ifr/CanineSilkyEgg' frameborder='0' scrolling='no' width='160' height='144' allowfullscreen style="margin-left: auto;margin-right: auto;display: block;"></iframe>
+<iframe src='https://gfycat.com/ifr/CanineSilkyEgg' frameborder='0' scrolling='no' width='160' height='144' allowfullscreen class='blog-image'></iframe>
 
 Then you are presented with the opponent Pokémon, your own Pokémon and 4 
 options:
 
-<img alt='Battle Menu' src='{{ "assets/pokemon/battle-menu.png" | absolute_url }}' style="margin-left: auto;margin-right: auto;">
+<img alt='Battle Menu' src='{{ "assets/pokemon/battle-menu.png" | absolute_url }}' class='blog-image'>
 
 These are mostly self explanatory:
 
@@ -89,7 +89,7 @@ have:
 
 ### Stats
 
-<img alt='Pokémon Stats' src='{{ "assets/pokemon/pokemon-stats.png" | absolute_url }}' style="margin-left: auto;margin-right: auto;">
+<img alt='Pokémon Stats' src='{{ "assets/pokemon/pokemon-stats.png" | absolute_url }}' class='blog-image'>
 
 Every Pokémon has a 2 types and a bunch of statistics.
 The main stats are:
@@ -140,7 +140,7 @@ This is a big topic but the essentials are higher level = stronger Pokémon.
 Again for more details, including formulae for how leveling works you can read 
 [another article on Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Experience).
 
-<img alt='EXP Chart' src='{{ "assets/pokemon/ExpToNextLevel.png" | absolute_url }}' style="margin-left: auto;margin-right: auto;">
+<img alt='EXP Chart' src='{{ "assets/pokemon/ExpToNextLevel.png" | absolute_url }}' class='blog-image'>
 
 ### FIGHT
 
@@ -169,7 +169,7 @@ enemies ATTACK stat. Some also inflict status effects as mentioned previously.
 
 Below is an example of a battle (in which I almost lose):
 
-<iframe src='https://gfycat.com/ifr/PalatableShadyAmericancrow' frameborder='0' scrolling='no' width='160' height='144' allowfullscreen style="margin-left: auto;margin-right: auto;display: block;"></iframe>
+<iframe src='https://gfycat.com/ifr/PalatableShadyAmericancrow' frameborder='0' scrolling='no' width='160' height='144' allowfullscreen class='blog-image'></iframe>
 
 # Building a Bot
 
@@ -179,7 +179,7 @@ that's where an emulator comes in!
 
 ## A GameBoy Emulator
 
-<img alt='A GameBoy' src='{{ "assets/pokemon/Gameboy-Vector.jpg" | absolute_url }}' style="margin-left: auto;margin-right: auto;">
+<img alt='A GameBoy' src='{{ "assets/pokemon/Gameboy-Vector.jpg" | absolute_url }}' class='blog-image'>
 
 There's a lot emulators out there for the GameBoy and GameBoy Color. At one 
 point I considered, and started to write my own. But this is an arduous and time 
