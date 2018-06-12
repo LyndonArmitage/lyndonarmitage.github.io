@@ -26,6 +26,13 @@ version:          1.0.0
 github:
   repo:           https://github.com/lyndonarmitage/lyndonarmitage.github.io
 
+social:
+  name: Lyndon Armitage
+  links:
+    - https://twitter.com/LyndonArmitage
+    - https://github.com/LyndonArmitage
+    - https://www.linkedin.com/in/lyndonarmitage
+
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
