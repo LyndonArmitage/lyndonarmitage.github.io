@@ -32,6 +32,9 @@ social:
     - https://twitter.com/LyndonArmitage
     - https://github.com/LyndonArmitage
     - https://www.linkedin.com/in/lyndonarmitage
+twitter:
+  username: LyndonArmitage
+  card: summary
 
 plugins:
   - jekyll-seo-tag
