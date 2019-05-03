@@ -1,3 +1,7 @@
+---
+layout: post
+title: Vertx Config Toml
+---
 Today I have quickly thrown together a library to add support for TOML to the Vert.x Configuration service.
 
 The repository can be viewed here: 
