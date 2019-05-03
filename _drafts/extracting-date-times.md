@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Extracting Published Dates from web pages
+tags: [scraping, java, html, dates]
 ---
 
 One objectively useful piece of information often present on news and blog post
