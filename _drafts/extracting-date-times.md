@@ -33,7 +33,7 @@ text but instead encode it in the URL like:
 `https://example.com/2012/1/1/happy-new-year` or in elements within the page.
 
 But there must be "a standard" for presenting dates on articles online right?
-Otherwise how do the likes of Google, Bing, Twitter, Facebook and others show
+Otherwise, how do the likes of Google, Bing, Twitter, Facebook and others show
 nice summaries of web links to news articles?
 
 Well there are **standards**, [plural](https://xkcd.com/927/):
@@ -110,8 +110,7 @@ way ([ISO-8061](https://en.wikipedia.org/wiki/ISO_8601) is nice) e.g.
 ## Conclusion
 
 I built such a library over a short period of time in Java that covered many 
-different cases over many different websites, 51 in my original hand curated 
-tests.   
+cases over many websites, 51 in my original hand curated tests.  
 It could handle at least 19 different date formats that I had seen, some 
 including time and offset information.  
 It was also easily extensible, with tooling allowing me to explore pages for 
@@ -133,7 +132,7 @@ actively maintained. I encountered it when I had already developed most of the
 rules in my own project and was relived to see they had a similar approach to 
 my own (albeit in differently structured Python code).
 
-Overall this was an interesting self contained problem that was well defined 
+Overall this was an interesting self-contained problem that was well defined 
 and relatively easy to solve. I'd be tempted to attempt a solution again in my 
 own time and evaluate potential alternatives and new possible patterns.
 
