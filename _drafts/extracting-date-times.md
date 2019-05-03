@@ -57,16 +57,16 @@ So that's 3 places we can get a published date (and maybe time) from:
 
 * Text within the web page
 * The web page's URL
-* The metadata on a web page
+* The metadata and tags on a web page
 
 All these can be in various formats so we'd need to be able to parse them to 
 dates (and maybe times for some) reliably.
 
-A website might have many dates on it so we'd also want to be able to determine
-which one is the most likely published date as well.
+A web page might have many dates on it so we'd also want to be able to 
+determine which one is the most likely published date as well.
 
-We'd want to cover as many websites as possible and make it easy to add more 
-"rules" to such a system.
+We'd want to cover as many web pages as possible and make it easy to add more 
+"rules" to such a system, so we can incrementally improve it.
 
 A decent solution to this (and the one I took) would be to:
 
@@ -110,11 +110,14 @@ way ([ISO-8061](https://en.wikipedia.org/wiki/ISO_8601) is nice) e.g.
 ## Conclusion
 
 I built such a library over a short period of time in Java that covered many 
-cases over many websites, 51 in my original hand curated tests.  
+cases over many web pages, 51 in my original hand curated tests.  
 It could handle at least 19 different date formats that I had seen, some 
 including time and offset information.  
 It was also easily extensible, with tooling allowing me to explore pages for 
-potential new patterns and improvements to existing ones.
+potential new patterns and improvements to existing ones.  
+In an effort to be both polite and efficient I saved local copies of each web 
+page I was testing and built the tests and tooling around this so it became
+easy to add more rules, and more web pages when I needed.
 
 At [Synoptica](https://www.synoptica.com/) the extracted date is used to 
 determine relevant articles to a company and used in scoring companies in 
@@ -141,5 +144,8 @@ to assist in step 2. That is, if given enough context around each extracted
 date you could potentially train a model that would decide which is the most 
 likely date for a given web page. A similar approach is taken to eliminate
 adverts and boilerplate parts of web pages by the project 
-[Dragnet](https://github.com/dragnet-org/dragnet).
+[Dragnet](https://github.com/dragnet-org/dragnet). I had this idea initially 
+but thought a heuristic based approach would be faster to implement and give 
+good enough results.
+
 
