@@ -1,5 +1,7 @@
 ---
+layout: post
 title: Designing a Comment System
+tags: [blog, comments, design]
 ---
 
 In my [previous post]({{ site.baseurl }}{% post_url 2019-05-09-comments-on-static-blog %})
@@ -62,4 +64,57 @@ Some drawbacks of such a design are:
   - While waiting for a comment to be approved a user may not realise and 
     attempt to leave another
 
-Overall I am willing to live with these drawbacks.
+Overall I am willing to live with these drawbacks, at least for the moment.
+
+The comment system boils down to the following kind of top level flow:
+
+<img alt='Simple system diagram' src='{{ "assets/comment-system/simple-top-level.svg" | absolute_url  }}' class='blog-image' />
+
+1. The user reads a post from the blog
+2. The user decides to leave a comment
+3. The comment system determines if the comment should be allowed and updates
+   the blog
+
+This diagram does simplify parts of the design like approving the comments, 
+however this could be seen as being outside of the current scope since it 
+would be an external process.
+
+## Some Prototyping
+
+I often find it helpful to work through and prototype some ideas roughly before 
+implementing them properly. 
+
+One such prototype that is, in my opinion, always helpful is thinking about 
+what kind of inputs and outputs a system will use and produce.  
+So in this example a comment might look something like the following (as JSON 
+for ease of reading):
+
+```json
+{
+  "uuid": "UUID",
+  "post": "post-id or permalink",
+  "displayName": "User display name",
+  "avatar": "URL to an avatar",
+  "webLink": "a URL provided",
+  "comment": "markdown comment"
+}
+```
+
+Some of these could be optional. I might also want to include a client 
+generated date with the data if I want to be able to show when this comment was
+posted.
+
+<p class='message'>
+You might notice I included a UUID in my fields, I find these useful for use as
+correlation IDs during debugging of a system.
+</p>
+
+So this is the data provided for the comment but there will also be some 
+additional data associated with the comment request:
+
+* Time and date of the request
+* Source of the request (IP address etc.)
+* Browser metadata and headers
+
+This data could all be used in conjunction with the user generated data, 
+especially the data and time.
