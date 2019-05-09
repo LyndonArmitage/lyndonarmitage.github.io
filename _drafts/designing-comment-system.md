@@ -84,7 +84,9 @@ would be an external process.
 I often find it helpful to work through and prototype some ideas roughly before 
 implementing them properly. 
 
-One such prototype that is, in my opinion, always helpful is thinking about 
+### Input Data
+
+One such prototype that is (in my opinion) always helpful is thinking about 
 what kind of inputs and outputs a system will use and produce.  
 So in this example a comment might look something like the following (as JSON 
 for ease of reading):
@@ -102,7 +104,7 @@ for ease of reading):
 
 Some of these could be optional. I might also want to include a client 
 generated date with the data if I want to be able to show when this comment was
-posted.
+posted and in what timezone/offset.
 
 <p class='message'>
 You might notice I included a UUID in my fields, I find these useful for use as
@@ -118,3 +120,41 @@ additional data associated with the comment request:
 
 This data could all be used in conjunction with the user generated data, 
 especially the data and time.
+
+### Form Prototype
+
+I am not the most visual person, as you can probably tell this by the simple 
+design of this blog. But nevertheless it is important to decide and visualize 
+how the comment form might look. Below is my attempt:
+
+<form action="{{ page.url }}" method="get">
+  <fieldset>
+    <legend>Leave a comment</legend>
+    <label style='display: block'>
+      Display Name:
+      <input required type="text" name="displayName" placeholder="John Smith" style='width:100%'/>
+    </label>
+    <label style='display: block'>
+      Profile Link (Optional):
+      <input type="text" name="webLink" placeholder="Email Address, Twitter Handle or GitHub profile" style='width:100%'/>
+    </label>
+    <label>
+    Comment:
+      <textarea required minlength="15" spellcheck maxlength="10000" cols="120" rows="5" name="commentBody" placeholder="Comment body goes here. Markdown is supported." ></textarea>
+    </label>
+    <button type="submit" onclick='alert("Submitted Comment"); return false;'>Submit Comment</button>
+  </fieldset>
+</form>
+
+It's a relatively simple form that relies on the HTML5 form elements.
+
+For an actual implementation I may add some additional checks and use an AJAX 
+request instead of a form submit action. 
+
+The advantage of using an AJAX call are:
+
+* I can do some checks on the client side and prevent sending bad form data 
+  and double sending
+* Decide upon the encoding of the data and add any additional data to the 
+  request
+* React to the response on the blog post page 
