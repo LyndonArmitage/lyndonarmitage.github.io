@@ -146,15 +146,26 @@ how the comment form might look. Below is my attempt:
   </fieldset>
 </form>
 
-It's a relatively simple form that relies on the HTML5 form elements.
+It's a relatively simple form that relies on the HTML5 form elements and the 
+default theme styling.
 
 For an actual implementation I may add some additional checks and use an AJAX 
 request instead of a form submit action. 
 
 The advantage of using an AJAX call are:
 
-* I can do some checks on the client side and prevent sending bad form data 
-  and double sending
-* Decide upon the encoding of the data and add any additional data to the 
+* I can do some checks on the client side
+  - I could prevent sending bad form data, perhaps even do some client side 
+    checks for the existence of user provided links
+  - I could reduce the chances of duplicate requests being sent
+* I can decide upon the encoding of the data and add any additional data to the 
   request
-* React to the response on the blog post page 
+* I can react to the response on the blog post page without navigating away
+* Basic spam-bots and web-crawlers that do not render JavaScript won't be able 
+  to post comments
+
+Of course there are disadvantages too, mainly that browsers with limited 
+or no JavaScript support won't work. This may include some screen-reading 
+software used by the visually impaired.
+
+
