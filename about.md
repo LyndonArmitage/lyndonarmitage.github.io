@@ -5,8 +5,9 @@ title: About
 
 
 <p class="message">
-This website was set up after not renewing the domain lyndonarmitage.com which 
-had previously been bought by domain squatters, it now redirects to 
+This website was set up after not renewing the domain 
+<a href='http://lyndonarmitage.com'>lyndonarmitage.com</a> 
+which had previously been bought by domain squatters, it now redirects to 
 <a href='https://lyndon.codes'>lyndon.codes</a>.
 </p>
 
@@ -22,22 +23,25 @@ I am currently employed as a Full Stack Developer at
 Where I work primarily on the back-end of their AI technologies that power 
 their platform Synoptica; using technologies including Apache Spark, Spring, 
 Elasticsearch, Eclipse Vert.x, Apache NiFi, Apache Cassandra, Apache HBase, 
-PostgreSQL, and many more.
+PostgreSQL, Kotlin, Amazon Web Services (AWS), and many more.
 
-I Previously worked at BAE Systems Applied Intelligence (formally Detica) 
-on various projects involving Big Data technologies such as Hadoop, 
-Apache Spark, Apache NiFi, Apache Kafka, Elasticsearch, MySQL, as well as 
-several in-house tools and storage solutions.
+I Previously worked at 
+[BAE Systems Applied Intelligence](https://www.baesystems.com/en/cybersecurity/home) 
+(formally Detica) on various projects involving Big Data technologies such as 
+Hadoop, Apache Spark, Apache NiFi, Apache Kafka, Elasticsearch, MySQL, as well 
+as several in-house tools and storage solutions.
 
 Previous to BAE I worked at a small software company called 
 [IDR Solutions](https://www.idrsolutions.com/) who specialise in Java and Web 
 based PDF solutions. There I primarily used Java, JavaScript and HTML5 with 
-some exposure to application servers such as GlassFish.
+some exposure to application servers such as GlassFish. They maintain a great 
+[blog](https://blog.idrsolutions.com/) with technical posts on related topics 
+that I highly recommend.
 
 ## Website Source
 
-This website is built upon the static site generator Jeykll and the theme 
-[Hyde](http://hyde.getpoole.com) which is a project based on the
+This website is built upon the static site generator [Jeykll](https://jekyllrb.com/) 
+and the theme [Hyde](http://hyde.getpoole.com) which is a project based on the
 [Poole](https://github.com/poole) example theme.
 
 After having used Wordpress in the past for my original blog I opted for 
