@@ -168,4 +168,23 @@ Of course there are disadvantages too, mainly that browsers with limited
 or no JavaScript support won't work. This may include some screen-reading 
 software used by the visually impaired.
 
+### Experimenting with Data Files
 
+I am not super familiar with [Jekyll's data files](https://jekyllrb.com/docs/datafiles/)
+and the [Liquid templating language](https://jekyllrb.com/docs/liquid/) so I 
+thought it prudent to research and experiment with them more.
+
+Jekyll supports YAML, JSON, CSV and TSV files. Out of these file types YAML and
+JSON are probably the best suited for storing comments due to them not using
+commas or tabs as separators. My personal preference between YAML and JSON is 
+JSON, mostly because it is a simpler format with much more support, including 
+native JavaScript support in web browsers.
+
+Data files are stored in the `_data` folder and can be placed in subfolders, 
+which is good because that makes it easier to organise the comments I'll get 
+into folders based on the posts they are for.
+
+Jekyll makes data accessible by namespace. The example given in the 
+documentation uses the example files `_data/orgs/jekyll.yml` and
+`_data/orgs/deorg.yml` which are associated with the namespace `data.orgs` and 
+accessible when iterating over that namespace's members.
