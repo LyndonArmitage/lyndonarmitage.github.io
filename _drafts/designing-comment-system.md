@@ -199,7 +199,8 @@ such a system:
 Since blog posts in Jekyll are stored as markdown files they can be identified 
 with names that are safe to use in the file system. For example a blog post 
 might be named `2019-05-09-comments-on-static-blog.md` on the file system which 
-translates to the relative link `2019/05/09/comments-on-static-blog/`.  
+translates to the relative link 
+`https://lyndon.codes/2019/05/09/comments-on-static-blog/`.  
 Now I can use that filename as a folder in the data directory, something like:
 `_data/comments/2019-05-09-comments-on-static-blog/` and store all comments in
 that folder for that given post.
@@ -211,3 +212,16 @@ The benefits to this are:
   move to a new blogging system.
 * When merging in new comments they can all be kept in separate files, reducing
   problems with merges in Git.
+
+One potential issue with this is ordering comments based on their posted time, 
+thankfully Liquid [seems to support this](https://gist.github.com/Phlow/1f27dfafdf2bbcc5c48e) 
+with filters. Even if it didn't comments could be given filenames that order 
+correctly using an incrementing count or just the current time.
+
+#### Single files for each blog posts
+
+A similar approach to using a folders and files per comment would be using a 
+single file per blog post. This has similar benefits but other drawbacks like
+merges being harder when blog post has multiple comments awaiting approval.
+
+
