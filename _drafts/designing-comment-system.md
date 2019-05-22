@@ -166,7 +166,9 @@ The advantage of using an AJAX call are:
 
 Of course there are disadvantages too, mainly that browsers with limited 
 or no JavaScript support won't work. This may include some screen-reading 
-software used by the visually impaired.
+software used by the visually impaired. However since display of comments will
+be handled by Jekyll and it's Liquid templating language existing comments 
+should still be readable in any browser.
 
 ### Experimenting with Data Files
 
@@ -188,3 +190,24 @@ Jekyll makes data accessible by namespace. The example given in the
 documentation uses the example files `_data/orgs/jekyll.yml` and
 `_data/orgs/deorg.yml` which are associated with the namespace `data.orgs` and 
 accessible when iterating over that namespace's members.
+
+Applying this to comments I can see several possible ways of implementing 
+such a system:
+
+#### Folders for each blog post
+
+Since blog posts in Jekyll are stored as markdown files they can be identified 
+with names that are safe to use in the file system. For example a blog post 
+might be named `2019-05-09-comments-on-static-blog.md` on the file system which 
+translates to the relative link `2019/05/09/comments-on-static-blog/`.  
+Now I can use that filename as a folder in the data directory, something like:
+`_data/comments/2019-05-09-comments-on-static-blog/` and store all comments in
+that folder for that given post.
+
+The benefits to this are:
+
+* It is easy to keep track of all comments for each post
+* It's easy to migrate comments with posts if you change post names or even 
+  move to a new blogging system.
+* When merging in new comments they can all be kept in separate files, reducing
+  problems with merges in Git.
