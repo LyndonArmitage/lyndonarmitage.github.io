@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Designing a Comment System
-tags: [blog, comments, design]
+tags: [blog, comments, design, prototype]
 ---
 
 In my [previous post]({{ site.baseurl }}{% post_url 2019-05-09-comments-on-static-blog %})
@@ -224,4 +224,108 @@ A similar approach to using a folders and files per comment would be using a
 single file per blog post. This has similar benefits but other drawbacks like
 merges being harder when blog post has multiple comments awaiting approval.
 
+#### Testing
 
+So a test of the folder approach for the data in `_data/test/comments/` that 
+contains 3 files named `0.json`, `1.json` and `3.json` would look something 
+like this:
+
+{% raw %}
+```markdown
+{% for comment in site.data.test.comments %}
+* {{ comment }} 
+{% endfor %}
+```
+{% endraw %}
+
+With the rendered output of:
+
+{% for comment in site.data.test.comments %}
+* {{ comment }} 
+{% endfor %}
+
+Notice that the prefix before each item is the filename. 
+So to render the data within we need to select the 2nd item in each comment. 
+So something like the following could render comments:
+
+{% raw %}
+```html
+<table>
+  <thead>
+    <tr>
+      <th>DateTime</th>
+      <th>Author</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for comment_hash in site.data.test.comments %}
+    {% assign comment = comment_hash[1] %}
+    <tr>
+      <td>{{ comment.dateTime }}</td>
+      <td>{{ comment.displayName }}</td>
+      <td>{{ comment.comment }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+```
+{% endraw %}
+
+Which would render to:
+
+<table>
+  <thead>
+    <tr>
+      <th>DateTime</th>
+      <th>Author</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for comment_hash in site.data.test.comments %}
+    {% assign comment = comment_hash[1] %}
+    <tr>
+      <td>{{ comment.dateTime }}</td>
+      <td>{{ comment.displayName }}</td>
+      <td>{{ comment.comment }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+One important thing you might notice is that, in the first example made use of 
+markdown to render the comments which actually automatically rendered the 
+comment text of the comments.   
+In the second, HTML example the comment text is not parsed as markdown and 
+rendered raw. This means that the special markdown characters are rendered and 
+the newline character is added to the document itself.  
+I want to support markdown in my comments so I'll have to to use a 
+[Liquid filter](https://jekyllrb.com/docs/liquid/filters/) like
+{% raw %}`{{ comment.comment | markdownify }}`{% endraw %}.  
+With that in place the comment with markdown would be rendered like so:
+
+> {{ site.data.test.comments.2.comment | markdownify  }}
+
+<p class="message">
+Remember that line breaks aren't added in markdown unless they are double 
+breaks (for a new paragraph) or the preceding line is prefixed with 2 spaces 
+(for a manually added line break).
+</p>
+
+Additionally Liquid has filters for displaying dates in a more friendly manner.
+These include: 
+
+* `date_to_xmlschema`
+* `date_to_rfc822`
+* `date_to_string`
+* `date_to_long_string`
+
+So the date `{{ site.data.test.comments.2.dateTime }}` could be rendered as:
+
+* {{ site.data.test.comments.2.dateTime | date_to_xmlschema }}
+* {{ site.data.test.comments.2.dateTime | date_to_rfc822 }}
+* {{ site.data.test.comments.2.dateTime | date_to_string }}
+* {{ site.data.test.comments.2.dateTime | date_to_long_string: "ordinal" }}
+
+Or some other variations based on possible settings for the filters.
