@@ -227,7 +227,7 @@ merges being harder when blog post has multiple comments awaiting approval.
 #### Testing
 
 So a test of the folder approach for the data in `_data/test/comments/` that 
-contains 3 files named `0.json`, `1.json` and `3.json` would look something 
+contains 3 files named `_0.json`, `_1.json` and `_3.json` would look something 
 like this:
 
 {% raw %}
@@ -305,7 +305,7 @@ I want to support markdown in my comments so I'll have to to use a
 {% raw %}`{{ comment.comment | markdownify }}`{% endraw %}.  
 With that in place the comment with markdown would be rendered like so:
 
-> {{ site.data.test.comments.2.comment | markdownify  }}
+> {{ site.data.test.comments._2.comment | markdownify  }}
 
 <p class="message">
 Remember that line breaks aren't added in markdown unless they are double 
@@ -321,12 +321,12 @@ These include:
 * `date_to_string`
 * `date_to_long_string`
 
-So the date `{{ site.data.test.comments.2.dateTime }}` could be rendered as:
+So the date `{{ site.data.test.comments._2.dateTime }}` could be rendered as:
 
-* {{ site.data.test.comments.2.dateTime | date_to_xmlschema }}
-* {{ site.data.test.comments.2.dateTime | date_to_rfc822 }}
-* {{ site.data.test.comments.2.dateTime | date_to_string }}
-* {{ site.data.test.comments.2.dateTime | date_to_long_string: "ordinal" }}
+* {{ site.data.test.comments._2.dateTime | date_to_xmlschema }}
+* {{ site.data.test.comments._2.dateTime | date_to_rfc822 }}
+* {{ site.data.test.comments._2.dateTime | date_to_string }}
+* {{ site.data.test.comments._2.dateTime | date_to_long_string: "ordinal" }}
 
 Or some other variations based on possible settings for the filters.
 
