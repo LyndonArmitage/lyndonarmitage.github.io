@@ -329,3 +329,13 @@ So the date `{{ site.data.test.comments.2.dateTime }}` could be rendered as:
 * {{ site.data.test.comments.2.dateTime | date_to_long_string: "ordinal" }}
 
 Or some other variations based on possible settings for the filters.
+
+## Closing
+
+This post has got quite long already so I will end it here.
+
+You can see a lot of the ideas and thought process happening within here 
+however I still haven't looked into the pull request side of this system.
+I am aware of JGit for Java which could be used to create branches in Git and 
+have had a quick look at the Github API for creating Pull Requests but will 
+write a separate post on that.
