@@ -16,16 +16,19 @@ knowledge and things I (Lyndon Armitage) find interesting.
 
 ## Work
 
-My primary experience is with developing Java/JVM based Big Data solutions.
+My primary experience is with developing Java/JVM based Big Data solutions
+although I have experience working with a full range of web technology as well.
 
-I am currently employed as a Full Stack Developer at 
+I am currently employed as a Data Engineer at Holland and Barrett.
+
+Up until June 2019 I was working as a Full Stack Developer at 
 [Synoptic Technologies Ltd](https://www.synoptica.com/) based in Guildford, UK. 
-Where I work primarily on the back-end of their AI technologies that power 
+Where I worked primarily on the back-end of their AI technologies that power 
 their platform Synoptica; using technologies including Apache Spark, Spring, 
 Elasticsearch, Eclipse Vert.x, Apache NiFi, Apache Cassandra, Apache HBase, 
 PostgreSQL, Kotlin, Amazon Web Services (AWS), and many more.
 
-I Previously worked at 
+Before working at Synoptic I  worked at 
 [BAE Systems Applied Intelligence](https://www.baesystems.com/en/cybersecurity/home) 
 (formally Detica) on various projects involving Big Data technologies such as 
 Hadoop, Apache Spark, Apache NiFi, Apache Kafka, Elasticsearch, MySQL, as well 
