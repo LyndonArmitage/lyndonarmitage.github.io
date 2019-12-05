@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Advent of Code 2019 Day 4
+title: Advent of Code 2019 Day 3
 tags: [scala, advent of code]
 ---
 
