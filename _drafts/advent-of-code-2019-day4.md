@@ -147,3 +147,55 @@ Now part 2 modifies one of the conditions slightly:
 >
 > How many different passwords within the range given in your puzzle input
 > meet all of the criteria?
+
+Now we can add an extra filter to cover this.
+
+There's a few ways of writing this filter, one slightly hacky way is to convert
+the digits back to a string and use a Regular Expression to find all the
+repeating digits:
+
+```scala
+val pattern = Pattern.compile("(?<=(.))(?!\\1)")
+def repeatDigitsNotPartOfLargerGroup(number: IndexedSeq[Int]): Boolean = {
+  val asString = number.map(digit => digit.toString).mkString
+  val repeatedDigits = pattern.split(asString).toSeq
+  repeatedDigits.exists(repeat => repeat.length == 2)
+}
+```
+
+The pattern does a positive lookbehind and negative lookahead. Kind of hard to
+understand unless you use Regular Expressions a lot.  
+You could do a similar thing with a Java `Scanner` too.
+
+But if we wanted to do this properly without converting to a string we really
+only need 2 nested loops to perform the same logic on the digits:
+
+```scala
+def repeatDigitsNotPartOfLargerGroup(number: IndexedSeq[Int]): Boolean = {
+  val groupCounts = mutable.Buffer[(Int, Int)]()
+
+  var start = 0
+  while (start < number.length - 1) {
+    val digit = number(start)
+    var count = 1
+    var i = start + 1
+    var changed = false
+    while (i < number.length && !changed) {
+      val nextDigit = number(i)
+      if (digit != nextDigit) {
+        changed = true
+      } else {
+        count += 1
+        i += 1
+      }
+    }
+    val group = (digit, count)
+    groupCounts += group
+    start += count
+  }
+
+  groupCounts.exists(group => group._2 == 2)
+}
+```
+
+And with either of these filters added we get our result for part 2!
