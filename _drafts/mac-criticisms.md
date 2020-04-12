@@ -4,23 +4,24 @@ title: My Criticisms of Macs
 ---
 
 Since starting my current job I have been using a Macbook (15 inch 2018 model)
-as my daily driver.
+as my daily work machine.
 Previously I made use of an Ubuntu Dell XPS in my last job and before that a
 Windows 7 Dell Latitude (I think) which I also often used a Linux VM on.
 
-This post is written after spending a few months using my Macbook and
+This post is written after spending quite a few months using my Macbook and
 represents my thoughts and opinions on it from a software developer's
 standpoint, specifically from someone who does (and has done) a lot of Data
-Engineering tasks, and Java/JVM focussed development.
+Engineering tasks, and Java/JVM focussed development on both Windows and Linux
+machines.
 
 I have quite a few criticisms of the Macbook and it's Operating System in
 general. Do bear in mind that these are my own opinions and based on what I like
 and what works for me, I am sure many many developers can get by and be very
 productive within the Mac and Apple ecosystem and have worked with several in my
 career who absolute adore their Macbooks and desktop Macs as development
-machines. Also some of these these are quite nitpicky and approach "first world
-problems" in some of their pettiness. I am overall happy to continue working
-and using my Mac.
+machines. Also some of these these criticisms are quite nitpicky and approach
+the category of "first world problems" in some of their pettiness. I am overall
+happy to continue using my Mac.
 
 So without further preamble here are some of my criticisms and things I find
 annoying about using a Macbook for work:
@@ -39,13 +40,13 @@ annoying about using a Macbook for work:
   XPS) that have definitely had similar issues, which may well be due to form
   factor and built in fans getting clogged up.
 * The App Store. In general it's a mess, full of overpriced useless apps that
-  make it difficult to find useful applications.
+  make it difficult to find any useful applications.
 * Any "extra" functionality to customize my experience seems to always cost a
   bit more than I'd personally be willing to pay.  
   I understand and to an extent agree with the philosophy of paying for good
   tools to do a good job but some of these seem like incredibly basic features
   that the OS itself should include, or simple third party tools that should at
-  most cost a couple of £'s not pushing £25!
+  most cost a couple of £'s not pushing £20!
 * Finder is one of the worst file managers I have ever used.  
   The fact that the delete key will not send a file to the trash is insane, 
   return does not open a file but instead allows you to rename it, it's not
