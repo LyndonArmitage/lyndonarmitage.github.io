@@ -8,7 +8,7 @@ Recently Matthew Powers released a short
 [blog post](https://neapowers.com/apache-spark/native-functions-catalyst-expressions/)
 on creating Spark native functions that I found interesting.
 Previously I had read 
-[a post by Simeon Simeonov](https://neapowers.com/apache-spark/native-functions-catalyst-expressions/)
+[a post by Simeon Simeonov](https://blog.simeonov.com/2018/11/14/apache-spark-native-functions/)
 about the same topic but had not internalised the concepts presented.
 
 Powers' post shows a simple example of creating a Catalyst Expression, the
