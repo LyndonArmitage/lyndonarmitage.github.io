@@ -7,9 +7,10 @@ I can be contacted in the following places:
 
 * [LinkedIn](https://www.linkedin.com/in/lyndonarmitage/)
 * [Twitter: @LyndonArmitage](https://twitter.com/LyndonArmitage)
+* [Mastodon: @lyndon@fosstodon.org](https://fosstodon.org/@lyndon@fosstodon.org)
 
 <p id="email-text">
-You can also <a id="email">email</a> me.
+Although I'd recommend <a id="email">emailing</a> me.
 </p>
 
 <noscript>
