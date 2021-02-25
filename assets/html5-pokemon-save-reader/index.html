@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML5 Pok&#233;mon Save File Viewer</title>
+	<link href='http://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+	<link type="text/css" href="css/main.css" media="all" rel="stylesheet">
+</head>
+<body>
+
+<h1>Pok&#233;mon Save File Viewer</h1>
+<div id="container">
+	<div id="inputSection">
+		<div id='inputLabel' class="btn">Select Save File</div>
+		<!--<div id='saveButton' class="btn">Save Out File</div>-->
+		<input type='file' id='fileInput' name='savefile' style='display: none'/>
+	</div>
+	<div id="outputSection">
+		<h2>Select a Save File to begin.</h2>
+	</div>
+</div>
+<div id="footer">
+	Source available on <a href="https://github.com/LyndonArmitage/HTML5PokemonSaveReader" target="_blank">GitHub</a>
+</div>
+
+<script
+			  src="https://code.jquery.com/jquery-2.0.2.min.js"
+			  integrity="sha256-TZWGoHXwgqBP1AF4SZxHIBKzUdtMGk0hCQegiR99itk="
+			  crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/sav_parser.js"></script>
+<script type="text/javascript" src="js/background.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

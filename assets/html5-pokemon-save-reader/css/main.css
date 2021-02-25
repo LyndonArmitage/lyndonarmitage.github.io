@@ -1,0 +1,67 @@
+body {
+	font-family: 'VT323', cursive;
+}
+
+#container {
+	position: relative;
+	width: 800px;
+	min-height: 600px;
+	margin: 0 auto;
+	border: #000000 solid 1px;
+	background: url("../imgs/fallback.png") repeat;
+}
+
+.btn {
+	width: 200px;
+	height: 100px;
+	border: #000000 outset 2px;
+	text-align: center;
+	line-height: 100px;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+.btn:active {
+	border: #000000 inset 2px;
+}
+
+#inputLabel {
+	margin: 10px auto;
+	background: red;
+}
+
+
+#saveButton {
+	background: blue;
+}
+
+#outputSection {
+	width: 600px;
+	min-height: 200px;
+	border: #000000 groove 2px;
+	border-radius: 20px;
+	background: #ffffff;
+	margin: 10px auto;
+	padding: 10px;
+}
+
+#error {
+	text-align: center;
+	color: red;
+	font-weight: bold;
+}
+
+h1 {
+	text-align: center;
+	font-size: 25px;
+}
+
+h2 {
+	text-align: center;
+	font-size: 20px;
+}
+
+#footer {
+	text-align: center;
+	font-size: 12px;
+}
