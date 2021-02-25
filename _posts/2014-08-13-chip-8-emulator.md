@@ -12,7 +12,7 @@ that have since disappeared.
 </p>
 
 I mentioned before in my
-[HTML5 Pokémon Save File Reader post](https://web.archive.org/web/20160318165203/http://lyndonarmitage.com/html5-pokemon-save-file-viewer/)
+[HTML5 Pokémon Save File Reader post]({% post_url 2014-05-12-html5-pokemon-save-file-viewer %})
 that I got into emulation and wanted to create a Game Boy emulator but decided
 to start smaller.
 So after creating the save file viewer and doing a lot of university work in
