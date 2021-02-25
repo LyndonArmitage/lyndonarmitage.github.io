@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Pokémon Red Bot Part 0
+tags: emulator, pokemon
 ---
 
 For quite some time I have had the idea of making a simple bot that could play 
