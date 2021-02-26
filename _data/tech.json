@@ -1,0 +1,47 @@
+{
+  "Programming Languages": {
+    "Java": 80,
+    "Scala": 75,
+    "Kotlin": 70,
+    "Python": 50,
+    "SQL": 50,
+    "C": 40,
+    "C++": 30,
+    "JavaScript": 60,
+    "HTML": 70,
+    "CSS": 50,
+    "LaTex": 20,
+    "Linux Shell": 40,
+    "Microsoft Batch": 20
+  },
+  "IDEs & Editors": {
+    "IntelliJ": 90,
+    "Vim": 60,
+    "Netbeans": 30,
+    "Eclipse": 30,
+    "Notepad++": 60
+  },
+  "Operating Systems": {
+    "Windows": 80,
+    "Linux": 90,
+    "Mac": 60
+  },
+  "Software/Libraries": {
+    "Apache Spark": 80,
+    "Elasticsearch": 70,
+    "Apache Kafka": 40,
+    "AWS": 60,
+    "Apache Airflow": 50,
+    "Apache Cassandra": 40,
+    "HBase": 40,
+    "Apache NiFi": 40,
+    "Spring": 30,
+    "Vert.x 3": 50,
+    "gRPC": 40,
+    "NodeJS": 30,
+    "Apache Tomcat": 30,
+    "Hadoop": 50,
+    "Puppet": 25,
+    "Salt Stack": 25
+  }
+}
