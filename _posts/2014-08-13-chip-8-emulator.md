@@ -299,38 +299,3 @@ this section to keep them all together and to add more if needed.
 Below are 2 comments from the original post that might be useful:
 </p>
 
-__Commenter:__ Nameless  
-__Date:__ 21/10/2014 at 7:32 PM  
-__Comment:__  
-How do you know the VY has to be shifted 8 bits to the right and the VX has to
-be shifted 4 bits to the right? This is really driving me crazy because I fail
-to see the logic behind this.
-
-
-__Commenter:__ Lyndon Armitage  
-__Date:__ 22/10/2014 at 9:24 PM  
-__Comment:__  
-If you’re referring to the problem piece of code I had; it’s because of how
-the instruction is set out and bitwise operators:
-
-`opcode & 0x0F00` refers to the second nibble of the instruction which is the
-register we want to place the value of the register referred to by
-`opcode & 0x00F0` in.
-
-An example using the opcode in question (8xy0):
-
-Say we have the instruction `0x8210`, that’s `1000 0010 0001 0000` in binary,
-and simply means store the value of register 1 in register 2.
-To get from the instruction the register we want to put the data into we need
-to isolate the second nibble and shift it so it doesn’t have any of the other
-bits from the other nibbles.  
-To do that we first bitwise AND it with `0x0F00` which results in `0x0200`
-(with the 2 being the only nibble that isn’t changed by this operation)
-which is `0000 0010 0000 0000` in binary and then shift it by 8 bits to the
-right so it removes the other bits and becomes `0000 0000 0000 0010`, 2.
-
-You do the same for the next part of the instruction except that it is one place
-to the right in hexadecimal already which means you shift it by 4 less.
-
-Hopefully that’s explained it well enough for you.
-

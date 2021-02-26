@@ -12,6 +12,8 @@ description:      'Small blog containing code related posts by Lyndon Armitage'
 url:              https://lyndon.codes
 lang:             en_GB
 exclude:          ["_config.yml", "README.md", "CNAME", "serve.sh", "Gemfile", "Gemfile.lock"]
+comments_url:     'http://ubunutu.lyndon.codes/v2/entry/LyndonArmitage/lyndonarmitage.github.io/master/comments'
+enable_comments:  false
 
 author:
   name:           'Lyndon Armitage'
@@ -19,6 +21,7 @@ author:
   twitter:        https://twitter.com/LyndonArmitage
   github:         https://github.com/LyndonArmitage
   linkedin:       https://www.linkedin.com/in/lyndonarmitage
+  mastodon:       https://fosstodon.org/@lyndon
 
 paginate:         5
 
@@ -34,6 +37,7 @@ social:
     - https://twitter.com/LyndonArmitage
     - https://github.com/LyndonArmitage
     - https://www.linkedin.com/in/lyndonarmitage
+    - https://fosstodon.org/@lyndon
 twitter:
   username: LyndonArmitage
   card: summary

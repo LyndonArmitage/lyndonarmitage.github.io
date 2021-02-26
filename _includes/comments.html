@@ -1,0 +1,62 @@
+{% assign slug = include.slug %}
+<div class="comments">
+  <h2>Comments</h2>
+  
+  {% if site.comments_url and site.enable_comments %}
+  <div class="add-comment">
+    <form action="{{ site.comments_url | strip }}" method="post">
+      <fieldset>
+        <legend>Leave a comment</legend>
+        <input name="options[slug]" type="hidden" value="{{ slug }}">
+        <label style='display: block'>
+          Display Name:
+          <input required type="text" name="fields[name]" placeholder="John Smith" style='width:100%'/>
+        </label>
+        <label style='display: block'>
+          Email:
+          <input type="text" name="fields[email]" placeholder="john.smith@gmail.com" style='width:100%'/>
+        </label>
+        <label style='display: block'>
+          URL (Optional):
+          <input type="text" name="fields[url]" placeholder="https://example.com/" style='width:100%'/>
+        </label>
+        <label>
+        Comment:
+          <textarea required minlength="15" spellcheck maxlength="10000" cols="120" rows="5" name="fields[message]" placeholder="Comment body goes here. Markdown is supported." ></textarea>
+        </label>
+        <button type="submit" onclick='alert("Submitted Comment, will take time to moderate.");'>Submit Comment</button>
+      </fieldset>
+    </form>
+  </div>
+  {% else %}
+  <p class="message">Comment posting is currently disabled.</p>
+  {% endif %}
+
+  <div class="existing-comments">
+    {% if site.data.comments[slug] %}
+      {% assign comments = site.data.comments[slug]| sort %}
+      {% for commentEntry in comments %}
+        {% assign comment = commentEntry[1]%}
+        {% assign email = comment.email %}
+        {% assign name = comment.name %}
+        {% assign url = comment.url %}
+        {% assign date = comment.date %}
+        {% assign message = comment.message %}
+        {% assign uid = comment._id %}
+        <div class="comment" id="{{ uid }}">
+          <div class="author">
+            <b>Name: </b> <span>{{ name | strip_html }}</span><br />
+            <b>Date:</b> <span>{{date | date: "%B %eth, %Y %H:%M"}}</span>
+          </div>
+          <div class="comment-content">
+            {{message | strip_html | markdownify}}
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+    <p>No existing comments.</p>
+    {% endif %}
+  </div>
+
+</div>
+

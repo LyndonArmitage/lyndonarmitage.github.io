@@ -1,0 +1,7 @@
+{
+  "_id": "nameless",
+  "date": 1413919920,
+  "name": "Nameless",
+  "email": "",
+  "message":"How do you know the VY has to be shifted 8 bits to the right and the VX has to be shifted 4 bits to the right? This is really driving me crazy because I fail to see the logic behind this."
+}
