@@ -20,3 +20,9 @@ img.profile {
     max-width: 100%;
   }
 }
+
+.comment {
+  border: groove 1px;
+  margin-top: 1em;
+  padding: 1em;
+}
