@@ -16,9 +16,9 @@ comments:
   branch: 'master'
 
   # Text to use as the commit message or pull request title. Accepts placeholders.
-  commitMessage: 'Add Comment from {fields.name} on {options.slug} {@timestamp}'
+  commitMessage: 'Add Comment from {fields.name} on {options.slug} at {@timestamp}'
 
-  pullRequestBody: 'A new comment has been left for moderation.\n\nFrom {fields.name} on {options.slug}:\n\n{fields.message}'
+  pullRequestBody: 'A new comment has been left for moderation.'
 
   # (*) REQUIRED
   #
