@@ -45,8 +45,12 @@
         {% assign uid = comment._id %}
         <div class="comment" id="{{ uid }}">
           <div class="author">
+            <img class="gravatar" src="https://www.gravatar.com/avatar/{{ email }}" />
             <b>Name: </b> <span>{{ name | strip_html }}</span><br />
             <b>Date:</b> <span>{{date | date: "%B %eth, %Y %H:%M"}}</span>
+            {% if url %}
+            <br /><b>URL:</b> <a class="commenter-url" target="_blank" href="{{ url }}">{{ url }}</a></br />
+            {% endif %}
           </div>
           <div class="comment-content">
             {{message | strip_html | markdownify}}
