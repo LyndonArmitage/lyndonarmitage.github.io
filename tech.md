@@ -10,12 +10,12 @@ Some I have used professionally whilst others I have only some hobbyist
 experience with. I have tried to take into account my skills getting rusty
 since using them as well.
 
-{% for category in site.data.tech | sort %}
+{% for category in site.data.tech %}
   {% assign category_name = category[0] %}
   {% assign category_data = category[1] %}
   <h2>{{ category_name }}</h2>
   <table>
-  {% for entry in category_data | sort %}
+  {% for entry in category_data %}
     <tr>
       <th>{{ entry[0]}}</th>
       <td><progress max="100" value="{{ entry[1] }}"></progress></td>
