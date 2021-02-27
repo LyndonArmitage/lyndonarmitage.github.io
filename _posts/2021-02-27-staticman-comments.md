@@ -36,6 +36,19 @@ Using MD5 to hash your emails also allows me to hook up with
 eventually since MD5 is how they encode your email address for delivery of
 profile images.
 
+Here's an example of what comments look like in code:
+
+```json
+{
+  "_id":"9b6c0050-78f1-11eb-85dc-81d7eb0ada60",
+  "name":"Lyndon",
+  "email":"4d3efb98c1d9c26b1c98402dcf78499a",
+  "url":"https://lyndon.codes",
+  "message":"This is a test comment for you to all see.\r\n\r\nNotice the formatting is probably not quite right yet.\r\n\r\nHowever I ___already___ support `markdown`!",
+  "date":1614426465
+}
+```
+
 So far the commenting dialog is very basic, it even navigates you away to the
 response JSON right now. I'll be trying to improve that quickly with some nice
 HTML and JavaScript however I want to avoid heavy libraries like JQuery.
