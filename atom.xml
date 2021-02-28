@@ -2,9 +2,10 @@
 layout: null
 ---
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+<feed xml:lang="en-GB" xmlns="http://www.w3.org/2005/Atom">
 
  <title>{{ site.title }}</title>
+ <subtitle>{{ site.author.name }}'s blog</subtitle>
  <link href="{{ site.url }}/atom.xml" rel="self"/>
  <link href="{{ site.url }}/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
@@ -14,6 +15,7 @@ layout: null
    <email>{{ site.author.email }}</email>
    <uri>{{ site.url }}</uri>
  </author>
+ <rights>©{{ site.time | date: '%Y' }} {{ site.author.name }}</rights>
  <generator>Jekyll</generator>
 
  {% for post in site.posts %}
@@ -29,7 +31,7 @@ layout: null
    {% endfor %}
    {% endif %}
    <summary>{{ post.excerpt | xml_escape }}</summary>
-   <content type="html">
+   <content xml:lang="en-GB" type="html">
    {{ post.content | xml_escape }}
    </content>
  </entry>

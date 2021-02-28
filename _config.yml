@@ -17,6 +17,7 @@ enable_comments:  true
 
 author:
   name:           'Lyndon Armitage'
+  email:          'lyndon.armitage@gmail.com'
   url:            https://twitter.com/LyndonArmitage
   twitter:        https://twitter.com/LyndonArmitage
   github:         https://github.com/LyndonArmitage
