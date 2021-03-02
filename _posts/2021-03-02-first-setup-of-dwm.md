@@ -88,6 +88,17 @@ static const char *termcmd[]  = { "urxvt", NULL };
 ```
 
 Now I could start up dwm with mostly default key bindings.  
+
+<a href="{{ "assets/dwm/2021-03-02.png" | absolute_url }}" target="_blank">
+<img
+  src='{{ "assets/dwm/2021-03-02.png" | absolute_url }}'
+  alt='Screenshot of dwm'
+  title='Screenshot of dwm'
+  class='blog-image'
+  style="max-width:100%"
+/>
+</a>
+
 Obviously there's a lot more to do to get dwm up to the same level of niceness
 as my i3 install but now I have the framework in place I can start to explore
 existing patches people have released for it that add useful and desired
@@ -95,3 +106,5 @@ features and configure it to my hearts content. Thankfully because of the way I
 have installed it I can always switch back to my i3 setup when needed and
 because I will be using Git to catalog all my changes I can modify without risk
 of permanently breaking anything.
+
+
