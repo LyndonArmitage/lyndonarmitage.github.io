@@ -46,7 +46,7 @@ steps can be done independently of each other.
 This is relatively simple.  
 Given a source image like this:
 
-<img alt='This is a screenshot from the game Metal Gear Solid V: The Phantom Pain. This and many other screenshots from the game will be used as examples.' src='{{ "assets/medium/collage/image1.jpg" | absolute_url }}' class='blog-image' >
+<img title='This is a screenshot from the game Metal Gear Solid V: The Phantom Pain. This and many other screenshots from the game will be used as examples.' alt='Example Screenshot from Metal Gear Solid V' src='{{ "assets/medium/collage/image1.jpg" | absolute_url }}' class='blog-image' >
 
 * Split it up into sections based on the size and aspect ratio of the image.
 * Then sample the average colour of this section. This is what we then use for
@@ -54,7 +54,7 @@ Given a source image like this:
 
 Visualized this might look something like this:
 
-<img alt='Note how this is almost the equivalent of blurring or down scaling the image' src='{{ "assets/medium/collage/image2.png" | absolute_url }}' class='blog-image' >
+<img title='Note how this is almost the equivalent of blurring or down scaling the image' alt='Screenshot split into sections, looks pixalated' src='{{ "assets/medium/collage/image2.png" | absolute_url }}' class='blog-image' >
 
 ### 2. Categorizing source images
 
@@ -106,7 +106,7 @@ given an x,y coordinate that maps to the previously shown data format.
 The results of this step end up looking something like this (shrunk to 1920px
 by 1080px):
 
-<img alt='There was a larger version of this image that has not been hosted' src='{{ "assets/medium/collage/image3.png" | absolute_url }}' class='blog-image' >
+<img title='There was a larger version of this image that has not been hosted' alt='Image of the collage' src='{{ "assets/medium/collage/image3.png" | absolute_url }}' class='blog-image' >
 
 ## Potential Additions
 

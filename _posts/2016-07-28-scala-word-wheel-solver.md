@@ -51,7 +51,7 @@ A Word Wheel is a simple puzzle where you try to create as many words as you
 can from a set of letters, with one (or more) letters having to be in all your
 words.
 
-<img alt='This is an example Word Wheel with the required letter of D and optional letters of N,G,A,R,S,E,O, and U' src='{{ "assets/medium/wordwheel/wheel.jpg" | absolute_url }}' class='blog-image' >
+<img alt='This is an example Word Wheel with the required letter of D and optional letters of N,G,A,R,S,E,O, and U' title='This is an example Word Wheel with the required letter of D and optional letters of N,G,A,R,S,E,O, and U' src='{{ "assets/medium/wordwheel/wheel.jpg" | absolute_url }}' class='blog-image' >
 
 Normally there is also a word that uses all the letters in the Word Wheel, can
 you see what it is in the given example?

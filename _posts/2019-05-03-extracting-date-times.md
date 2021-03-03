@@ -88,7 +88,7 @@ based on this interface, taking advantage of inheritance to divide similar
 rules into simple type hierarchies to reuse common behaviours.
 
 <a href='{{ "assets/dates/simple-class-diagram.svg" | absolute_url }}' target='_blank'>
-<img alt='Simple class diagram' src='{{ "assets/dates/simple-class-diagram.svg" | absolute_url }}' class='blog-image'>
+<img title='Simple class diagram' alt='Simple class diagram' src='{{ "assets/dates/simple-class-diagram.svg" | absolute_url }}' class='blog-image'>
 </a>
 
 The second step requires some intelligence and reasoning. One simple algorithm 
