@@ -1,8 +1,8 @@
-{% assign slug = include.slug %}
+{%- assign slug = include.slug -%}
 <div class="comments">
   <h2>Comments</h2>
   
-  {% if site.comments_url and site.enable_comments %}
+  {%- if site.comments_url and site.enable_comments -%}
   <div class="add-comment">
     <form action="{{ site.comments_url | strip }}" method="post">
       <fieldset>
@@ -28,38 +28,38 @@
       </fieldset>
     </form>
   </div>
-  {% else %}
+  {%- else -%}
   <p class="message">Comment posting is currently disabled.</p>
-  {% endif %}
+  {%- endif -%}
 
   <div class="existing-comments">
-    {% if site.data.comments[slug] %}
-      {% assign comments = site.data.comments[slug]| sort %}
-      {% for commentEntry in comments %}
-        {% assign comment = commentEntry[1]%}
-        {% assign email = comment.email %}
-        {% assign name = comment.name %}
-        {% assign url = comment.url %}
-        {% assign date = comment.date %}
-        {% assign message = comment.message %}
-        {% assign uid = comment._id %}
+    {%- if site.data.comments[slug] -%}
+      {%- assign comments = site.data.comments[slug]| sort -%}
+      {%- for commentEntry in comments -%}
+        {%- assign comment = commentEntry[1] -%}
+        {%- assign email = comment.email -%}
+        {%- assign name = comment.name -%}
+        {%- assign url = comment.url -%}
+        {%- assign date = comment.date -%}
+        {%- assign message = comment.message -%}
+        {%- assign uid = comment._id -%}
         <div class="comment" id="{{ uid }}">
           <div class="author">
             <img class="gravatar" src="https://www.gravatar.com/avatar/{{ email }}" />
             <b>Name: </b> <span>{{ name | strip_html }}</span><br />
             <b>Date:</b> <span>{{date | date: "%B %eth, %Y %H:%M"}}</span>
-            {% if url %}
+            {%- if url -%}
             <br /><b>URL:</b> <a class="commenter-url" target="_blank" href="{{ url }}">{{ url }}</a></br />
-            {% endif %}
+            {%- endif -%}
           </div>
           <div class="comment-content">
             {{message | strip_html | markdownify}}
           </div>
         </div>
-      {% endfor %}
-    {% else %}
+      {%- endfor -%}
+    {%- else -%}
     <p>No existing comments.</p>
-    {% endif %}
+    {%- endif -%}
   </div>
 
 </div>
