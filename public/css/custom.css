@@ -26,3 +26,16 @@ img.profile {
   margin-top: 1em;
   padding: 1em;
 }
+
+/* About section */
+.sidebar-about h1 {
+  color: #fff;
+  margin-top: 0;
+  font-family: "Abril Fatface", serif;
+  font-size: 2rem;
+}
+
+.lead {
+  font-size: 1rem;
+}
+
