@@ -4,7 +4,7 @@
   
   {%- if site.comments_url and site.enable_comments -%}
   <div class="add-comment">
-    <form action="{{ site.comments_url | strip }}" method="post">
+    <form id="commentForm" action="{{ site.comments_url | strip }}" method="post">
       <fieldset>
         <legend>Leave a comment</legend>
         <input name="options[slug]" type="hidden" value="{{ slug }}">
@@ -22,17 +22,18 @@
         </label>
         <label>
         Comment:
-          <textarea required minlength="15" spellcheck maxlength="10000" rows="5" name="fields[message]" placeholder="Comment body goes here. Markdown is supported." style="width: 100%"></textarea>
+          <textarea id="commentText" required minlength="15" spellcheck maxlength="10000" rows="5" name="fields[message]" placeholder="Comment body goes here. Markdown is supported." style="width: 100%"></textarea>
         </label>
-        <button type="submit" onclick='alert("Submitted Comment, will take time to moderate.");'>Submit Comment</button>
+        <button id="submitComment" type="submit">Submit Comment</button>
       </fieldset>
     </form>
+    <script src="{{ "assets/comments.js" | absolute_url }}"></script>
   </div>
   {%- else -%}
   <p class="message">Comment posting is currently disabled.</p>
   {%- endif -%}
 
-  <div class="existing-comments">
+  <div id="existingComments">
     {%- if site.data.comments[slug] -%}
       {%- assign comments = site.data.comments[slug]| sort -%}
       {%- for commentEntry in comments -%}
