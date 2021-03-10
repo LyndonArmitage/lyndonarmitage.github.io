@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Running Spotify on the Terminal with spotifyd & spotify-tui
+title: Running Spotify on the Terminal with spotifyd &amp; spotify-tui
 date: 2021-03-10 17:00 +0000
 tags:
 - linux
