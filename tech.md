@@ -8,9 +8,9 @@ and my perceived familiarity with them.
 
 Some I have used professionally whilst others I have only some hobbyist
 experience with. I have tried to take into account my skills getting rusty
-since using them as well.
+since using them as well.  
 
-{%- for category in site.data.tech -%}
+{% for category in site.data.tech %}
   {%- assign category_name = category[0] -%}
   {%- assign category_data = category[1] -%}
   <h2>{{ category_name }}</h2>
