@@ -144,23 +144,27 @@ traits with ease.
 The technology can even be used for personal gain. Take for example the case of
 having interaction data about a vast cohort of people. From this information you
 could easily ascertain when someone is having an extra-marital affair and then
-use that information as leverage in a political or financial campaign.
+use that information as leverage in a political or financial campaign (i.e.
+blackmail).
 
 Take the earlier example of a comedian saying something regrettable online and
 being tormented for it years later. Now realise that the same is true for
 government collected data. Currently you may not be a target of any kind of
 harassment but in a decade new opinions could become the norm and your
 previously recorded data now becomes a weapon to persecute you with. For
-example, you signed a petition to have a certain government official sacked out
-of justifiable anger at a given decision. Years later after consolidating power
-such a petition could be used as a list of dissenters to persecute. Or location
-data putting you at certain establishments a decade ago could be used to
-insinuate an association with a now problematic group and guilt you by
-the association alone. Guilt by association doesn't even need to be done by a
-government, we already see it happening in the media; someone may have been at
-a party with a now disgraced businessman's partner and have accusation leveled
-at them for such as Toby Young writing for The Spectator
-[professes](https://www.spectator.co.uk/article/how-did-i-end-up-in-epstein-s-little-black-book-).
+example, say you signed a petition to have a certain government official sacked
+out of justifiable anger at a given decision that ultimately went nowhere.
+Years later after consolidating power such a petition could be used as a list
+of dissenters to persecute. Or location data putting you at certain
+establishments a decade ago could be used to insinuate an association with a
+now problematic group and guilt you by the association alone.
+Guilt by association doesn't even need to be done by a government, we already
+see it happening in the media; someone may have been at a party with a now
+disgraced businessman's partner and have accusation leveled at them for such,
+as Toby Young writing for The Spectator
+[speculates](https://www.spectator.co.uk/article/how-did-i-end-up-in-epstein-s-little-black-book-)
+in his article on how his name ended up in an address book alleged to belong to
+sex offender Jeffery Epstein.
 
 Another much more insidious application of these social media apps and services
 is their ability to influence. With enough information about someone campaigns
@@ -182,7 +186,8 @@ issues. There are a few things:
 
 First and foremost you can speak about them frankly and level your concerns.
 Talk to your politicians and company representatives about such issues openly
-and lobby for the change you want.
+and lobby for the change you want. Speaking to friends about privacy topics
+can help illuminate them on otherwise unknown issues.
 
 Of course lobbying and petitioning politicians and businesses can only get you
 so far and may not be the most effective use of your time so there others:
@@ -215,7 +220,8 @@ from having a monopoly on the web and keeps your data safe.
 Avoiding Web Browsers run by the likes of Google and Microsoft like Chrome and
 Edge and instead opting for alternatives like
 [Firefox](https://www.mozilla.org/en-GB/firefox/new/) or
-[Brave](https://bravebrowserweb.com/) also helps keep the web diverse.
+[Brave](https://bravebrowserweb.com/) also helps keep the web diverse and stops
+Microsoft and Google from controlling web standards and monitoring you.
 
 ### Limit the Information you put out Publicly and Privately
 
@@ -226,7 +232,7 @@ platforms to take back control of your own information:
 
 Dig into how an application, device or service actually uses your information,
 inspect their privacy policy and evaluate how the device works. For instance I
-own an Alexa. I know it listens 24/7, but I also know what it listens for, an
+own an Alexa. I know it listens, but I also know what it listens for, an
 activation phrase; the word "Alexa". If it does not hear this phrase it will
 not upload data to Amazon for analysis. Additionally there are hardware
 controls on my Alexa to deafen it and a slider to physically block the camera
@@ -240,7 +246,9 @@ need access to the same?
 Does Facebook need your accurate life information? Where you went to school 20
 years ago? Do you need to list the City you live in on Twitter? Or provide
 all the personal details to a website it demands? Do they even need to be
-accurate? It isn't a crime to lie to Facebook after all.
+accurate? It isn't a crime to lie to Facebook after all, and large corporations
+engage in misleading the public all the time so why treat them any differently
+than they treat you?
 
 Do you need to add every passing acquaintance as a friend on Social Media? Does
 everyone in your friends list need to have access to every post you make? It is
@@ -249,7 +257,8 @@ colleagues don't need to see your Friday night photos or quasi-philosophical
 quotes under your selfies.
 
 Turn off the location tracking on posts on Twitter and Facebook, is it really
-something you want to share?
+something you want to share? Why is your exact GPS location at a given time
+something you want public?
 
 Turn on the privacy settings in applications so that they require your [approval
 to have information linked to you.](https://facecrooks.com/Internet-Safety-Privacy/how-to-lockdown-your-facebook-account-for-maximum-privacy-and-security.html)
@@ -261,11 +270,12 @@ in on a trend?
 
 ### Use Smaller or Local Services
 
-Instead of gravitating towards mega corporations like Amazon, eBay or Facebook
-Marketplace consider using smaller alternatives.  
+Instead of gravitating towards corporations like Amazon, eBay or Facebook
+consider using smaller alternatives.  
 In the case of buying things check out local stores, posted adverts in sites
 like Gumtree or FreeCycle. Visit Carboot/Garage sales, local auctions, police
-auctions, social network with friends directly.
+auctions, social network with friends directly, you'll be greatly surprised
+what friends of friends or family members have to sell.
 
 ### Use Secure Password Credentials Online
 
@@ -289,7 +299,7 @@ both Firefox and Chrome based browsers. It has sophisticated filters that deal
 with most adverts, and will save you bandwidth as a result. Brave has it's own
 built in filters but I still recommend using a dedicated blocker.
 
-Another useful addons is Cookie AutoDelete, which will automatically delete web
+Another useful addon is Cookie AutoDelete, which will automatically delete web
 cookies from sites you have not whitelisted greatly limiting the tracking
 potential they pose.
 
@@ -321,5 +331,5 @@ online, along with how you feel about what you see online.
 Nobody is forcing you to sign up to Facebook or post pictures of your life on
 Instagram. Don't compare yourself to the often half truths you see people
 posting online, and don't believe everything you read in any media, social or
-otherwise.
+otherwise. Remain sceptical and question everything.
 
