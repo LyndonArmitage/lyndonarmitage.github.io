@@ -205,8 +205,9 @@ share private.
 The "Fediverse" replaces many traditional social media platforms with more
 federated alternatives. Twitter can be replaced with
 [Mastodon](https://joinmastodon.org/).
-YouTube can be replaced by [PeerTube](https://joinpeertube.org/) or
-[Dtube](https://d.tube/).
+YouTube can be replaced by [PeerTube](https://joinpeertube.org/),
+[Dtube](https://d.tube/) or [LBRY](https://lbry.com/) (via
+[Odysee](https://odysee.com/) if you don't want to install anything).
 
 You can set up your own "cloud" services with things like
 [Nextcloud](https://nextcloud.com/). Or use [Syncthing](https://syncthing.net/)
