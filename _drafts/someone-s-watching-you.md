@@ -168,7 +168,8 @@ sex offender Jeffery Epstein.
 
 Another much more insidious application of these social media apps and services
 is their ability to influence. With enough information about someone campaigns
-to change opinions can be incredibly targeted. We've seen this happen with
+to change opinions can be incredibly targeted. We've seen this apparently happen
+with
 [Cambridge Analytica](https://www.theguardian.com/news/series/cambridge-analytica-files),
 Brexit and Trump on both sides of each of those topics.
 Even without a targeted campaign social media sites are primed to maintain
