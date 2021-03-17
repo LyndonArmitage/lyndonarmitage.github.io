@@ -12,8 +12,8 @@ tags:
 - oss
 - internet
 - tracking
+date: 2021-03-17 14:30 +0000
 ---
-
 Go grab your tin-foil hat it's time to talk about surveillance online in the
 modern internet.
 
