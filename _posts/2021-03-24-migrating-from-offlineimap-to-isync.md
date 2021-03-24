@@ -10,8 +10,8 @@ tags:
 - isync
 - degoogle
 - mutt
+date: 2021-03-24 17:30 +0000
 ---
-
 Recently I have been experimenting with the terminal email client
 [mutt](http://www.mutt.org/) ([neomutt](https://neomutt.org/) to be specific)
 in preparation for setting up my own email server (I want to stop being over
