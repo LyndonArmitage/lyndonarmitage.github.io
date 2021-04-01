@@ -5,8 +5,8 @@ tags:
 - linux
 - vim
 - terminal
+date: 2021-03-31 19:00 +0100
 ---
-
 The text editor vim is really quite powerful! I am always surprised by how
 much so!
 
