@@ -13,7 +13,7 @@ url:              https://lyndon.codes
 lang:             en_GB
 exclude:          ["_config.yml", "README.md", "CNAME", "serve.sh", "Gemfile", "Gemfile.lock"]
 comments_url:     'https://staticman.lyndon.codes/v2/entry/LyndonArmitage/lyndonarmitage.github.io/master/comments'
-enable_comments:  true
+enable_comments:  false
 
 author:
   name:           'Lyndon Armitage'
