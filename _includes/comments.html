@@ -2,36 +2,7 @@
 <div class="comments">
   <h2>Comments</h2>
   
-  {%- if site.comments_url and site.enable_comments -%}
-  <div class="add-comment">
-    <form id="commentForm" action="{{ site.comments_url | strip }}" method="post">
-      <fieldset>
-        <legend>Leave a comment</legend>
-        <input name="options[slug]" type="hidden" value="{{ slug }}">
-        <label style='display: block'>
-          Display Name:
-          <input required type="text" name="fields[name]" placeholder="John Smith" style='width:100%'/>
-        </label>
-        <label style='display: block'>
-          Email:
-          <input type="text" name="fields[email]" placeholder="john.smith@gmail.com" style='width:100%'/>
-        </label>
-        <label style='display: block'>
-          URL (Optional):
-          <input type="text" name="fields[url]" placeholder="https://example.com/" style='width:100%'/>
-        </label>
-        <label>
-        Comment:
-          <textarea id="commentText" required minlength="15" spellcheck maxlength="10000" rows="5" name="fields[message]" placeholder="Comment body goes here. Markdown is supported." style="width: 100%"></textarea>
-        </label>
-        <button id="submitComment" type="submit">Submit Comment</button>
-      </fieldset>
-    </form>
-    <script src="{{ "assets/comments.js" | absolute_url }}"></script>
-  </div>
-  {%- else -%}
-  <p class="message">Comment posting is currently disabled.</p>
-  {%- endif -%}
+  <p class="message">Comment posting is disabled, please email or discuss on another platform.</p>
 
   <div id="existingComments">
     {%- if site.data.comments[slug] -%}
