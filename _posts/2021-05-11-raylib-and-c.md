@@ -34,11 +34,12 @@ With all this I set out and made 2 quick applications in C using Raylib:
 
 The first was a simple
 [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
-Implementation:
+[Implementation](https://github.com/LyndonArmitage/raylib_gol):
 
 <img alt='Conways Game of Life Screenshot' title='Conways Game of Life Screenshot' src='{{ "assets/raylib/gol.png" | absolute_url }}' class='blog-image' >
 
-The second was a Galaxy Generator:
+The second was a
+[Galaxy Generator](https://github.com/LyndonArmitage/raylib_galaxy):
 
 <img alt='Generated Galaxy Image' title='Generated Galaxy Image' src='{{ "assets/raylib/galaxy.png" | absolute_url }}' class='blog-image' >
 
