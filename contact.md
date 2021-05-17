@@ -12,3 +12,9 @@ Additionally I have a Twitter although it is never checked.
 * Twitter: [@LyndonArmitage](https://twitter.com/LyndonArmitage)
 
 If you do want to contact me I highly recommend emailing me.
+
+### Monero
+
+```
+4AiCjjfHkKER1FfihvA9sfiAFYDFnSkrY1CNV8yMoF6SYJTxu1NVWagKfGhbrDZSQDNCitSLUaFhtJTheZW2yAHAUUpkkHW
+```
