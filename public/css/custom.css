@@ -39,3 +39,15 @@ img.profile {
   font-size: 1rem;
 }
 
+#donate {
+  border-top: 1px solid #eee;
+  font-size: 0.7rem;
+  font-style: italic;
+}
+
+#donate .barcode {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:50%;
+}
