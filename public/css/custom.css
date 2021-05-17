@@ -44,10 +44,3 @@ img.profile {
   font-size: 0.7rem;
   font-style: italic;
 }
-
-#donate .barcode {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width:50%;
-}
