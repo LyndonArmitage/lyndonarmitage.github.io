@@ -6,8 +6,8 @@ tags:
 - programming
 - command line
 - terminal
+date: 2021-06-30 15:51 +0100
 ---
-
 Having been using Linux exclusively as my operating system for development for
 quite some time now I thought it was time to catalog some of the useful
 commands and programs I use in the terminal on an almost daily basis.
