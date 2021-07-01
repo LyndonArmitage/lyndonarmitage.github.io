@@ -4,9 +4,9 @@ title: Iterative Improvement
 tags:
 - iteration
 - blog
-- #100DaysToOffload
+-
+date: 2021-07-01 14:51 +0100
 ---
-
 It is a tendency among many people to perfect something before they think of
 ever releasing it or showing it to anyone else. Often you might label these
 people perfectionists, and they exist in all spheres of life, from programming
