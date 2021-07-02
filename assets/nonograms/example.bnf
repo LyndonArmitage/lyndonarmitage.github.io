@@ -1,0 +1,41 @@
+<dimension> ::= <integer> "x" <integer>
+
+; Our sections
+<section> ::= (<required-section> | <optional-section>) "\n" <section-entries> "\n"
+<required-section> ::= "rows" | "columns"
+<optional-section> :: = "title" | "author" | "grid" | "solution"
+
+; A section can either be text, numerical or a grid
+<section-entries> ::= <numeric section rows> | <grid-rows> | <text-row>
+
+; Representing simple text sections
+<text-row> ::= <text> "\n"
+
+; Representing the rows and column entries
+<numeric section rows> ::= <numeric section row> | <numeric section rows>
+<numeric section row> ::= <numeric section entry> "\n"
+<numeric section entry> ::= <integer> | <numeric section entry> ","
+
+; The grid is made up of rows
+<grid-rows> ::= <grid-row> | <grid-rows>
+<grid-row> ::= <grid row entry> "\n"
+<grid row entry> ::= <grid-square> | <grid row entry> <grid-seperator>
+
+; Our grid symbols
+<grid-square> ::= <empty-square> | <occupied-square> | <empty marked square>
+<grid-seperator> ::= " "
+<empty-square> ::= "."
+<occupied-square> ::= "#"
+<empty marked square> ::= "X"
+
+; In BNF we need to desribe what an integer is
+<integer> ::= <digit> | <integer> <digit>
+<digit> ::= "0" | <digit excluding zero>
+<digit excluding zero> ::= "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+
+; We also need to describe what text is
+<text> ::= <character> | <text>
+<character> ::= <letter> | <symbol> | <digit>
+<letter> ::= "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" | "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"
+<symbol> ::= "|" | " " | "!" | "#" | "$" | "%" | "&" | "(" | ")" | "*" | "+" | "," | "-" | "." | "/" | ":" | ";" | ">" | "=" | "<" | "?" | "@" | "[" | "\" | "]" | "^" | "_" | "`" | "{" | "}" | "~" | '"' | "'"
+
