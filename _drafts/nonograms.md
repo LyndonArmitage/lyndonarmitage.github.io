@@ -244,10 +244,10 @@ Below is the same example of a simple Nonogram that Wikipedia shows:
 <td style="background:#EFEFEF"></td>
 <td style="background:#EFEFEF">4</td>
 <td></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
 <td></td>
 <td></td>
 <td>
@@ -256,58 +256,58 @@ Below is the same example of a simple Nonogram that Wikipedia shows:
 <td style="background:#EFEFEF"></td>
 <td style="background:#EFEFEF">6</td>
 <td></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
 <td>
 </td></tr>
 <tr>
 <td style="background:#EFEFEF">2</td>
 <td style="background:#EFEFEF">2</td>
 <td></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
 <td></td>
 <td></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
 <td>
 </td></tr>
 <tr>
 <td style="background:#EFEFEF">2</td>
 <td style="background:#EFEFEF">2</td>
 <td></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
 <td></td>
 <td></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
 <td>
 </td></tr>
 <tr>
 <td style="background:#EFEFEF"></td>
 <td style="background:#EFEFEF">6</td>
 <td></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
 <td>
 </td></tr>
 <tr>
 <td style="background:#EFEFEF"></td>
 <td style="background:#EFEFEF">4</td>
 <td></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
 <td></td>
 <td></td>
 <td>
@@ -316,20 +316,8 @@ Below is the same example of a simple Nonogram that Wikipedia shows:
 <td style="background:#EFEFEF"></td>
 <td style="background:#EFEFEF">2</td>
 <td></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>
-</td></tr>
-<tr>
-<td style="background:#EFEFEF"></td>
-<td style="background:#EFEFEF">2</td>
-<td></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
 <td></td>
 <td></td>
 <td></td>
@@ -340,8 +328,20 @@ Below is the same example of a simple Nonogram that Wikipedia shows:
 <td style="background:#EFEFEF"></td>
 <td style="background:#EFEFEF">2</td>
 <td></td>
-<td style="background:#000000"></td>
-<td style="background:#000000"></td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>
+</td></tr>
+<tr>
+<td style="background:#EFEFEF"></td>
+<td style="background:#EFEFEF">2</td>
+<td></td>
+<td style="background:#000000">#</td>
+<td style="background:#000000">#</td>
 <td></td>
 <td></td>
 <td></td>
