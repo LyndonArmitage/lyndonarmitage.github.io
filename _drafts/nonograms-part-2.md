@@ -300,15 +300,310 @@ for Nonograms I opted to separate this functionality out into a trait and it's
 implementors.
 
 ```scala
+import java.io.{FileInputStream, InputStream}
 import java.nio.file.Path
+import scala.util.{Try, Using}
 
 trait NonogramReader {
 
-  def apply(file: Path): Nonogram = parse(file)
-  
-  def parse(file: Path): Nonogram
+  def apply(file: Path): Try[Nonogram] = parse(file)
+
+  def parse(file: Path): Try[Nonogram] =
+    Using(new FileInputStream(file.toFile)) { is =>
+      parse(is)
+    }
+
+  def parse(inputStream: InputStream): Nonogram
 }
+
 ```
 
 This way I can implement a reader for other file types if I want to without
 having to do any massive refactoring of my code.
+
+Now actually parsing the file format is quite involved so I will present the
+whole code first then explain parts of it.
+
+```scala
+package codes.lyndon.nonogram.reader
+import codes.lyndon.nonogram.Grid.GridRow
+import codes.lyndon.nonogram.{Hints, Nonogram, NonogramBuilder, Square}
+import org.slf4j.LoggerFactory
+
+import java.io.InputStream
+import scala.collection.mutable
+import scala.collection.mutable.ListBuffer
+
+case class NotAValidNonogram(message: String, cause: Throwable = null)
+    extends Exception(message, cause)
+
+object SimpleNonogramReader extends NonogramReader {
+
+  private val logger = LoggerFactory.getLogger(getClass)
+
+  private val validGridChars: Set[Char] = Square.charToTypes.keySet ++ Set(' ')
+
+  def parse(inputStream: InputStream): Nonogram = {
+
+    val allLines =
+      scala.io.Source.fromInputStream(inputStream).getLines().toIndexedSeq
+
+    // First line must be the dimensions of the Nonogram in the form:
+    // [width]x[height]
+    val firstLine = allLines.headOption match {
+      case Some(value) => value
+      case None        => throw NotAValidNonogram("File is empty")
+    }
+
+    val (width, height) = parseDimensions(firstLine) match {
+      case Some(value) => value
+      case None =>
+        throw NotAValidNonogram(
+          "Dimensions should be the first line in the format [width]x[height]"
+        )
+    }
+
+    if (width <= 0) throw NotAValidNonogram("width must be greater than 0")
+    if (height <= 0) throw NotAValidNonogram("height must be greater than 0")
+
+    // Second line should be blank
+    val secondLine = allLines.drop(1).headOption match {
+      case Some(value) => value
+      case None        => throw NotAValidNonogram("Missing all sections")
+    }
+
+    if (!secondLine.isBlank) {
+      throw NotAValidNonogram("Second line must be blank")
+    }
+
+    logger.debug(s"Nonogram has dimensions of: $width x $height")
+
+    // Now comes the true complexity, parsing the rest of the format
+    parseSections(width, height, allLines.drop(2))
+  }
+
+  private def parseSections(
+      width: Int,
+      height: Int,
+      lines: IndexedSeq[String]
+  ): Nonogram = {
+    val sectionBuilder = new SectionBuilder(width, height)
+    var lineNum        = 0
+    while (lineNum < lines.length) {
+      val line = lines(lineNum)
+      if (line.isBlank) {
+        if (sectionBuilder.hasSection) {
+          sectionBuilder.buildSection()
+          sectionBuilder.clearSection()
+        }
+      } else {
+        if (sectionBuilder.hasSection) {
+          sectionBuilder.parseLine(line)
+        } else {
+          sectionBuilder.section = getSectionHeader(line)
+          if (!sectionBuilder.hasSection) {
+            throw NotAValidNonogram(s"$line is not a valid section")
+          }
+        }
+      }
+      lineNum = lineNum + 1
+    }
+
+    sectionBuilder.build()
+  }
+
+  private class SectionBuilder(width: Int, height: Int) {
+    var section: Option[Section]          = None
+    val lines: mutable.ListBuffer[String] = ListBuffer.empty
+
+    private val builder = NonogramBuilder(width, height)
+
+    def hasSection: Boolean = section.isDefined
+
+    def parseLine(line: String): Unit = {
+      section.foreach { sec =>
+        if (sec.validateLine(line)) {
+          lines.addOne(line)
+        } else {
+          throw NotAValidNonogram(s"$line is not a valid line for $sec")
+        }
+      }
+    }
+
+    def buildSection(): Unit = {
+      if (!hasSection) {
+        return
+      }
+      section.foreach {
+        case Title =>
+          builder.setTitle(lines.head)
+        case Author =>
+          builder.setAuthor(lines.head)
+        case Rows =>
+          val hints = lines.map { line =>
+            line.split(',').map(_.toInt).toSeq
+          }
+          builder.setVerticalHints(Hints(hints.toSeq: _*))
+        case Columns =>
+          val hints = lines.map { line =>
+            line.split(',').map(_.toInt).toSeq
+          }
+          builder.setHorizontalHints(Hints(hints.toSeq: _*))
+        case Grid =>
+          val rows: Seq[GridRow] = lines.map { line =>
+            line
+              .split(' ')
+              .map { token =>
+                if (token.length != 1) {
+                  throw NotAValidNonogram(s"$token is not a valid grid token")
+                }
+                token.head
+              }
+              .map(Square.fromChar)
+              .map {
+                case Some(value) => value
+                case c @ None =>
+                  throw NotAValidNonogram(s"$c is not a valud grid token")
+              }
+              .toSeq
+          }.toSeq
+          val grid = codes.lyndon.nonogram.Grid(rows: _*)
+          builder.setGrid(grid)
+        case Solution =>
+          logger.debug("Solution not implemented yet")
+      }
+
+    }
+
+    def build(): Nonogram = {
+      builder.build()
+    }
+
+    def clearSection(): Unit = {
+      section = None
+      lines.clear()
+    }
+  }
+
+  private def getSectionHeader(line: String): Option[Section] =
+    Section.headerMap.get(line)
+
+  private def isValidGridLine(line: String): Boolean =
+    line.forall(validGridChars.contains)
+
+  private def isValidHintLine(line: String): Boolean =
+    line.forall(c => c.isDigit || c == ' ' || c == ',')
+
+  private def parseDimensions(line: String): Option[(Int, Int)] = {
+    if (line.isBlank) return None
+    val split = line.split('x')
+    if (split.length != 2) return None
+    val arr = split
+      .map(_.toIntOption match {
+        case Some(value) => value
+        case None        => return None
+      })
+    Some(arr(0), arr(1))
+  }
+
+  object Section {
+    val types: Set[Section]             = Set(Title, Author, Rows, Columns, Grid, Solution)
+    val headerMap: Map[String, Section] = types.map(t => (t.text, t)).toMap
+  }
+
+  sealed abstract class Section(val text: String) {
+    def validateLine(line: String): Boolean
+    override def toString: String = text
+  }
+
+  case object Title extends Section("title") {
+    override def validateLine(line: String): Boolean = true
+  }
+  case object Author extends Section("author") {
+    override def validateLine(line: String): Boolean = true
+  }
+  case object Rows extends Section("rows") {
+    override def validateLine(line: String): Boolean = isValidHintLine(line)
+  }
+  case object Columns extends Section("columns") {
+    override def validateLine(line: String): Boolean = isValidHintLine(line)
+  }
+  case object Grid extends Section("grid") {
+    override def validateLine(line: String): Boolean = isValidGridLine(line)
+  }
+  case object Solution extends Section("solution") {
+    override def validateLine(line: String): Boolean = isValidGridLine(line)
+  }
+}
+```
+
+Along with this I created a very simple builder class:
+
+```scala
+final case class CouldNotBuildNonogram(
+    message: String,
+    cause: Throwable = null
+) extends Exception(message, cause)
+
+final case class NonogramBuilder(
+    width: Int,
+    height: Int
+) {
+
+  private var title: String  = ""
+  private var author: String = ""
+
+  private var grid: Option[Grid]             = None
+  private var horizontalHints: Option[Hints] = None
+  private var verticalHints: Option[Hints]   = None
+
+  def setTitle(title: String): Unit = this.title = title
+
+  def setAuthor(author: String): Unit = this.author = author
+
+  def setGrid(grid: Grid): Unit = this.grid = Some(grid)
+
+  def setHorizontalHints(hints: Hints): Unit = horizontalHints = Some(hints)
+
+  def setVerticalHints(hints: Hints): Unit = verticalHints = Some(hints)
+
+  def build(): Nonogram = {
+
+    val grid = this.grid.getOrElse(Grid.empty(width, height))
+
+    val horizontalHints = this.horizontalHints match {
+      case Some(value) => value
+      case None        => throw CouldNotBuildNonogram("No horizontalHints supplied")
+    }
+
+    val verticalHints = this.verticalHints match {
+      case Some(value) => value
+      case None        => throw CouldNotBuildNonogram("No verticalHints supplied")
+    }
+
+    Nonogram(grid, horizontalHints, verticalHints)
+  }
+}
+```
+
+The basic algorithm this follows is:
+
+1. Ensure the first line is the dimensions in the form of [width]x[height]
+2. Ensure the second line is blank
+3. For the rest of the file go through each line searching for the first valid
+   section.
+4. From there ensure each following line is valid for that section until you
+   encounter an empty line.
+5. Attempt to build the given section then repeat steps 3 and 4 until the end
+   of the file is reached.
+
+I have made use of some pattern matching built into Scala to simplify steps 3
+and 4. I also created helper builder classes for holding intermediate data
+while the Nonogram is being built.
+
+There are of course many improvements that can be made to this code including
+ensuring that the grid sections match the given widths and heights as well as
+the hint sections. I also do not use the solution section at present.
+
+This has become quite a long and code heavy blog post again so I will continue
+in yet another entry on rendering and writing the Nonograms.
