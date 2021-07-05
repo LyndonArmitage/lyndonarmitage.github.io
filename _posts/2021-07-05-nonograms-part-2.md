@@ -7,8 +7,8 @@ tags:
 - programming
 - bnf
 - scala
+date: 2021-07-05 18:49 +0100
 ---
-
 In my [previous post]({% post_url 2021-07-03-nonograms %}) I described what a
 Nonogram was and crafted a file format to use for representing a Nonogram and
 any clues/hints associated with it. In this post I intend to go through the
