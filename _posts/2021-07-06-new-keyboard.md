@@ -5,8 +5,8 @@ tags:
 - keyboard
 - mechanical
 - tools
+date: 2021-07-06 14:03 +0100
 ---
-
 Recently I received the final parts a new keyboard and I felt like sharing!
 
 Previously I used a full sized QPad Gaming Pro Keyboard. It had fixed blue
