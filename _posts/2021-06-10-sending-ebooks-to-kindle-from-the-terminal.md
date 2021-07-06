@@ -36,14 +36,13 @@ if [ $# -eq 0 ]; then
   exit 1
 fi
 
-if [ -f "$BOOK" ]; then 
-  FILE_TEST=$(file -b $BOOK)
+if [ -f "$BOOK" ]; then
 
-  if file -b $BOOK | grep -q "Mobipocket E-book"; then
+  if file -b "$BOOK" | grep -q "Mobipocket E-book"; then
     # for now don't support PDF as well,
     # this could be done with a pattern like "PDF document"
     echo "Sending book to Kindle: $BOOK"
-    echo "Book $BOOK" | $MUTT -s "Book: $BOOK" -a $BOOK -- $KINDLE
+    echo "Book $BOOK" | $MUTT -s "Book: $BOOK" -a "$BOOK" -- "$KINDLE"
   else
     echo "$BOOK is not a supported file type"
     exit 1
