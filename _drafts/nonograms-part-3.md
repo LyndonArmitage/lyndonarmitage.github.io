@@ -349,7 +349,265 @@ solution
 
 And the tests pass! So now we can read and write Nonograms in Scala! Let's move
 onto a simple rendering of them as an image. Since I created the NonogramWriter
-trait I can reuse it here for writing out a simple image:
+trait I can reuse it here for writing out a simple image of the Nonogram.
+However I noticed an issue with the NonogramWriter traits default
+implementation where it would silently swallow failures that occurred in the
+method we have to implement so I quickly patched it:
 
 ```scala
+def write(nonogram: Nonogram, file: File): Try[Unit] =
+  Using(new FileOutputStream(file)) {
+    write(nonogram, _)
+  }.flatten
+// The flatten here ensures that the returned Try[Try[Unit]] is flattened to a
+// Try[Unit] and the underlying failures aren't just thrown away
 ```
+
+Now I used the Java standard libraries ImageIO classes to render my Nonograms.
+The code is not particularly neat or concise and likely has some bugs in it but
+it renders a simple Nonogram nicely. Before I show the code I added the
+following to my Grid class for convenience:
+
+```scala
+def apply(x: Int)(y: Int) : Square = rows(y)(x)
+```
+
+This allowed me to access parts of a Grid instance like so: `grid(x)(y)` making
+it easier to randomly access the entries within the grid.
+
+Onto the long, messy, rendering code:
+
+```scala
+
+import codes.lyndon.nonogram._
+
+import java.awt.image.BufferedImage
+import java.awt.{Color, Font}
+import java.io.OutputStream
+import javax.imageio.ImageIO
+import scala.util.Try
+
+final case class CouldNotWriteImage(message: String, cause: Throwable = null)
+    extends Exception(message, cause)
+
+final case class ImageNonogramWriter(
+    cellSize: Int = 15,
+    fontSize: Int = 12,
+    fontBorder: Int = 2,
+    fontName: String = Font.MONOSPACED,
+    renderSolution: Boolean = true
+) extends NonogramWriter {
+
+  private val font: Font = new Font(fontName, Font.PLAIN, fontSize)
+
+  private val emptyColours = (
+    new Color(219, 219, 219),
+    new Color(255, 255, 255)
+  )
+
+  private val crossedColour = Color.DARK_GRAY
+  private val filledColour  = Color.BLACK
+
+  override def write(
+      nonogram: Nonogram,
+      outputStream: OutputStream
+  ): Try[Unit] =
+    Try {
+      if (cellSize < 1)
+        throw CouldNotWriteImage("cellSize must be at least 1 pixel big")
+
+      // Split this into 2 parts:
+      // Grid rendering and hint rendering
+      val gridImage = renderGrid(nonogram.grid, cellSize)
+
+      // Embed the grid images into a wider image
+
+      val maxNumberOfHorizontalHints =
+        nonogram.horizontalHints.hints.map(f => f.length).maxOption.getOrElse(0)
+      val maxNumberOfVerticalHints =
+        nonogram.verticalHints.hints.map(f => f.length).maxOption.getOrElse(0)
+
+      val horizontalHintSectionSize =
+        (fontSize + fontBorder) * maxNumberOfHorizontalHints
+      val verticalHintSectionSize =
+        (fontSize + fontBorder) * maxNumberOfVerticalHints
+
+      val withHints = new BufferedImage(
+        gridImage.getWidth + verticalHintSectionSize,
+        gridImage.getHeight + horizontalHintSectionSize,
+        BufferedImage.TYPE_INT_ARGB
+      )
+      val g2 = withHints.createGraphics()
+
+      // Draw existing grid
+      g2.drawImage(gridImage, 0, horizontalHintSectionSize, null)
+
+      // set up the font
+      g2.setColor(Color.BLACK)
+      g2.setFont(font)
+
+      nonogram.horizontalHints.hints.zipWithIndex.foreach {
+        case (hints, x) =>
+          hints.zipWithIndex.foreach {
+            case (hint, hintNumber) =>
+              val xPos = x * cellSize
+              val yPos = (fontSize + fontBorder) * (hintNumber + 1)
+              g2.drawString(s"$hint", xPos, yPos)
+          }
+      }
+
+      nonogram.verticalHints.hints.zipWithIndex.foreach {
+        case (hints, y) =>
+          hints.zipWithIndex.foreach {
+            case (hint, hintNumber) =>
+              val xPos =
+                (nonogram.width * cellSize) + (fontSize * hintNumber) + (fontBorder * hintNumber + 1)
+              val yPos = horizontalHintSectionSize + ((y + 1) * cellSize)
+              g2.drawString(s"$hint", xPos, yPos)
+          }
+      }
+
+      val finalImage: BufferedImage =
+        (renderSolution, nonogram.solution) match {
+          case (true, Some(solution)) =>
+            val solutionImage = renderGrid(solution, cellSize)
+
+            val borderSectionSize = fontSize + (fontBorder * 2)
+            val combinedImage = new BufferedImage(
+              withHints.getWidth,
+              withHints.getHeight + solutionImage.getHeight + borderSectionSize,
+              BufferedImage.TYPE_INT_ARGB
+            )
+
+            val combG2 = combinedImage.createGraphics()
+            combG2.drawImage(withHints, 0, 0, null)
+            combG2.setColor(Color.BLACK)
+            combG2.drawString(
+              "Solution:",
+              fontBorder,
+              withHints.getHeight + fontSize
+            )
+            combG2.drawImage(
+              solutionImage,
+              0,
+              withHints.getHeight() + borderSectionSize,
+              null
+            )
+
+            combinedImage
+          case (false, _) | (true, None) => withHints
+        }
+
+      // finally write out the image
+      ImageIO.write(finalImage, "png", outputStream)
+    }
+
+  private def renderGrid(
+      grid: Grid,
+      cellSize: Int
+  ): BufferedImage = {
+    // create the image
+
+    val width  = grid.width
+    val height = grid.height
+
+    val imageWidth  = cellSize * width
+    val imageHeight = cellSize * height
+
+    val img = new BufferedImage(
+      imageWidth,
+      imageHeight,
+      BufferedImage.TYPE_INT_ARGB
+    )
+    val g2 = img.createGraphics()
+
+    var currentBg = emptyColours._1
+
+    0.until(width).foreach { x =>
+      0.until(height).foreach { y =>
+        if (currentBg == emptyColours._1) currentBg = emptyColours._2
+        else currentBg = emptyColours._1
+        g2.setColor(currentBg)
+        g2.fillRect(
+          x * cellSize,
+          y * cellSize,
+          cellSize,
+          cellSize
+        )
+
+        val square: Square = grid(x)(y)
+        square match {
+          case Blank =>
+          case Occupied =>
+            g2.setColor(filledColour)
+            g2.fillRect(
+              x * cellSize,
+              y * cellSize,
+              cellSize,
+              cellSize
+            )
+          case Crossed =>
+            g2.setColor(crossedColour)
+            g2.drawLine(
+              x * cellSize,
+              y * cellSize,
+              (x * cellSize) + cellSize,
+              (y * cellSize) + cellSize
+            )
+            g2.drawLine(
+              x * cellSize,
+              (y * cellSize) + cellSize - 1,
+              (x * cellSize) + cellSize - 1,
+              y * cellSize
+            )
+        }
+      }
+    }
+
+    img
+  }
+}
+```
+
+I actually built this using a lot of trial and error and a short test to render
+out the resulting image as I went.
+
+The basic algorithm I follow is:
+
+1. Render the grid as an image
+2. Figure out the extra space needed for the hints
+3. Render the hints on another image and superimpose the grid onto this image
+   as well
+4. If there is a solution and rendering it is desired then render it as a grid
+   and stick the two images together.
+
+This all results in a rather nice image:
+
+<img
+  alt='The rendered Nonogram'
+  src='{{ "assets/nonograms/test.png" | absolute_url  }}'
+  class='blog-image'
+/>
+
+There is some room for improvement but overall I think that turned out rather
+nicely!
+
+So now I can do the following:
+
+* Read Nonograms from a simple text format
+* Write Nonograms to the same simple text format
+* Write Nonograms out as an image
+
+It might not seem like a lot but with how I have implemented these three I am
+well on my way to being able to do more complex things with Nonograms. I could
+now easily extend my code to:
+
+* Read Nonograms from other formats
+* Write Nonograms in other formats
+* Generate Nonograms from images
+* Solve Nonograms
+
+All the framework is there for the first 2. The latter 2 would take some more
+coding but are within reach. In fact I will probably write some other articles
+on doing just these. I may not go into quite as much depth however, and in the
+meantime will tidy my code somewhat.
