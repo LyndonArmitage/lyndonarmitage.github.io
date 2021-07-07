@@ -6,8 +6,8 @@ tags:
 - puzzles
 - programming
 - scala
+date: 2021-07-07 17:35 +0100
 ---
-
 In my last 2 posts I was working on a way to processes Nonograms in Scala. In
 the [first]({% post_url 2021-07-03-nonograms %}) I outlined what they were and
 a file format to store them in.
