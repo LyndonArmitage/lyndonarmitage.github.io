@@ -6,6 +6,9 @@ tags:
 - data
 - data lake
 - big data
+- delta
+- firebolt
+- snowflake
 ---
 
 Recently at we have been running into an interesting problem at work: one of
@@ -13,7 +16,8 @@ our data sources is a transactional database (a mainframe) that has data
 updated. The data is updated relatively regularly to begin with then it may be
 sparsely updated over a longer windows of time, up to a month or so. We need to
 get this into our Spark based Data Lake but, unfortunately, we don't have
-access to a Change Data Capture (CDC) process.
+access to a [Change Data Capture
+(CDC)](https://en.wikipedia.org/wiki/Change_data_capture) process.
 
 For example our source data could be simplified as the following table ranging
 over 3 dates (as of the final date):
@@ -56,8 +60,10 @@ For other tables, that were only appended to, we could easily incrementally
 build a table in our Data Lake. For these tables we needed a slightly different
 strategy.
 
-Tools like Snowflake, Firebolt, and Delta Lake all handle doing such upserts.
-For example Delta Lake lets you merge new data using the [SQL command
+Tools like [Snowflake](https://www.snowflake.com/),
+[Firebolt](https://www.firebolt.io/), and [Delta Lake](https://delta.io/) all
+handle doing such upserts.  For example Delta Lake lets you merge new data
+using the [SQL command
 Merge](https://docs.databricks.com/delta/delta-update.html#upsert-into-a-table-using-merge).
 For our situation we needed to be able to do something similar ahead of these
 technologies.
@@ -87,7 +93,7 @@ situation can be applied to multiples:
 3. We create a table that is a merge of the "frozen" and "in flux" data for use
    by other downstream processes.
 
-<img title='The prcess as a simple diagram' alt='The process as a simple diagram' src='{{ "assets/in-flux/simple-process.svg" | absolute_url }}' class='blog-image' />
+<img title='The process as a simple diagram' alt='The process as a simple diagram' src='{{ "assets/in-flux/simple-process.svg" | absolute_url }}' class='blog-image' />
 
 This approach means we are only copying a smaller, fixed sized, window of data
 from our source system daily. This data may vary in size but it will not be
@@ -95,7 +101,7 @@ ever-increasing.
 
 If we visualise the data on a time line it looks as follows:
 
-<img title='Diagram of the data in a timeline' alt='Digram of the data in a timeline' src='{{ "assets/in-flux/time-grid.svg" | absolute_url }}' class='blog-image' />
+<img title='Diagram of the data in a timeline' alt='Diagram of the data in a timeline' src='{{ "assets/in-flux/time-grid.svg" | absolute_url }}' class='blog-image' />
 
 This approach also means we only perform inserts on the "frozen" data, not
 updates. We also do not create constant snapshots of the source system.
