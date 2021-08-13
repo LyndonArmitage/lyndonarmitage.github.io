@@ -15,11 +15,40 @@ sparsely updated over a longer windows of time, up to a month or so. We need to
 get this into our Spark based Data Lake but, unfortunately, we don't have
 access to a Change Data Capture (CDC) process.
 
+For example our source data could be simplified as the following table ranging
+over 3 dates (as of the final date):
+
+| added_date  | id   | status | other_data |
+| ----------- | ---- | ------ | ---------- |
+| 2021-01-01  | 1234 | CLOSED | fixed      |
+| 2021-01-01  | 1235 | CLOSED | fixed      |
+| 2021-01-02  | 1236 | CLOSED | fixed      |
+| 2021-01-03  | 1237 | OPEN   | changing   |
+| 2021-02-03  | 1238 | OPEN   | changing   |
+
 Our initial solution to this problem was a very simple snapshot upload to the
 Data Lake. Every day we'd query the source system and upload the snapshot. We'd
 keep the previous snapshots allowing us to see the updates. This meant our data
 storage size grew heavily with the data. The tables where the data resides grow
 roughly linearly with time as old data is almost never purged from them.
+
+This could result in our example snapshot data looking similar to:
+
+| ingest_date | added_date  | id   | status | other_data |
+| ----------- | ----------- | ---- | ------ | ---------- |
+| 2021-01-01  | 2021-01-01  | 1234 | OPEN   | changing   |
+| 2021-01-01  | 2021-01-01  | 1235 | CLOSED | changing   |
+| 2021-01-02  | 2021-01-01  | 1234 | CLOSED | fixed      |
+| 2021-01-02  | 2021-01-01  | 1235 | CLOSED | fixed      |
+| 2021-01-02  | 2021-01-02  | 1236 | CLOSED | changing   |
+| 2021-01-03  | 2021-01-01  | 1234 | CLOSED | fixed      |
+| 2021-01-03  | 2021-01-01  | 1235 | CLOSED | fixed      |
+| 2021-01-03  | 2021-01-02  | 1236 | CLOSED | fixed      |
+| 2021-01-03  | 2021-01-03  | 1237 | OPEN   | changing   |
+| 2021-02-03  | 2021-01-03  | 1238 | OPEN   | changing   |
+
+You can see the duplication over time for each ID, and the state an ID was in
+at the time of a snapshot (denoted by the ingest_date).
 
 Several times we opted to resize the clusters processing this data as a
 stop-gap measure. Finally, it became clear that we needed a better solution.
@@ -45,7 +74,7 @@ To recap on the situation:
   Lake.
 
 After some discussion we came upon a potential solution. We split the data. The
-larger, non-changing data we will call "frozen". The smaller part that can
+larger, non-changing data, we will call "frozen". The smaller part that can
 change we will call "in flux".
 
 To simplify I will assume we are working on only a single table but the
@@ -63,6 +92,8 @@ situation can be applied to multiples:
 This approach means we are only copying a smaller, fixed sized, window of data
 from our source system daily. This data may vary in size but it will not be
 ever increasing.
+
+If we visualise the data on a time line it looks as follows:
 
 <img title='Diagram of the data in a timeline' alt='Digram of the data in a timeline' src='{{ "assets/in-flux/time-grid.svg" | absolute_url }}' class='blog-image' />
 
@@ -82,5 +113,12 @@ The differences between the existing snapshot table and new table is size and
 the omission of an ingest date column.
 
 The solution does involve a little more juggling of data: We load less data
-externally but we merge our window daily into the frozen data. Thankfully with
-the data partitioned by date this mostly amounts to a simple copy actions.
+externally but we merge our window daily into the frozen data. Thankfully, with
+the data partitioned by date this mostly amounts to simple copy actions.
+Additionally, downstream uses of this data source do not have to contend with
+the whole snapshot history of the data.
+
+If historic snapshots are still desired we can continue to take them but this
+solution divorces them from the rest of the processing pipeline. We could also
+adapt this solution to store multiple values per ID during the window of change
+only, for a more hybrid solution.
