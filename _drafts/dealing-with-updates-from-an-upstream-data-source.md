@@ -57,7 +57,7 @@ build a table in our Data Lake. For these tables we needed a slightly different
 strategy.
 
 Tools like Snowflake, Firebolt, and Delta Lake all handle doing such upserts.
-For example Delta Lake let's you merge new data using the [SQL command
+For example Delta Lake lets you merge new data using the [SQL command
 Merge](https://docs.databricks.com/delta/delta-update.html#upsert-into-a-table-using-merge).
 For our situation we needed to be able to do something similar ahead of these
 technologies.
@@ -73,7 +73,7 @@ To recap on the situation:
 * Our current approach is to snapshot data every day and export it to the Data
   Lake.
 
-After some discussion we came upon a potential solution. We split the data. The
+After some discussion, we came upon a potential solution. We split the data. The
 larger, non-changing data, we will call "frozen". The smaller part that can
 change we will call "in flux".
 
@@ -91,7 +91,7 @@ situation can be applied to multiples:
 
 This approach means we are only copying a smaller, fixed sized, window of data
 from our source system daily. This data may vary in size but it will not be
-ever increasing.
+ever-increasing.
 
 If we visualise the data on a time line it looks as follows:
 
@@ -113,7 +113,7 @@ The differences between the existing snapshot table and new table is size and
 the omission of an ingest date column.
 
 The solution does involve a little more juggling of data: We load less data
-externally but we merge our window daily into the frozen data. Thankfully, with
+externally, but we merge our window daily into the frozen data. Thankfully, with
 the data partitioned by date this mostly amounts to simple copy actions.
 Additionally, downstream uses of this data source do not have to contend with
 the whole snapshot history of the data.
