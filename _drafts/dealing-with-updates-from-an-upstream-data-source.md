@@ -11,7 +11,7 @@ tags:
 - snowflake
 ---
 
-Recently at we have been running into an interesting problem at work: one of
+Recently we have been running into an interesting problem at work: one of
 our data sources is a transactional database (a mainframe) that has data
 updated. The data is updated relatively regularly to begin with then it may be
 sparsely updated over a longer windows of time, up to a month or so. We need to
