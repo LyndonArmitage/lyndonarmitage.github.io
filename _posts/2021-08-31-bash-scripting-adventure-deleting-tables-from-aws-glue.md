@@ -9,8 +9,8 @@ tags:
 - database
 - table
 - cli
+date: 2021-08-31 18:13 +0100
 ---
-
 Recently, I was tasked with deleting a load of extraneous tables that made
 their way into one of our [AWS Glue](https://aws.amazon.com/glue/) Catalogs.
 These tables were causing a major issue by virtue of a fact that there were
