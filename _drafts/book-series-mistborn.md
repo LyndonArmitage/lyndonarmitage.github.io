@@ -158,11 +158,12 @@ aftermath perfectly leads onto the second book.
 
 During the first book we have had the journal of the legendary hero, Alendi,
 revealed to us. It plays a pivotal role in that books finale. In this book it
-is revealed that he was on a quest for the Well of Ascension. Book 2 picks up a
-year after the first, the crew have remained to help govern the capital city
-with Elend Venture having taken the role of king. Whilst calling himself king
-he instigates the equivalent of a parliament and equal rights for the Skaa
-people.
+is revealed that he was on a quest for the Well of Ascension.
+
+[Book 2](https://amzn.to/3yEubAZ) picks up a year after the first, the crew
+have remained to help govern the capital city with Elend Venture having taken
+the role of king. Whilst calling himself king he instigates the equivalent of a
+parliament and equal rights for the Skaa people.
 
 This book spends a great deal of time dealing with the political intrigue and
 problems that occur due to the power vacuum left after the Lord Ruler's defeat
@@ -224,15 +225,17 @@ and the Well of Ascension for hundreds of years. During this sequence Elend is
 killed but then revived with the powers of a Mistborn.
 
 Some reviewers complain that this book is the slowest of the trilogy. I
-disagree. I found the politics within it interesting, Elend's optimism and good
+disagree. I found the politics within it interesting. Elend's optimism and good
 nature polarise well with the other rulers. The eventual acceptance of both
-Vina and Elend in their roles is handled well. Sazed is developed further and
+Vin and Elend in their roles is handled well. Sazed is developed further and
 quickly became one of my favourite viewpoint characters. We also see more of
 the crew and their relationships. We get an insight into how everyone is coping
 with Kelsier's death and the Lord Ruler's demise. More is revealed around
 Allomancy, including a new, powerful, metal that Vin uses to help her combat
-the threats around her. The ending sets up the final book well, and sets the
-stakes even higher.
+the threats around her. The world is built up further via the rubbing Sazed and
+Tindwyl translate throughout the story. The ending sets up the final book well,
+and the revelation that Vin and the crew have been tricked into releasing a
+malevolent entity is intriguing.
 
 ## Book 3: The Hero of Ages
 
@@ -242,4 +245,9 @@ stakes even higher.
   class='blog-image'
 />
 
+TODO
 
+## Closing
+
+I have included Amazon affiliate links to the books if you are interested in
+purchasing them.
