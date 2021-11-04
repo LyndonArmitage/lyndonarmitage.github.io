@@ -8,7 +8,7 @@ permalink:        pretty
 # Setup
 title:            Lyndon Codes
 tagline:          'Lyndon Armitage\s Coding Blog'
-description:      'Small blog containing code related posts by Lyndon Armitage'
+description:      'Small blog containing code and other posts by Lyndon Armitage'
 url:              https://lyndon.codes
 lang:             en_GB
 exclude:          ["_config.yml", "README.md", "CNAME", "serve.sh", "Gemfile", "Gemfile.lock"]
