@@ -245,9 +245,35 @@ malevolent entity is intriguing.
   class='blog-image'
 />
 
-TODO
+Book 3 is the culmination of the trilogy so I will keep my synopsis very brief.
+
+It focusses on Elend and Vin fighting against the entity they released, known
+as Ruin. Sazed struggles with a loss of faith, and we get to see how the crew
+deal with trying to save and conquer other cities in an effort to find the
+survival caches that the Lord Ruler had hidden across the country.
+
+There is a plot around how Spook and parts of the crew convince a city to join
+them, and more information is revealed about the various magic systems
+Sanderson included in this series. Likewise, Vin and Elend struggle to take
+another city without resorting to all out war. All the while with Ruin plotting
+in the background and sometimes actively influencing members of the crew.
+
+TenSoon has to convince his fellow Kandra to help Vin whilst imprisoned for
+murdering his own kind.
+
+Everything culminates with the environment and the forces of Ruin converging on
+the crew, with Vin facing off against Ruin.
+
+I thought this book was a suitable climax to the series. It really tied up most
+of the loose ends of the other stories and explained how many of the systems
+worked and events all fit together.
 
 ## Closing
 
-I have included Amazon affiliate links to the books if you are interested in
-purchasing them.
+I really enjoyed this series. Vin grew quite quickly into a competent and
+interesting protagonist. The magical aspects were well explained and enjoyable
+to read about. Most of the characters were well fleshed out, with unique voices
+and personalities. The politics within is understandable.
+
+If you like fantasy I'd recommend them.
+
