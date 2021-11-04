@@ -7,8 +7,8 @@ tags:
 - writing
 - book
 - review
+date: 2021-11-04 10:58 +0000
 ---
-
 Recently I finished reading the [Mistborn book series by Brandon
 Sanderson](https://www.brandonsanderson.com/the-mistborn-saga-the-original-trilogy/),
 a fantasy series set in his Cosmere setting. This is a brief review of that
