@@ -35,3 +35,10 @@ decode the sensitive information.
 This falls neatly inline with GDPR and other privacy and security requirements.
 After all, you can't expose sensitive customer data if the data does not exist
 in your system, you haven't invited it in.
+
+<p class='message'>
+This kind of approach is known as the
+<a target='_blank' href='https://en.wikipedia.org/wiki/Principle_of_least_privilege'>
+Principle of Least Privilege(PoLP)</a> and is widely applied across the IT
+Industry.
+</p>
