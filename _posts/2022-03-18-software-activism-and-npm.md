@@ -10,8 +10,8 @@ tags:
 - software
 - politics
 - open source
+date: 2022-03-18 16:47 +0000
 ---
-
 Recently there's been an outpouring of software activists or, as some call
 them, hacktivists, protesting the war between Russia and Ukraine. One of these
 people, a man by the name of
