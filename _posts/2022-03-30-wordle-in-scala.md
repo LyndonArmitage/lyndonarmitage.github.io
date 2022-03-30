@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Wordle in Scala'
+title: Wordle in Scala
 tags:
 - game
 - wordle
@@ -8,8 +8,8 @@ tags:
 - code
 - programming
 - puzzles
+date: 2022-03-30 18:04 +0100
 ---
-
 The game [Wordle](https://www.nytimes.com/games/wordle/index.html) seems to
 have come out of nowhere in recent months and become a favourite among many. In
 this post I will show how you can make a game similar to Wordle in Scala.
