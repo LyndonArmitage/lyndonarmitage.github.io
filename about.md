@@ -17,12 +17,13 @@ knowledge and things I (Lyndon Armitage) find interesting.
 ## Work
 
 My primary experience is with developing Java/JVM based Big Data solutions
-although I have experience working with a full range of web technology as well.
+although I have experience working with a full range of web technologies as
+well.
 
-I am currently employed as a Data Engineer at
-[Holland and Barrett](https://www.hollandandbarrett.com/) where I work with
-Big Data using technologies including  Databricks, Apache Spark, Scala, and 
-AWS.
+I am currently employed as a Senior Data Engineer at [Holland and
+Barrett](https://www.hollandandbarrett.com/) where I work with Big Data using
+technologies including  Databricks, Datadog, Apache Spark, Kafka, Scala, S3,
+Redshift, RDS, Glue, and lots of other parts of AWS.
 
 Up until June 2019 I was working as a Full Stack Developer at 
 [Synoptic Technologies Ltd](https://www.synoptica.com/) based in Guildford, UK. 
