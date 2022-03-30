@@ -1,0 +1,7 @@
+@startuml
+[*] --> Playing : Started Game
+Playing --> Playing : Incorrect Guess
+Playing --> Win : Correct Guess
+Playing --> Lose : No Guesses Left
+
+@enduml
