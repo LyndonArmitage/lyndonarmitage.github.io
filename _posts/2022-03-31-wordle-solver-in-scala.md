@@ -8,8 +8,8 @@ tags:
 - code
 - programming
 - puzzles
+date: 2022-03-31 14:15 +0100
 ---
-
 With the basic
 [Scala implementation of Wordle]({% post_url 2022-03-30-wordle-in-scala %}) 
 out of the way in my last post I thought it
