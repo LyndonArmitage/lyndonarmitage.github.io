@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Software Activism & NPM
+title: Software Activism &amp; NPM
 tags:
 - opinion
 - node
