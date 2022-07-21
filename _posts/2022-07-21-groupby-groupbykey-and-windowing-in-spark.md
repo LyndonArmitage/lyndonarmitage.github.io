@@ -6,8 +6,8 @@ tags:
 - scala
 - code
 - programming
+date: 2022-07-21 17:34 +0100
 ---
-
 Recently at work I encountered a Spark job that had begun to intermittently
 fail after a long period of successes. Debugging Spark jobs is a skill in and
 of itself that I will touch on it lightly here, but in my evaluation of this
