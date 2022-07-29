@@ -7,8 +7,8 @@ tags:
 - painting
 - building
 - models
+date: 2022-07-29 17:10 +0100
 ---
-
 <img
   alt='Mindhammer'
   src='{{ "assets/mindhammer.jpg" | absolute_url  }}'
