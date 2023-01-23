@@ -6,8 +6,8 @@ tags:
 - running
 - fitness
 - running
+date: 2023-01-23 14:08 +0000
 ---
-
 <a href='{{ "assets/2023-LWR-Map-January-Version-2048x1084.jpg" | absolute_url  }}'>
 <img
   alt='An image of the Winter Run 2023 route'
