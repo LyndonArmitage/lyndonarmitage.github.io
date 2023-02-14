@@ -1,6 +1,13 @@
 ---
 layout: post
 title: Interfaces & Impetuous Defaults
+tags:
+- sql
+- postgres
+- scala
+- programming
+- code
+- database
 ---
 
 A little bit of a cryptic title but bear with me, this is a post about how when
@@ -8,14 +15,14 @@ you build an interface, or any code really, you should consider the effect of
 your decisions.
 
 Recently we ran into an interesting ingest issue when it came to pulling data
-from a Postgres database into our Data Lake at work. We currently use a nifty
-tool built using Scala and the fs2 library to write configuration driven
-ingests from SQL databases into our Data Lake. This works pretty well, we can
-configure the tool to write out into various formats (Avro, JSON, CSV) and into
-single or multiple "chunked" files. You simply provide it with some SQL to
-execute and the appropriate configuration and it will do its thing, writing to
-Amazon S3 (or even the local disk if you fancy), streaming the results of the
-query out to its destination.
+from a [Postgres](https://www.postgresql.org/) database into our Data Lake at
+work. We currently use a nifty tool built using Scala and the fs2 library to
+write configuration driven ingests from SQL databases into our Data Lake. This
+works pretty well, we can configure the tool to write out into various formats
+(Avro, JSON, CSV) and into single or multiple "chunked" files. You simply
+provide it with some SQL to execute and the appropriate configuration and it
+will do its thing, writing to Amazon S3 (or even the local disk if you fancy),
+streaming the results of the query out to its destination.
 
 We've used this tool on a multitude of different databases and tables. We've
 successfully ingested data from small Oracle tables to huge, multimillion row,
@@ -76,9 +83,9 @@ time taken should only increase linearly with the total row count. I crank it
 up to a 1,000,000 rows and it takes 5 minutes to begin writing files but its
 working.
 
-The next step is to use a profiler. VisualVM is a tool I am familiar with so I
-boot it up. I run a test with the smaller total count of rows and look at the
-heap graph:
+The next step is to use a profiler. [VisualVM](https://visualvm.github.io/) is
+a tool I am familiar with so I boot it up. I run a test with the smaller total
+count of rows and look at the heap graph:
 
 <img
   alt='Small row count VisualVM Graph'
@@ -125,12 +132,13 @@ misunderstanding in the way the application worked, a colleague unfamiliar
 with it mentioned in passing that loading a whole table that large all at once
 would require a lot of memory.
 
-The Java Database Connectivity (JDBC) API, is a common interface for allowing
-Java based application to connect to SQL databases. Your basic Java code
-remains mostly the same for connecting between the myriad of different
-databases that exist when using it. This ingest application uses JDBC. It can
-connect to basically any JDBC friendly database by using their vendor given
-JDBC driver. In this case that would be Postgres.
+The [Java Database Connectivity
+(JDBC)](https://docs.oracle.com/javase/tutorial/jdbc/basics/index.html) API, is
+a common interface for allowing Java based application to connect to SQL
+databases. Your basic Java code remains mostly the same for connecting between
+the myriad of different databases that exist when using it. This ingest
+application uses JDBC. It can connect to basically any JDBC friendly database
+by using their vendor given JDBC driver. In this case that would be Postgres.
 
 I'm very familiar with JDBC, I've used it directly many times when working on
 Big Data applications whilst working as a Big Data Engineer, and used it
