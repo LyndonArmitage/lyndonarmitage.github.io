@@ -8,8 +8,8 @@ tags:
 - programming
 - code
 - database
+date: 2023-02-16 11:02 +0000
 ---
-
 A little bit of a cryptic title but bear with me, this is a post about how when
 you build an interface, or any code really, you should consider the effect of
 your decisions.
