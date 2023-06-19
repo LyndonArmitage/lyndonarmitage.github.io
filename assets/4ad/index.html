@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+
+   <meta name="author" content="Lyndon Armitage">
+   <meta name="description" content="A Four Against Darkness interactive sheet">
+
+    <title>Four Against Darkness Sheet</title>
+
+    <style type="text/css">
+
+textarea {
+  width: 100%;
+  resize: vertical;
+}
+
+
+fieldset, label {
+  display: block;
+  font-weight: bold;
+}
+
+#container div {
+  flex: 50%;
+}
+
+#container {
+  display: flex;
+}
+
+@media (max-width: 1024px) {
+
+  #container {
+    display: block;
+  }
+
+}
+
+
+    </style>
+  </head>
+
+  <body>
+    <h1>Four Against Darkness Sheet</h1>
+
+    <div id="container">
+    <div id="character-sheets">
+
+      <form id="character-loader">
+        <select name="characters" id="character-options">
+          <option value="1">Character 1</option>
+          <option value="2">Character 2</option>
+          <option value="3">Character 3</option>
+          <option value="4">Character 4</option>
+        </select>
+        <button name="clear" type="button">Clear Character</button>
+        <button name="clear-party" type="button">Clear Party</button>
+      </form>
+
+      <form class="character-sheet" id="character-sheet" name="character-sheet">
+        <fieldset>
+        <label>
+          Name:
+          <input type="text" id="characer-name" name="name" />
+        </label>
+        <label>
+          Class:
+          <input type="text" id="character-class" name="class" />
+        </label>
+        </fieldset>
+
+        <fieldset>
+        <label>
+          Level: 
+          <input type="number" id="level" name="level" min="1" max="100" value="1" />
+        </label>
+        <label>
+          Life: 
+          <input type="number" id="current-life" name="current-life" min="0" />
+        </label>
+        <label>
+          Max Life: 
+          <input type="number" id="max-life" name="max-life" min="1" />
+        </label>
+        <label>
+          Gold:
+          <input type="number" id="gold" name="gold" min="0" />
+        </label>
+        </fieldset>
+
+        <fieldset>
+        <label>
+          Attack:
+          <input type="number" id="attack" name="attack" />
+        </label>
+        <label>
+          Defense:
+          <input type="number" id="defense" name="defense" />
+        </label>
+        </fieldset>
+
+        <fieldset>
+        <label>
+          Lantern:
+          <input type="checkbox" id="lantern" name="lantern" />
+        </label>
+        <label>
+          Bandaged:
+          <input type="checkbox" id="bandaged" name="bandaged" />
+        </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Abilities</legend>
+          <textarea id="abilities" name="abilities" rows="5"></textarea>
+        </fieldset>
+        <fieldset>
+          <legend>Equipment</legend>
+          <textarea id="equipment" name="equipment" rows="5"></textarea>
+        </fieldset>
+
+        <fieldset name="spells">
+          <legend>Spells - Scrolls - Powers:</legend>
+          
+          <fieldset name="spell1">
+            <input name="spell1" type="text" />
+            <label>Uses:<input name="spell1-uses" type="number" min="0" max="4" /></label>
+          </fieldset>
+          <fieldset name="spell2">
+            <input name="spell2" type="text" />
+            <label>Uses:<input name="spell2-uses" type="number" min="0" max="4" /></label>
+          </fieldset>
+          <fieldset name="spell3">
+            <input name="spell3" type="text" />
+            <label>Uses:<input name="spell3-uses" type="number" min="0" max="4" /></label>
+          </fieldset>
+          <fieldset name="spell4">
+            <input name="spell4" type="text" />
+            <label>Uses:<input name="spell4-uses" type="number" min="0" max="4" /></label>
+          </fieldset>
+          <fieldset name="spell5">
+            <input name="spell5" type="text" />
+            <label>Uses:<input name="spell5-uses" type="number" min="0" max="4" /></label>
+          </fieldset>
+          <fieldset name="spell6">
+            <input name="spell6" type="text" />
+            <label>Uses:<input name="spell6-uses" type="number" min="0" max="4" /></label>
+          </fieldset>
+          <fieldset name="spell7">
+            <input name="spell7" type="text" />
+            <label>Uses:<input name="spell7-uses" type="number" min="0" max="4" /></label>
+          </fieldset>
+          <fieldset name="spell8">
+            <input name="spell8" type="text" />
+            <label>Uses:<input name="spell8-uses" type="number" min="0" max="4" /></label>
+          </fieldset>
+          <fieldset name="spell9">
+            <input name="spell9" type="text" />
+            <label>Uses:<input name="spell9-uses" type="number" min="0" max="4" /></label>
+          </fieldset>
+          <fieldset name="spell10">
+            <input name="spell10" type="text" />
+            <label>Uses:<input name="spell10-uses" type="number" min="0" max="4" /></label>
+          </fieldset>
+          <fieldset name="spell11">
+            <input name="spell11" type="text" />
+            <label>Uses:<input name="spell11-uses" type="number" min="0" max="4" /></label>
+          </fieldset>
+          <fieldset name="spell12">
+            <input name="spell12" type="text" />
+            <label>Uses:<input name="spell12-uses" type="number" min="0" max="4" /></label>
+          </fieldset>
+
+        </fieldset>
+
+        <fieldset>
+          <legend>Quest</legend>
+          <textarea id="quest" name="quest" rows="1"></textarea>
+        </fieldset>
+
+        <fieldset>
+          <legend>Clues</legend>
+          <fieldset>
+            <input type="number" value="0" min="0" max="3" name="clue1-count" /> <input type="text" name="clue1" />
+          </fieldset>
+          <fieldset>
+            <input type="number" value="0" min="0" max="3" name="clue2-count" /> <input type="text" name="clue2" />
+          </fieldset>
+        </fieldset>
+
+      </form>
+    </div>
+
+
+    <div id="extras">
+      <img id="flowchart" src="flowchart.svg" />
+      <img id="tiles" src="tiles.svg" />
+    </div>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+
+    function Spell(name, uses) {
+      this.name = name;
+      this.uses = uses;
+    }
+
+    function Clue(count, value) {
+      this.count = count;
+      this.value = value;
+    }
+
+    function Character(
+      name = "",
+      character_class = "",
+      level = 1,
+      life = 0,
+      max_life = 0,
+      gold = 0,
+      attack = 0,
+      defense = 0,
+      lantern = false,
+      bandaged = false,
+      abilities = "",
+      equipment = "",
+      spells = [],
+      quest = "",
+      clues = []
+    ) {
+      this.name = name;
+      this.character_class = character_class;
+      this.level = level;
+      this.life = life;
+      this.max_life = max_life;
+      this.gold = gold;
+      this.attack = attack;
+      this.defense = defense;
+      this.lantern = lantern;
+      this.bandaged = bandaged;
+      this.abilities = abilities;
+      this.equipment = equipment;
+      this.spells = spells;
+      this.quest = quest;
+      this.clues = clues;
+    }
+
+    Character.prototype.fromStorage = function(key) {
+      const loaded = localStorage.getItem(key);
+      if (loaded == null) {
+        console.log("No data for " + key);
+        return;
+      }
+      const json = JSON.parse(loaded);
+      this.name = json["name"];
+      this.character_class = json["character_class"];
+      this.level = json["level"];
+      this.life = json["life"];
+      this.max_life = json["max_life"];
+      this.gold = json["gold"];
+      this.attack = json["attack"];
+      this.defense = json["defense"];
+      this.lantern = json["lantern"];
+      this.bandaged = json["bandaged"];
+      this.abilities = json["abilities"];
+      this.equipment = json["equipment"];
+      this.spells = json["spells"];
+      if (this.spells == null) this.spells = [];
+      this.quest = json["quest"];
+      this.clues = json["clues"];
+      if (this.clues == null) this.clues = [];
+
+      console.log("loaded " + key);
+    }
+
+    Character.prototype.saveToStorage = function(key) {
+      const str = JSON.stringify(this);
+      localStorage.setItem(key, str);
+      console.log("saved " + key);
+    }
+
+    Character.prototype.updateFromForm = function() {
+      const form = document.querySelector("form#character-sheet");
+      if (form == null) {
+        console.error("missing character sheet form");
+        return;
+      }
+      const data = new FormData(form);
+      const json = Object.fromEntries(data.entries());
+      this.name = json["name"];
+      this.character_class = json["class"];
+      this.level = json["level"];
+      this.life = json["current-life"];
+      this.max_life = json["max-life"];
+      this.gold = json["gold"];
+      this.attack = json["attack"];
+      this.defense = json["defense"];
+      this.lantern = json["lantern"];
+      this.bandaged = json["bandaged"];
+      this.abilities = json["abilities"];
+      this.equipment = json["equipment"];
+
+      this.spells = [];
+      for(var i = 1; i <= 12; i ++) {
+        const key = "spell" + i;
+        const uses_key = key + "-uses";
+        const spell = new Spell(json[key], json[uses_key]);
+        this.spells.push(spell);
+      }
+
+      this.quest = json["quest"];
+      this.clues = [];
+      for(var i = 1; i <= 2; i ++) {
+        const key = "clue" + i;
+        const count_key = key + "-count";
+        const clue = new Clue(json[count_key], json[key]);
+        this.clues.push(clue);
+      }
+    }
+
+    Character.prototype.updateForm = function() {
+        const form = document.querySelector("form#character-sheet");
+        if (form == null) {
+          console.error("missing character sheet form");
+          return;
+        }
+      console.log("Updating form with:");
+      console.log(this);
+      form.querySelector("input[name='name']").value = this.name;
+      form.querySelector("input[name='class']").value = this.character_class;
+      form.querySelector("input[name='level']").value = this.level;
+      form.querySelector("input[name='current-life']").value = this.life;
+      form.querySelector("input[name='max-life']").value = this.max_life;
+      form.querySelector("input[name='gold']").value = this.gold;
+      form.querySelector("input[name='attack']").value = this.attack;
+      form.querySelector("input[name='defense']").value = this.defense;
+      form.querySelector("input[name='lantern']").checked = this.lantern;
+      form.querySelector("input[name='bandaged']").checked = this.bandaged;
+      form.querySelector("textarea[name='abilities']").value = this.abilities;
+      form.querySelector("textarea[name='equipment']").value = this.equipment;
+      
+      const spells_fieldset = form.querySelector("fieldset[name='spells']"); 
+      for (var i = 1; i <= 12; i ++) {
+        const fieldset = spells_fieldset.querySelector("fieldset[name='spell" + i + "']");
+        const input = spells_fieldset.querySelector("input[name='spell" + i + "']");
+        const uses = spells_fieldset.querySelector("input[name='spell" + i + "-uses']");
+        const spell = this.spells[i-1];
+        if (spell == null) {
+          input.value = "";
+          uses.value = "";
+        } else {
+          input.value = spell.name;
+          uses.value = spell.uses;
+        }
+      }
+
+      form.querySelector("textarea[name='quest']").value = this.quest;
+      
+      const clues_fieldset = form.querySelector("fieldset[name='clues']"); 
+      for (var i = 1; i <= 2; i ++) {
+        const input = form.querySelector("input[name='clue" + i + "']");
+        const count = form.querySelector("input[name='clue" + i + "-count']");
+        const clue = this.clues[i-1];
+        if (clue == null) {
+          input.value = "";
+          count.value = 0;
+        } else {
+          input.value = clue.value;
+          count.value = clue.count;
+        }
+      }
+    }
+
+    function updateLoader() {
+      const char_loader_form = document.querySelector('#character-loader');
+      const select = char_loader_form.querySelector("#character-options");
+      select.querySelector("option[value='1']").innerHTML = party[0].name;
+      select.querySelector("option[value='2']").innerHTML = party[1].name;
+      select.querySelector("option[value='3']").innerHTML = party[2].name;
+      select.querySelector("option[value='4']").innerHTML = party[3].name;
+    }
+
+    function loadParty() {
+      const party = [
+        new Character(name = "Character 1"),
+        new Character(name = "Character 2"),
+        new Character(name = "Character 3"),
+        new Character(name = "Character 4")
+      ];
+
+      for (var i = 1; i <= 4; i ++) {
+        const key = "character" + i;
+        party[i - 1].fromStorage(key);
+      }
+      
+      return party;
+    }
+
+    function saveCurrentPartyMember() {
+      if(current_party_member < 0 || current_party_member > 3) return;
+      const character = party[current_party_member];
+      character.updateFromForm();
+      const party_number = current_party_member + 1;
+      character.saveToStorage("character" + party_number);
+    }
+
+    function initLoader() {
+      const char_loader_form = document.querySelector('#character-loader');
+      const select = char_loader_form.querySelector("#character-options");
+
+      select.addEventListener("change", function(event) {
+        const value = Number(select.value);
+        saveCurrentPartyMember();
+        const char_sheet_form = document.querySelector('#character-sheet');
+        if (value < 1 || value > 4) {
+          char_sheet_form.setAttribute("inert", "true");
+          return;
+        }
+        char_sheet_form.removeAttribute("inert");
+        const index = value - 1;
+        current_party_member = index;
+        party[index].updateForm();
+        updateLoader();
+      });
+
+      const clear_char_button = char_loader_form.querySelector("button[name='clear']");
+      const clear_party_button = char_loader_form.querySelector("button[name='clear-party']");
+
+      clear_char_button.addEventListener("click", function(e) {
+        const result = window.confirm("Do you really want to clear the current character?");
+        if(result) {
+          party[current_party_member] = new Character(name = "Character " + (current_party_member + 1));
+          party[current_party_member].updateForm();
+          saveCurrentPartyMember();
+          updateLoader();
+        }
+      });
+      
+      clear_party_button.addEventListener("click", function(e) {
+        const result = window.confirm("Do you really want to clear the current party?");
+        if(result) {
+          party = [
+            new Character(name = "Character 1"),
+            new Character(name = "Character 2"),
+            new Character(name = "Character 3"),
+            new Character(name = "Character 4")
+          ];
+          party[current_party_member].updateForm();
+          localStorage.clear();
+          saveCurrentPartyMember();
+          updateLoader();
+        }
+      });
+    }
+
+    var current_party_member = 0;
+    var party = loadParty();
+    updateLoader();
+    const char_sheet_form = document.querySelector('#character-sheet');
+    
+    initLoader();
+    party[current_party_member].updateForm();
+
+  </script>
+</html>
