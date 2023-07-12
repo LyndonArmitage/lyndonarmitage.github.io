@@ -7,8 +7,8 @@ tags:
 - error
 - panic
 - manjaro
+date: 2023-07-12 11:46 +0100
 ---
-
 This morning I ran into a major issue with my Manjaro Linux install. After an
 update and a reboot I was faced with this error (cut for brevity):
 
