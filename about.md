@@ -16,11 +16,11 @@ knowledge and things I (Lyndon Armitage) find interesting.
 
 ## Work
 
-My primary experience is with developing Java/JVM based Big Data solutions
-although I have experience working with a full range of web technologies as
-well.
+My primary experience is with developing Scala/Java/JVM based Big Data solutions
+although I have experience working with a full range of web technologies and
+programming languages as well.
 
-I am currently employed as a Senior Data Engineer at [Holland and
+I am currently employed as a Lead Data Engineer at [Holland and
 Barrett](https://www.hollandandbarrett.com/) where I work with Big Data using
 technologies including  Databricks, Datadog, Apache Spark, Kafka, Scala, S3,
 Redshift, RDS, Glue, and lots of other parts of AWS.
@@ -54,7 +54,3 @@ and the theme [Hyde](http://hyde.getpoole.com) which is a project based on the
 After having used Wordpress in the past for my original blog I opted for 
 something different which should hopefully be simpler to maintain and add 
 content to.
-
-The source code to this site is currently maintained on GitHub at: 
-[https://github.com/LyndonArmitage/lyndonarmitage.github.io](https://github.com/LyndonArmitage/lyndonarmitage.github.io)
-
