@@ -26,9 +26,8 @@ still had files on it using `ls`, but was stumped as to what to do next.
 
 As with any kind of issue, it pays to search the web for others experiencing
 the same or similar problem. So after a few minutes of searching I came upon
-this awesome thread on the Manjaro forums:
-
-https://forum.manjaro.org/t/initramfs-unpacking-failed-invalid-magic-as-start-of-compressed/137451
+[this awesome thread on the Manjaro
+forums](https://forum.manjaro.org/t/initramfs-unpacking-failed-invalid-magic-as-start-of-compressed/137451)
 
 It along with the related threads explained the issue. In short:
 
@@ -58,8 +57,8 @@ As user Uberpanda states in that thread, the solution is *relatively* simple:
 
 But in order to do this you need a loaded kernel. If I had a newer kernel
 installed that would have been simple. Unfortunately, I did not. So I needed to
-create a live USB using another computer and an image from 
-https://manjaro.org/download/
+create a live USB using another computer and an image from
+[manjaro.org](https://manjaro.org/download/)
 
 I did this on a Windows PC using [Rufus](https://rufus.ie/en/) to format the
 USB.
