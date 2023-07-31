@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Interfaces & Impetuous Defaults
+title: Interfaces &amp; Impetuous Defaults
 tags:
 - sql
 - postgres
