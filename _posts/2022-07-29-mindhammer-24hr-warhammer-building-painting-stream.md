@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Mindhammer: 24hr Warhammer Building &amp; Painting Stream'
+title: "Mindhammer: 24hr Warhammer Building &amp; Painting Stream"
 tags:
 - warhammer
 - charity
