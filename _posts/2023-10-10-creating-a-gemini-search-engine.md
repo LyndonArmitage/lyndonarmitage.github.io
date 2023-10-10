@@ -9,8 +9,8 @@ tags:
 - crawling
 - data
 - programming
+date: 2023-10-10 12:38 +0100
 ---
-
 This is the first post in a series about creating a search engine for the
 [Gemini internet technology](https://geminiprotocol.net/). In it, we will
 briefly discuss what Gemini is and the basics of creating a Search Engine.
