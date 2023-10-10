@@ -22,7 +22,7 @@ programming languages as well.
 
 I am currently employed as a Lead Data Engineer at [Holland and
 Barrett](https://www.hollandandbarrett.com/) where I work with Big Data using
-technologies including  Databricks, Datadog, Apache Spark, Kafka, Scala, S3,
+technologies including Databricks, Datadog, Apache Spark, Kafka, Scala, S3,
 Redshift, RDS, Glue, and lots of other parts of AWS.
 
 Up until June 2019 I was working as a Full Stack Developer at 
@@ -32,7 +32,7 @@ their platform Synoptica; using technologies including Apache Spark, Spring,
 Elasticsearch, Eclipse Vert.x, Apache NiFi, Apache Cassandra, Apache HBase, 
 PostgreSQL, Kotlin, Amazon Web Services (AWS), and many more.
 
-Before working at Synoptic I  worked at 
+Before working at Synoptic I worked at 
 [BAE Systems Applied Intelligence](https://www.baesystems.com/en/cybersecurity/home) 
 (formally Detica) on various projects involving Big Data technologies such as 
 Hadoop, Apache Spark, Apache NiFi, Apache Kafka, Elasticsearch, MySQL, as well 

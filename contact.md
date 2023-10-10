@@ -3,8 +3,8 @@ layout: page
 title: Contact
 ---
 
-If you'd like to get in contact with me I suggest dropping me an email, or
-sending me a message on Mastodon or Matrix. I do have a Twitter account but it
+If you'd like to get in contact with me, I suggest dropping me an email, or
+sending me a message on Mastodon or Matrix. I do have a Twitter account, but it
 is largely abandoned. I can also be contacted on LinkedIn but may not reply
 promptly.
 
