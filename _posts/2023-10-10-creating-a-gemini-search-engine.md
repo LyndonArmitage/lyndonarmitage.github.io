@@ -119,4 +119,5 @@ along these 3 key lines; crawling, data storage and retrieval, and front-end.
 
 In the coming blog posts I'll be focussing in on each of these components and
 the resulting subcomponents and design decisions that arise when dealing with
-each of these parts.
+each of these parts. You can follow the progress on this blog and also follow
+the [project on GitHub](https://github.com/LyndonArmitage/WhichFire).
