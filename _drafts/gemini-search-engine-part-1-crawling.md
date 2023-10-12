@@ -1,0 +1,121 @@
+---
+layout: post
+title: 'Gemini Search Engine Part 1: Crawling'
+tags:
+- gemini
+- search
+- search engine
+- crawling
+- scraping
+- programming
+---
+
+In this post I will go into the first part of building my
+[Gemini](https://geminiprotocol.net/) Search Engine
+[WhichFire](https://github.com/LyndonArmitage/WhichFire): Crawling/Spidering.
+
+This is the first box in the high level design image I drew in my
+[last post about building a Gemini Search 
+Engine]({% post_url 2023-10-10-creating-a-gemini-search-engine %}).
+
+<img
+    title='The 3 high level components of our Gemini search engine'
+    alt='Image showing the 3 high level components of our Gemini search engine,
+    crawling is linked to data storage and retrieval, which is then linked to
+    the front-end'
+    src='{{ "assets/gemini-search/high-level-1.svg" | absolute_url }}'
+    class='blog-image'
+/>
+
+I mentioned in that post that "the crawler does the majority of the work" when
+it comes to search engines. It is responsible for crawling through the web of
+connections in the search domain and sending all the relevant information to
+the storage part of the application.
+
+For the HTTP based world-wide-web, there is a plethora of tools already
+available that can do crawling for you. Likewise, there's oodles of HTTP
+clients and HTML parsing libraries to build your own. But, Gemini is a
+different protocol, with different defaults. So how do I start designing and
+building such a thing?
+
+Luckily, the problem domain remains mostly the same: We'll be crawling what is
+essentially a massive (cyclic) graph. The Gemini protocol and common file type
+are essentially implementation details at this high a level of design, although
+we should keep them both handy as they can help us make some informed
+decisions.
+
+<img
+    title='A crude example of what the WWW looks like as a graph'
+    alt='A crude image reprsenting 2 websites, with their pages as nodes on a
+    graph and the edges being the links between them.'
+    src='{{ "assets/gemini-search/graph-example.svg" | absolute_url }}'
+    class='blog-image'
+/>
+
+At the basic level, we can treat Gemini Space as a data source, it contains
+within it all the nodes in the graph we want to discover and crawl through.
+But, how do we get started on our crawling adventure? We need an existing list
+of URIs to kick off our crawling.
+
+<p class="message"> A note for readers unfamiliar with the term URI. It stands
+for <a href='https://en.wikipedia.org/wiki/Uniform_Resource_Identifier'
+target='_blank'>Uniform Resource Identifier</a> and is closely related to the
+idea of a URL. I won't go into the nuances here, sufficed to say most of the
+URIs dealt with will also be URLs, so we can use the term interchangeably most
+of the time. </p>
+
+Way back in the early days of the web, search engines would take existing
+indexes, initially curated by humans, and from these they'd begin their
+crawling to discover new pages and add them to their own indexes. Essentially,
+all search engines are bootstrapped with some initial seed of information. And
+this is how we will get our search engine going, we'll feed it an existing list
+of domains and let it loose.
+
+Admittedly, you could create a crawler that randomly tries to find valid URIs.
+And in fact, randomly calling up IP addresses can find you computers on the
+Internet, but it's a slow laborious practice, and when it comes to Gemini, we
+are unlikely to find many servers in this manner. Generating potential URIs
+from known domains is a more useful idea though, and this is often used by
+hacking scripts to try and find administrator pages for websites, so it is
+worth considering if we run into problems finding more pages.
+
+So we will be using a known list of URIs, specifically the list of capsules
+from the previously mentioned [Luna
+indexer](https://portal.mozz.us/gemini/gemini.bortzmeyer.org/software/lupa/stats.gmi).
+
+<img
+    title='A breakdown of the proposed crawling process'
+    alt='The proposed crawling process. Consisting of multiple stages detailed
+    below.'
+    src='{{ "assets/gemini-search/crawling-1.svg" | absolute_url }}'
+    class='blog-image'
+/>
+
+The proposed design for crawling is relatively simple:
+
+1. A bootstrapping process will take data from a seed file and existing URIs
+   from the data storage layer and push them to crawl queue.
+2. The page crawler component will pop values of this queue and perform the
+   actual crawl of the URI, pushing its results to a results queue.
+   Additionally, it will push newly discovered URIs to the crawl queue.
+3. A data writer component will take these results and write out to the data
+   storage layer
+
+Separating the crawling steps out in this way gives a few benefits:
+
+Firstly, we can clearly define which components directly talk to Gemini Space.
+This means that if we want to scale up or down the amount of active connections
+to servers we can do so with ease.
+
+Secondly, we decouple the separate processes with queues which makes it easier
+to reason about what is happening in the system, recover and potentially
+continuously run if desired.
+
+Finally, we have clear integration points between different stages of crawling.
+This enables us to iteratively improve separate parts of this pipeline without
+having to refactor huge amount of code. This is essentially, one of the
+benefits microservices have over larger traditional services. And, if we use
+something like [Protocol Buffers](https://protobuf.dev/) to define the messages
+sent between different stages, we can even rewrite slower performing code in
+other programming languages.
+
