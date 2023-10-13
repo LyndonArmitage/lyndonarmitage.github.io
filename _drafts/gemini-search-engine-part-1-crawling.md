@@ -30,7 +30,7 @@ Engine]({% post_url 2023-10-10-creating-a-gemini-search-engine %}).
 I mentioned in that post that "the crawler does the majority of the work" when
 it comes to search engines. It is responsible for crawling through the web of
 connections in the search domain and sending all the relevant information to
-the storage part of the application.
+the storage part of the system.
 
 For the HTTP based world-wide-web, there is a plethora of tools already
 available that can do crawling for you. Likewise, there's oodles of HTTP
@@ -79,9 +79,13 @@ from known domains is a more useful idea though, and this is often used by
 hacking scripts to try and find administrator pages for websites, so it is
 worth considering if we run into problems finding more pages.
 
-So we will be using a known list of URIs, specifically the list of capsules
-from the previously mentioned [Luna
+So we will be using a known list of URIs, specifically the list of Gemini
+Capsules from the previously mentioned [Luna
 indexer](https://portal.mozz.us/gemini/gemini.bortzmeyer.org/software/lupa/stats.gmi).
+
+Gemini Capsule is the common name given to the equivalent of websites in Gemini
+Space. Generally, a Capsule maps to a single domain name with one or more
+pages.
 
 <img
     title='A breakdown of the proposed crawling process'
@@ -119,3 +123,76 @@ something like [Protocol Buffers](https://protobuf.dev/) to define the messages
 sent between different stages, we can even rewrite slower performing code in
 other programming languages.
 
+Obviously, we currently don't have a data storage layer and consequently, we
+have nowhere to store the results of these steps nor somewhere to get previous
+results from. So our initial development and testing will focus on a small
+subset of capsules to crawl.
+
+We also need to define some way of limiting the crawling, at least for testing
+purposes, so we don't end up crawling the whole of Gemini Space before we have
+somewhere to store all that information. This can be done with limits on how
+many links we dig through within a capsule/domain name, and hard limits on how
+many capsules we will crawl overall. Annoyingly, this means our Crawl Queue
+component will need to be a bit more complex than a simple queue data
+structure.
+
+Thankfully, we can define the important parts of the Crawl Queue ahead of time.
+Below is some bare-bones Kotlin code to show the important parts of the API:
+
+```kotlin
+data class Capsule(
+    val domain: String
+)
+
+data class CapsuleURI(
+    val capsule: Capsule,
+    val uri: URI
+)
+
+interface CrawlQueue {
+
+    fun push(uri: CapsuleURI): Boolean
+    
+    fun pop(): CapsuleURI?
+    
+    fun size(): Long
+    
+    fun clear(): Unit
+
+    fun seenURIs(capsule: Capsule, window: Duration): Long
+
+    fun processedCount(duration: Duration) : Long
+
+    fun processedCount(capsule: Capsule, duration: Duration): Long
+
+    fun popForCapsule(capsule: Capsule): CapsuleURI?
+
+    fun purgeCapsule(capsule: Capsule): Long
+}
+```
+
+This should be recognizable as a kind of queue with the extra parts to it.
+Namely, parts that allow for introspection and manipulation of the queue based
+around a Gemini Capsule. It is also important to note the use of `Duration`
+types for some of these methods. As mentioned before, the Crawl Queue will
+likely be very long-lived, in fact it will be a constantly running service if
+the search engine itself is constantly running. So, it makes sense that we'd
+want to be able to define a window of time in which we want to be able to see
+statistics from the queue for monitoring purposes from within the system
+components so we can react appropriately.
+
+Ideally, if set up at scale, the Crawl Queue would be reporting statistics to
+some kind of aggregator. For example, we use
+[DataDog](https://www.datadoghq.com/) at my current job, but Open Source
+systems like
+[Graphite](https://graphite.readthedocs.io/en/stable/overview.html) can also be
+used to send numeric time-series data to. You could also build your own
+monitoring systems, either building on Graphite as a data store and using tools
+like [Grafana](https://grafana.com/) or using other data stores and
+visualisation tools like [Kibana](https://www.elastic.co/kibana) or even
+rolling your own.
+
+With everything said, I've only scratched the surface of the first parts of the
+Crawling subcomponent. I've not gone into the reasons for a separate writer nor
+exactly what a crawling result looks like. These topics I will cover in the
+next blog post in this series.
