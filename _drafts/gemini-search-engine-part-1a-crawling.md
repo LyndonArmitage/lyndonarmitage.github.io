@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Gemini Search Engine Part 1: Crawling'
+title: 'Gemini Search Engine Part 1a: Crawling'
 tags:
 - gemini
 - search
