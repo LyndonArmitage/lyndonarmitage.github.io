@@ -39,7 +39,8 @@ different protocol, with different defaults. So how do I start designing and
 building such a thing?
 
 Luckily, the problem domain remains mostly the same: We'll be crawling what is
-essentially a massive (cyclic) graph. The Gemini protocol and common file type
+essentially a massive (cyclic) graph. The [Gemini protocol and common file
+type](https://geminiprotocol.net/docs/specification.gmi)
 are essentially implementation details at this high a level of design, although
 we should keep them both handy as they can help us make some informed
 decisions.
@@ -77,7 +78,8 @@ Internet, but it's a slow laborious practice, and when it comes to Gemini, we
 are unlikely to find many servers in this manner. Generating potential URIs
 from known domains is a more useful idea though, and this is often used by
 hacking scripts to try and find administrator pages for websites, so it is
-worth considering if we run into problems finding more pages.
+worth considering if we run into dead ends when looking for more pages (this is
+very unlikely).
 
 So we will be using a known list of URIs, specifically the list of Gemini
 Capsules from the previously mentioned [Luna
@@ -113,7 +115,8 @@ to servers we can do so with ease.
 
 Secondly, we decouple the separate processes with queues which makes it easier
 to reason about what is happening in the system, recover and potentially
-continuously run if desired.
+continuously run if desired. Queues also make it easier to parallelise,
+provided there is no shared state.
 
 Finally, we have clear integration points between different stages of crawling.
 This enables us to iteratively improve separate parts of this pipeline without
