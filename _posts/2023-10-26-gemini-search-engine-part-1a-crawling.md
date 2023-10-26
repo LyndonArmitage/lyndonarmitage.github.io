@@ -8,8 +8,8 @@ tags:
 - crawling
 - scraping
 - programming
+date: 2023-10-26 17:11 +0100
 ---
-
 In this post I will go into the first part of building my
 [Gemini](https://geminiprotocol.net/) Search Engine
 [WhichFire](https://github.com/LyndonArmitage/WhichFire): Crawling/Spidering.
