@@ -6,21 +6,22 @@ tags:
 - vim
 - terminal
 - programming
+date: 2023-11-28 16:46 +0000
 ---
-
 As I mentioned many moons ago, I use the text editor
-[Vim](https://www.vim.org/about.php) as one of my daily drivers. To be exact I
-actually use [NeoVim](https://neovim.io/). Recently I have decided to clean up
-my configuration files. I plan on documenting that adventure here.
+[Vim](https://www.vim.org/about.php) as one of my daily drivers. To be precise
+I actually use [NeoVim](https://neovim.io/). Recently I have decided to clean
+up my configuration files and I plan on documenting that adventure here.
 
-Initially, I decided to try and keep my Vim config compatible with both Vim and
-NeoVim. This meant sticking to the Vim-specific vimscript for configuration and
-not moving onto the [Lua](https://www.lua.org/about.html) based configuration
-native to NeoVim, or installing plugins that would fail to work with Vim.
+Initially, I decided to try and keep my Vim configuration compatible with both
+Vim and NeoVim. This meant sticking to the Vim-specific vimscript programming
+language and not moving onto the [Lua](https://www.lua.org/about.html)
+based configuration native to NeoVim. It also meant not installing plugins that
+would fail to work with regular old Vim.
 
-I've since lightened my approach on plugins, since I am only using this
+I've quickly lightened my approach on plugins, since I am only using this
 configuration on machines with NeoVim installed. And seeing as this means my
-config will only work on NeoVim it makes sense to transition the whole
+configuration will only work on NeoVim it makes sense to transition the whole
 configuration into the more NeoVim friendly format Lua.
 
 Lua is a fantastic little scripting language specifically built for embedding
@@ -34,7 +35,7 @@ ThePrimeagen has a [video from the end of
 through setting up a NeoVim configuration, which I will be drawing some
 inspiration from. Likewise, I will be referring to a handful of useful blog
 posts along with the [Lua
-guide](https://neovim.io/doc/user/lua-guide.html#lua-guide).
+guide](https://neovim.io/doc/user/lua-guide.html#lua-guide) provided by NeoVim.
 
 ## Plugins
 
@@ -44,14 +45,16 @@ switch out the management to a NeoVim native package manager.
 [packer.nvim](https://github.com/wbthomason/packer.nvim) seemed to be the
 suggested manager, but it has become unmaintained in 2023 and recommends either
 [lazy.nvim](https://github.com/folke/lazy.nvim) or
-[pckr.nvim](https://github.com/lewis6991/pckr.nvim). I will decide what plugin
-manager to use when I get to actually trying them out.
+[pckr.nvim](https://github.com/lewis6991/pckr.nvim). So I will limit my choice
+to those 3.
+
+### Trimming the Fat
 
 Now, I could just take the plugins I already have and import each one with the
-new plugin manager, but this is a great opportunity to trim the fat and remove
-those that I either no longer use, or can live without. Since I can always
-install them again if desired I can be quite strict with how much I remove.  
-My current list of plugins is as follows:
+new plugin manager, but starting fresh is a great opportunity to trim the fat
+and remove those that I either no longer use, or can live without. Since I can
+always install them again if desired I can be quite strict with how much I
+remove. My current list of plugins is as follows (in Vimscript):
 
 ```vim
 Plug 'junegunn/vim-plug'
@@ -91,8 +94,8 @@ Plug 'ziglang/zig.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 ```
 
-Obviously, I can remove `junegunn/vim-plug`, but there are many others I can
-dump.
+Obviously, I can remove `junegunn/vim-plug` (the plugin manager), but there are
+many others I can easily dump. I'll go through most them now:
 
 [vim-fugitive](https://github.com/tpope/vim-fugitive) is a fantastic Git plugin
 that I often use and will keep. The other plugins by Tim Pope I don't see
@@ -104,8 +107,8 @@ explorer built for Vim that I use daily. However, I want to switch to using a
 fuzzy finder for navigating between files in a project so will initially remove
 this plugin. Interestingly, I had installed
 [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim) already which is a fuzzy
-finder tool, but have not been using it, so I think I will remove this and use
-a different plugin.
+finder tool, but have not been using it, so I think I will remove this and
+search for a different fuzzy finding tool.
 
 [syntastic](https://github.com/vim-syntastic/syntastic) was a syntax
 highlighting plugin, but it turns out it is no longer maintained, so I will be
@@ -352,7 +355,7 @@ from my `vimrc` file and using the command `:source %` to resource the file
 then `:PlugClean` to clean-up the folders for the plugin.
 
 Once I get to a minimal stage that I am happy with, I will take the minimal
-config and completely replace it with the new `init.lua` way.
+configuration and completely replace it with the new `init.lua` way.
 
 As a point of interest, this is how small I got my plugin list while writing
 this part of the blog post:
@@ -381,7 +384,9 @@ Performing the actual replacement was a little harder than I initially thought.
 I had previously thought I'd use one of the newer plugin managers but
 eventually settled on the currently unmaintained Packer plugin manager due to
 the simplicity of using it and the support for it around the internet. This
-isn't ideal but hopefully someone picks up maintenance of Packer soon.
+isn't ideal but hopefully someone picks up maintenance of Packer soon, or I can
+spend some time with my configuration at a later date and fix it up for an
+alternative.
 
 As for plugin installs, they were relatively easy once I got going with Packer.
 That includes some Language Server Protocol plugins, although I have yet to go
@@ -398,3 +403,7 @@ few things with `tmux` settings and concluded that it might be an issue with
 the terminal emulator `alacritty` that I am using, as other terminals behave
 slightly differently (`st` for instance cannot do the squiggly underlines at
 all).
+
+At any rate, I successfully upgraded my NeoVim experience, and will tinker
+slightly with it as I go forward. Thanks to the use of Lua, I may even write my
+own plugins if I find a niche use case.
