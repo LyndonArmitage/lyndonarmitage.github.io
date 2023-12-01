@@ -1,0 +1,35 @@
+---
+layout: post
+title: AdventOfCode 2023
+tags: [ coding, programming, advent of code, python, zig ]
+---
+
+It's that time of year again. Time to commit to participating in [AdventOfCode
+2023](https://adventofcode.com/) only to not finish it. In seriousness, I've
+tried to finish for a few years but always find other commitments get in the
+way. Nevertheless, I am going to be doing Advent of Code 2023!
+
+Instead of releasing a post per challenge (and utterly embarrassing myself when
+they stop at day 4 like in 2019), I'll try and do more of a summary of some
+days, either as I go or in the post Christmas period.
+
+Initially, I wanted to use Advent of Code to jump start learning the [Zig
+programming language](https://ziglang.org/). However, I found myself
+floundering at the first hurdle, reading files into memory. Zig is quite a new
+language, and as a consequence it has a sparse amount of documentation
+associated with it. This really hindered by ability to build fast. For example,
+the basic
+[Reader](https://ziglang.org/documentation/master/std/#A;std:io.Reader) in the
+Zig standard library is currently deprecated in favour of undocumented
+alternatives, but other documentation hasn't been updated to reflect this.
+
+So in the spirit of solving the actual Advent of Code challenges, I opted to
+use [Python](https://www.python.org/) instead. And while I use Python often, I
+wouldn't call myself an expert in it, and it definitely isn't my first choice
+of language when faced with a problem. So hopefully solving the Advent of Code
+challenges in it will brush up my Pythonic knowledge.
+
+At time of writing, I've already solved the 2 Day 1 challenges. With the part 2
+having an annoying gotcha around where number words can overlap in a string
+which threw me for a moment. My solution to this included a Regular Expression
+which helped shorten my code considerably.
