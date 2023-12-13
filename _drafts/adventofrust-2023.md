@@ -1,0 +1,347 @@
+---
+layout: post
+title: AdventOfRust 2023
+tags:
+- coding
+- programming
+- advent of code
+- python
+- zig
+- rust
+---
+
+So it's two weeks into 2023's [Advent of Code](https://adventofcode.com/) and I
+have a confession to make. I've been using it to learn
+[Rust](https://www.rust-lang.org/).
+
+In my [last post]({% post_url 2023-12-01-adventofcode-2023 %}) I mentioned I'd
+try to use Advent of Code to learn [Zig](https://ziglang.org/) only to flounder
+at the first hurdle. So I settled on improving my
+[Python](https://www.python.org/) skills.
+
+Well, in those two weeks I decided to still try my hand at a new programming
+language, and settled on looking at Rust. A language I had initially looked at
+some time between 2016 and 2018 but not really paid much attention to since
+then. I knew it was touted as a "safe" replacement for C/C++, and that it had a
+novel system for managing memory that was both manual (so no garbage
+collection like Scala) but also automatic (through some clever systems related
+to ownership of variable).
+
+Part of what attracted me to Rust was what had turned me off of Zig, the state
+of its documentation and tooling; [Cargo](https://doc.rust-lang.org/cargo/) is
+a fantastic package manager and build tool, with an ergonomic CLI interface and
+configuration file (it uses TOML, which I have mentioned [before on this
+blog]({% post_url 2018-06-21-vertx-config-toml %})), there is an LSP that works
+flawlessly with Cargo and NeoVim called
+[rust-analyzer](https://rust-analyzer.github.io/), and there's more
+[documentation](https://doc.rust-lang.org/book/)
+[online](https://rust-lang-nursery.github.io/rust-cookbook/intro.html) than you
+can [shake](https://github.com/rust-unofficial/awesome-rust) a [stick
+at](https://rust-unofficial.github.io/too-many-lists/).
+
+With all that said, how am I finding Advent of Code 2023 so far? And how am I
+finding doing it in Python and Rust?
+
+As of time of writing I have done 9 out of the available 13 days, and will
+break down each one in brief.
+
+## Day 1
+
+[Day 1](https://adventofcode.com/2023/day/1) was an easy enough challenge, and
+became a little harder in part 2 thanks to a gotcha related to the fact that
+numbers as words can overlap. For instance `eightwothree` represents the
+sequence `[8, 2, 3]`.
+
+I spent a little time confused with my Python solution, due to a typo, and went
+slightly mad thinking there was a scoping issue with a variable (curse of
+weakly typed languages). Eventually, I used a Regular Expression to do the
+parsing.
+
+For part 2 I made a silly mistake and forgot to allow the last character of
+each substring I was searching for from being the beginning of another word (the
+gotcha I mentioned).
+
+I mentioned on
+[Twitter](https://x.com/LyndonArmitage/status/1730917079211987455?s=20) and
+[Mastodon](https://fosstodon.org/@lyndon/111510702737996213) that aspects of
+this question could make up a good interview question. I even produced a fun
+little graph of how the word based numbers can flow into each other:
+
+
+<img 
+    title="The graph of Day 1 words"
+    alt="A bidirectional graph/tree showing the connections between the words for 1 to 4 and which ones connect based on their last and first letter.
+\- seven is connected to nine
+\- nine is connected to eight
+\- five is connected to eight
+\- eight is connected to two and three
+\- three is connected to eight
+\- two is connected to one
+\- one is connected to eight"
+    src='{{ "assets/adventofcode/word-overlaps.png" | absolute_url }}'
+    class='blog-image'
+/>
+
+Eventually, this was the first question I repeated in Rust on the evening of
+December 4th.
+
+## Day 2
+
+[Day 2](https://adventofcode.com/2023/day/2) was a lot easier than day 1 for
+me. I found no real gotchas in it.
+
+Again, like day 1, I used Regular Expressions to do the parsing, although it is
+easy enough to do it without them. Which is exactly what I did when I repeated
+this question in Rust.
+
+## Day 3
+
+[Day 3](https://adventofcode.com/2023/day/3) was a little harder than day 2. It
+involved building what was essentially a 2D map of the input file.
+
+I struggled a little, but when I was solving it I was not at my usual desk and
+had a lot of distractions in the environment. I put off the part 2 to the next
+morning and thought of a much nicer way of storing the data. At some point I'd
+like to redo part 1 but I am in no rush.
+
+## Day 4
+
+[Day 4](https://adventofcode.com/2023/day/4) part 1 was very straightforward,
+just an act of parsing the input data, then generating a score based on it.
+With the score happening to be 2 to the power of the number of matching numbers
+minus 1.
+
+Part 2 was a little more involved but not complex. It suits recursion perfectly
+but, in Python especially, I was worried about stack overflows with the input
+data so reached for a stack/queue based solution.
+
+## Day 5
+
+[Day 5](https://adventofcode.com/day/5) part 1 was pretty easy to solve, you
+have input seeds and a whole load of ranges to map them through to get the
+results.
+
+The example given was small, and easy to process since it only had 4 values and
+very small maps. So initially, I went for a naive approach where I generated
+all the possible values in each range and what they mapped to. Which worked
+great on the example input data. However, as soon as I plugged in the real
+input data I was maxing out my memory!
+
+So to solve this memory issue with my naive approach I redid the map ranges to
+just store the ranges and had a class that simply mapped the input across these
+without instantiating millions of values. That solved part 1.
+
+Unfortunately, it didn't solve part 2, even though it would essentially be
+`O(n)` in Big O notation. That's because part 2 reveals that there are many
+millions of seed values. So, even with a linear algorithm, processing that many
+items would take a very long time! For me these ranges added up to a total of
+1,844,955,419 seeds, which would take 21 days working at 1 seed per
+millisecond!
+
+I considered parallelising the existing code, but that would only cut the
+processing time down to a few days. Still not good enough!
+
+Re-reading the question:
+
+> What is the lowest location number that corresponds to any of the initial
+> seed numbers?
+
+And looking at the input gave me an epiphany. Everything is a range. So I don't
+need to map each individual seed value. I just need to map all the ranges!
+
+I came up with the following:
+
+1. We have an initial set of `n` ranges
+2. At each stage, each range has a function applied to it that alters it's start
+  and end values or splits it into multiple ranges
+3. We repeat step 2 until we have no more stages
+4. We take our set of ranges and just take the minimum from them
+
+This reduces the average amount of overall calculations to approximately `n`,
+ignoring the constants. In a worst case, we could have ranges of size 1 for
+many input seeds, and every stage would need that many map steps. But
+thankfully, all these ranges are linear, so that can't actually happen if we
+add an optimization to merge contiguous ranges together.
+
+So revising the above pseudo-steps into working on the whole set of ranges at
+each stage, I came up with the following:
+
+1. We have an initial set of `n` ranges
+2. We merge any contiguous ranges in our set into single ranges
+3. For the current stage, apply the mappings to the ranges, including any
+   implied mappings. This can split the sets up.
+4. Repeat step 3 and 4 until there are no more stages
+
+I ended up implementing this in Rust more easily than Python, and it worked in
+far less than 21 days!
+
+Because this was quite hard to visualise without diagrams I turned to
+[Excalidraw](https://excalidraw.com/) and created the following:
+
+<img 
+    title="This took a long time to draw correctly"
+    alt="A complex diagram detailing the example input"
+    src='{{ "assets/adventofcode/worked-ranges-example.png" | absolute_url }}'
+    class='blog-image'
+/>
+
+The above is a part way worked example of how ranges travel through the given
+example data.
+
+And below is a simplified version of a seed range going through each of the
+mapping ranges:
+
+<img 
+    title="This example assumes everything is in order"
+    alt="A simple example of a seed range being transformed by each map range"
+    src='{{ "assets/adventofcode/converting-ranges.png" | absolute_url }}'
+    class='blog-image'
+/>
+
+It's important that the ranges are ordered sequentially for mapping so when
+split you can safely ignore the left range.
+
+## Day 6
+
+I didn't take many notes on [Day 6](https://adventofcode.com/day/6), probably
+because it frustrated me.
+
+I only solved it in Python. Part 1 was easy, but part 2 required use of the
+Quadratic Formula, which I recognised straight away, but I haven't used in at
+least a decade. Ultimately, after a lot of searching, reading and tinkering, I
+got it working.
+
+## Day 7
+
+Again, I took little notes for [Day 7](https://adventofcode.com/day/7) and only
+solved it in Python.
+
+I used enumerated types in Python, and the `Counter` data type. Parsing the
+data wasn't too hard, and nor was telling which hand was which. Most of the
+problems I had stemmed from forgetting to add the five of a kind hand to the
+initial set of a possible hands, and then doing something similar in Part 2
+when upgrading the hands with the wild cards.
+
+## Day 8
+
+[Day 8](https://adventofcode.com/day/8) was fun. I completed it all in Rust
+with no Python implementation, which is probably how I will continue with the
+other questions going forward.
+
+Part 1 was straightforward, but, much like day 5, it became more complicated in
+part 2.
+
+My intuition was to parse the data into a nice node data structure, with each
+node having an id, a left and right field for the next node and a node type. I
+didn't actually create a full graph, but instead used a [Hash
+Map](https://doc.rust-lang.org/std/collections/struct.HashMap.html) to store
+all the nodes in based on their ids.
+
+```rust
+#[derive(Debug, Hash, PartialEq, Eq)]
+enum NodeType {
+    Start,
+    End,
+    Normal,
+}
+
+#[derive(Debug, PartialEq, Eq, Hash)]
+struct Node {
+    id: String,
+    left: String,
+    right: String,
+    node_type: NodeType,
+}
+```
+
+Part 1 was a case of iterating along the instructions until encountering the
+exit node `ZZZ`. With the structures I used this was simple.
+
+Part 2, at first glance, looks as simple as Part 1. It is, but it factors out
+very fast. In the data I had, there were 6 starting nodes, so 6 nodes to check
+every loop. However, they don't sync up on end nodes for billions of
+iterations.
+
+<img 
+    title="The example given for part 2 as diagram showing which nodes go where"
+    src='{{ "assets/adventofcode/example-nodes.png" | absolute_url }}'
+    class='blog-image'
+/>
+
+I initially wrote some code that got up to 720 million iterations. This took a
+long time, and wasn't even the final answer. So, looking at the data structure
+I realised a few things:
+
+- This is a closed, balanced graph, so all nodes always reach another one
+- The question guarantees that all start nodes eventually will connect to end
+  nodes
+- Given the volume of data, there must be closed loops, and because all nodes
+  eventually connect to end nodes, these loops must have valid end nodes within
+  them
+
+So instead of iterating and checking every iteration if all 6 nodes are end
+nodes, I can simply identify each closed loop for each node. Then I can find
+the lowest common multiplier between all of their lengths and that is my
+answer.
+
+This took a little bit of trial and error in Rust to write. I mostly got
+confused on how to recognise the closed loops/cycles correctly. With that
+eventually solved, I actually had to halve each iteration count because each
+represented identifying the loop, which will be twice as a long as the actual
+loop. Then with some simple [greatest common
+divisor](https://rosettacode.org/wiki/Greatest_common_divisor) and [lowest
+common multiplier](https://rosettacode.org/wiki/Least_common_multiple)
+functions I was done.
+
+```rust
+/// Find greatest common divisor
+fn gcd(mut m: usize, mut n: usize) -> usize {
+    while m != 0 {
+        let old_m = m;
+        m = n % m;
+        n = old_m;
+    }
+    return n;
+}
+
+/// Find lowest common multiple
+fn lcm(a: usize, b: usize) -> usize {
+    a * b / gcd(a, b)
+}
+```
+
+## Day 9
+
+[Day 9](https://adventofcode.com/day/9) is the last challenge I have done at
+time of writing. And as stated in Day 8, I only implemented it in Rust.
+
+Part 1, like a lot of the challenges, was fairly easy. It just involves
+building progressively smaller lists and then summing their new ending values.
+
+Part 2, was also surprisingly easy, at least it was for me thanks to how I
+structured my code from part 1. All I needed was a flag in my code to calculate
+a similar value to part 1 just for the front of each
+[Vec](https://doc.rust-lang.org/std/vec/struct.Vec.html) I used.
+
+## Day 10+
+
+Day 9 is all I have gotten up to right now, which puts me about 5 days behind.
+Not too bad, all things considered. Especially, since I stopped at
+Day 4 the last time I tried Advent of Code.
+
+Overall, I am getting to grips with Rust as I go. I am still a bit fuzzy on the
+way explicit
+[lifetimes](https://doc.rust-lang.org/rust-by-example/scope/lifetime.html) work
+within it, but I think Day 10 will give me cause to understand that more. I am
+finding Rust to be quite an enjoyable language to build stuff in, thanks to its
+excellent documentation and super helpful compiler error messages.
+
+I think the speed at which I am getting to know how to use it can be attributed
+to my knowledge of C and Scala. The low-level knowledge around memory and
+pointers from C helps me parse how the borrow checker works, and the functional
+aspects from Scala help me understand the structure of the Rust standard
+library, including it's [Result](https://doc.rust-lang.org/std/result/) and
+[Option](https://doc.rust-lang.org/std/option/index.html) types.
+
+Once Advent of Code 2023 is over I will make my solutions public on GitHub.
+Until then, happy holidays!
