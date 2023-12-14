@@ -246,3 +246,13 @@ Unit and Integration Testing. And their unintended effect is to make us lazy
 when it comes to both. We wind up mocking the database connections rather than
 really testing them in integration tests, and fail to decouple units of our
 code enough to be easily testable without them.
+
+### Edit 2023-12-14
+
+Below are 2 other blog posts from 2017 and 2021 that both go into problems with
+mocks:
+
+- [Invert Your
+  Mocks!](https://www.parsonsmatt.org/2017/07/27/inverted_mocking.html)
+- [Why mocking is a bad
+  idea](https://cs-syd.eu/posts/2021-10-22-why-mocking-is-a-bad-idea)
