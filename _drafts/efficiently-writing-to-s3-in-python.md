@@ -13,9 +13,11 @@ tags:
 ---
 
 Before Christmas 2023 we ran into an issue with one of our simpler data ingests
-at work. An AWS Lamnda, written in Python that queried an API, transformed the
-results, and landed them in Amazon S3 as JSON (gzipped JSONL to be specific),
-started to fail.
+at work. An [AWS Lambda](https://aws.amazon.com/lambda/), written in
+[Python](https://www.python.org/) that queried an API, transformed the results,
+and landed them in [Amazon S3](https://aws.amazon.com/s3/) as
+[JSON](https://www.json.org/) (gzipped [JSON Lines
+files](https://jsonlines.org/) to be specific), started to fail.
 
 This data ingest was part of a larger framework written in Python that had
 other lambdas running and working fine, which skewed investigation toward there
@@ -38,7 +40,7 @@ saw the telltale reason why the Lambda had been killed:
 Memory Size: 4096 MB	Max Memory Used: 4096 MB
 ```
 
-It ran out of memory.
+**It ran out of memory.**
 
 This was a bit perplexing, the data it was responsible for outputting to S3 was
 very small, in fact it amounted to a JSON file that totaled 1.6G unzipped
@@ -47,7 +49,12 @@ normally, and the process normally ran in less than a minute.
 **In the interest of triage, the lambda was temporarily given more memory.** I
 was reluctant for this to be the final solution to the problem because I was
 aghast that less than 2G worth of JSON should need so much memory. **This
-patched the issue.**
+patched the issue temporarily**.
+
+Ideally, we could have detected this increase in memory usage via the metrics
+published by [Lambda
+Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Lambda-Insights-metrics.html)
+but these enhanced metrics were not turned on for this specific lambda.
 
 ## More Investigation
 
@@ -76,14 +83,15 @@ revealed that its output had increased in volume from the previous days:
 2023-12-21 13:28:09  109.3 MiB date=2023-12-21/variants.jsonl.gz
 ```
 
-Actually downloading the files from the 20th and 21st (after a successful rerun
-with increased memory) and performing a simple line count revealed the record
-count had not increased from `83688`, but the width per record had instead. It
-also revealed an increase in unzipped size from `1.6G` to `2.4G`.
+Actually downloading the files from the 20th and 21st (after the successful
+rerun with increased memory) and performing a simple line count revealed the
+record count had not changed from 83,688, but the width per record had
+increased instead. It also revealed an increase in unzipped size from `1.6G` to
+`2.4G`.
 
-So the catalyst for the error was an addition of fields in the APIs output.
-Still, a good data ingest process should be resilient and scale nicely as data
-volumes increase.
+So **the catalyst for the error was a change in the fields in the APIs
+output**. Still, a good data ingest process should be resilient and scale
+nicely as data volumes increase.
 
 Having exhausted the avenues of input and output investigation, it was finally
 time to investigate the actual Python code of the ingestion Lambda.
@@ -145,7 +153,7 @@ def get_data(self):
                 break
 
     except Exception as e:
-        raise Exception(f'Error occurred during the xxx ingest - {e}')
+        raise Exception(f'Error occurred during the ingest - {e}')
 
     return all_data
 ```
@@ -154,21 +162,22 @@ Something important I noticed is that `all_data` is a Python string.
 
 Python, like some other programming languages, uses **immutable strings**. That
 means any modifications done to a string in Python actually create a brand new
-string with the changes applied to them (in practice CPython might have some
-optimisations around this, but the concept remains the same). *Horace Fayomi
-has written a detailed tutorial
+string with the changes applied to them (in practice CPython might do some
+[optimisations](https://en.wikipedia.org/wiki/String_interning) around this,
+but the concept remains the same). *Horace Fayomi has written a detailed
+tutorial
 [post](https://dev.to/fayomihorace/python-how-simple-string-concatenation-can-kill-your-code-performance-2636)
-if you are unfamiliar with this topic.*
+about Python string concatenation if you are unfamiliar with this topic.*
 
 So each `all_data += self.build_json_string(variants)` call will create a brand
 new string as it is appending to the previous version of `all_data`.
 
 This means that at the time of the append (the `+=`) Python allocates a new
-string that is `len(all_data) + len(self.build_json_string(variants))` large
-while keeping both `all_data` and `self.build_json_string(variants)` in memory.
-So in the best case, **Python has to reserve double the amount of memory needed
-for the string before it can garbage collect the individual constituent
-strings**.
+string that is at least `len(all_data) + len(self.build_json_string(variants))`
+large while keeping both `all_data` and `self.build_json_string(variants)` in
+memory. So in the best case, **Python has reserved double the amount of
+memory needed for the string before it can garbage collect the individual
+constituent strings**.
 
 So every iteration of the loop our memory footprint increases by that
 iterations page of results, then doubles on the append, and finally shrinks
@@ -183,13 +192,19 @@ Amazon S3:
 
 def fetch_and_upload_data(self):
     """
-    Fetches the data from the relevant API call, creates a gzip jsonl file in /tmp storage of the lambda
-    function and uploads it to S3 bucket.
-    The root prefix provided for the dataset is considered as the file with .jsonl.gz extension
+    Fetches the data from the relevant API call, 
+    creates a gzip jsonl file in /tmp storage of the lambda function
+    and uploads it to S3 bucket.
+    The root prefix provided for the dataset is considered as the file 
+    with .jsonl.gz extension
     """
     data = self.api_obj.get_data()
-    file_root_prefix_ = self.s3_target_file if self.s3_target_file else self.s3_root_prefix.replace("/", "_")
-    file_name = f"/tmp/{file_root_prefix_}.jsonl.gz"
+    
+    file_root_prefix = self.s3_target_file 
+    if not file_root_prefix:
+        file_root_prefix = self.s3_root_prefix.replace("/", "_")
+    file_name = f"/tmp/{file_root_prefix}.jsonl.gz"
+
     if data:
         with gzip.open(file_name, 'w') as zip_file:
             zip_file.write(data.encode('utf-8'))
@@ -264,7 +279,7 @@ def get_data(self):
 ```
 
 Admittedly, this seems to just **move the problem**. Now we grow memory
-linearly throughout the loop and just incur the doubling at the end. However,
+linearly throughout the loop and just incur the doubling at the end.
 `join` is optimised to only create a single new string object in Python rather
 than the multiples we'd been creating with `+=` in the loop. We still need to
 allocate the same memory in the end, but there is less pressure on the garbage
@@ -300,11 +315,15 @@ First `fetch_and_upload_data` is changed to pass the file to the `api_obj`:
 
 ```py
 def fetch_and_upload_data(self):
-    file_root_prefix_ = self.s3_target_file if self.s3_target_file else self.s3_root_prefix.replace("/", "_")
-    file_name = f"/tmp/{file_root_prefix_}.jsonl.gz"
+    file_root_prefix_ = self.s3_target_file 
+    if not file_root_prefix:
+        file_root_prefix = self.s3_root_prefix.replace("/", "_")
+    file_name = f"/tmp/{file_root_prefix}.jsonl.gz"
+    
     wrote_data = False
     with gzip.open(file_name, 'w') as zip_file:
         wrote_data = self.api_obj.write_data(zip_file)
+    
     if wrote_data:
         self.s3_client.upload_file(file_name)
         return True
@@ -316,10 +335,11 @@ Then the implementation of the `api_obj` is changed to write instead of return:
 
 ```py
 def write_to_file(self, data, file):
+    new_line = '\n'.encode('utf-8')
     for element in data:
         json_line = json.dumps(element)
         file.write(json_line.encode('utf-8'))
-        file.write('\n')
+        file.write(new_line)
 
 def write_data(self, file):
     try:
@@ -370,8 +390,16 @@ GZipped files that exceed the lambdas limits. If we wanted to be thorough we
 could dive into the S3 client code and instead of exposing the file to the API
 ingestion framework, we could expose some kind output stream to write to and
 upload to S3 using a multipart upload or via
-[upload_fileobj](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/upload_fileobj.html).
+[upload_fileobj](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/upload_fileobj.html)
+(which handles the complexity for us).
 
 There is still some room for improvement in the above code, but the changes
 made eliminate the memory issue, and also consequently reduce the cost of
-executing the lambda as a result.
+executing the lambda. There could be further cost savings made with the above
+suggestion around bypassing writing to disk completely, but this could become
+an exercise in [yak shaving](https://americanexpress.io/yak-shaving/) very
+quickly without performing any meaningful measurements, especially given that
+before these changes our API lambdas were normally running within a minute.
+
+Hopefully this post serves as a gentle reminder that memory is not infinite,
+and how being conscious of this can help save both time and money.
