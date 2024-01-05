@@ -183,6 +183,15 @@ So every iteration of the loop our memory footprint increases by that
 iterations page of results, then doubles on the append, and finally shrinks
 back down.
 
+<img
+  title='Diagram showing the doubling of memory when allocating a string in
+  Python'
+  alt='Diagram showing the doubling of memory when allocating a string in
+  Python'
+  src='{{ "assets/strings/string-doubling.webp" | absolute_url }}'
+  class='blog-image'
+/>
+
 Eventually, when the API had been drained of results we return the full string
 and another part of the Python code GZips the string and writes it out to
 Amazon S3:
@@ -285,6 +294,15 @@ than the multiples we'd been creating with `+=` in the loop. We still need to
 allocate the same memory in the end, but there is less pressure on the garbage
 collector in Python.
 
+<img
+  title='Diagram showing that this still doubles the memory, just once at the
+  end.'
+  alt='Diagram showing that this still doubles the memory, just once at the
+  end.'
+  src='{{ "assets/strings/string-doubling-once.webp" | absolute_url }}'
+  class='blog-image'
+/>
+
 So doing this reduces the performance impact of the constant concatenation but
 we will still run into memory issues due to the large string we eventually
 create.
@@ -306,6 +324,15 @@ related strings in memory beyond each iteration of the loop.
 This would mean, the ingest lambda would only need enough memory to store a
 page of results as opposed to all of them. The potential disk space problem
 still remains however, but we will address that later.
+
+<img
+  title='This actually makes intuitive sense when you consider how the data
+  looks inside the lambda.'
+  alt='Diagram showing the difference in memory size between the original
+  solution and proposed paging solution.'
+  src='{{ "assets/strings/original-vs-paging.webp" | absolute_url }}'
+  class='blog-image'
+/>
 
 Since this lambda ingest is part of a framework the changes were a bit more
 involved (other ingests use the same writing code) but essentially it boils
