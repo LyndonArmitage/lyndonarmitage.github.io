@@ -409,24 +409,30 @@ You can see I opted to rename the function in question so it is clear what it
 is doing. I've kept a light touch around the rest of the code though.
 
 With this change, the potential issue with the ephemeral `/tmp` disk storage
-still remains. Currently, the lambda will be killed when we try to write a file
-that exceeds the lambdas allotted temporary storage limit.
+still remains. Currently, **the lambda will be killed when we try to write a
+file that exceeds the lambdas allotted temporary storage limit**.
 
 In practice this isn't an issue since most APIs we query will never produce
-GZipped files that exceed the lambdas limits. If we wanted to be thorough we
-could dive into the S3 client code and instead of exposing the file to the API
-ingestion framework, we could expose some kind output stream to write to and
-upload to S3 using a multipart upload or via
+GZipped files that exceed the lambdas current free limits (512 MB). If we
+wanted to be thorough we could dive into the S3 client code and instead of
+exposing the file to the API ingestion framework, we could expose some kind
+output stream to write to and upload to S3 using a multipart upload or via
 [upload_fileobj](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/upload_fileobj.html)
-(which handles the complexity for us).
+(which handles this complexity for us).
 
 There is still some room for improvement in the above code, but the changes
 made eliminate the memory issue, and also consequently reduce the cost of
 executing the lambda. There could be further cost savings made with the above
 suggestion around bypassing writing to disk completely, but this could become
 an exercise in [yak shaving](https://americanexpress.io/yak-shaving/) very
-quickly without performing any meaningful measurements, especially given that
-before these changes our API lambdas were normally running within a minute.
+quickly without performing any meaningful measurements, especially given the
+price of [Ephemeral storage on
+AWS](https://aws.amazon.com/lambda/pricing/#Lambda_Ephemeral_Storage_Pricing)
+and that before these changes our API lambda invocations were normally running
+within a minute. It could potentially save some execution time (by avoiding
+disk based IO) but the added complexity may not be worth the development and
+potential debugging time.
 
-Hopefully this post serves as a gentle reminder that memory is not infinite,
-and how being conscious of this can help save both time and money.
+Hopefully this post serves as a gentle reminder that **memory is not
+infinite**, how being conscious of this can help save both time and money, and
+how executing in the cloud doesn't absolve you of these responsibilities.
