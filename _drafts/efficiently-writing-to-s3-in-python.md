@@ -25,13 +25,14 @@ being some change in the API or its output that was causing the outage.
 
 ## Initial Investigation & Triage
 
-Looking at the logs the issue was quick to reveal itself:
+Looking at the Lambda logs the issue was quick to reveal itself:
 
 ```txt
 Error: Runtime exited with error: signal: killed
 ```
 
-The Python process was being killed by the Lambda runtime.
+The Python process was being killed by what manages the Lambda instances in
+AWS.
 
 Having seen issues like this before, we investigated the logs a little more and
 saw the telltale reason why the Lambda had been killed:
