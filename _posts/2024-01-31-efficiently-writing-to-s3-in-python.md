@@ -10,8 +10,8 @@ tags:
 - ingest
 - lambda
 - aws
+date: 2024-01-31 16:15 +0000
 ---
-
 Before Christmas 2023 we ran into an issue with one of our simpler data ingests
 at work. An [AWS Lambda](https://aws.amazon.com/lambda/), written in
 [Python](https://www.python.org/) that queried an API, transformed the results,
