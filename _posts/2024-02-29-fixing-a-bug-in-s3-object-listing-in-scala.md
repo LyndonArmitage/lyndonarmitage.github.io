@@ -9,8 +9,8 @@ tags:
 - amazon
 - api
 - testing
+date: 2024-02-29 13:07 +0000
 ---
-
 This is a quick tip from a blunder I made when writing some Scala code using
 the [AWS S3 object listing
 API](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html).
