@@ -8,8 +8,8 @@ tags:
 - optimisation
 - thoughts
 - algorithms
+date: 2024-03-04 11:22 +0000
 ---
-
 As programmers we're often taught to take certain things for granted, when it
 comes to performance. Likewise, we often throw around the Sir Tony Hoare quote,
 made famous by Donald Knuth: "Premature optimisation is the root of all evil."
