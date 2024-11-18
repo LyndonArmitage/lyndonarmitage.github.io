@@ -18,7 +18,7 @@ hoarding the requirements to be able to erase user information in a timely
 manner can prove difficult when you have a huge data estate.
 
 Right to Erasure often runs antithetical to how we tend to think of data in the
-~Big Data~ Data Engineering world. Storage is relatively cheap, thanks to block
+Data Engineering world. Storage is relatively cheap, thanks to block
 stores like Amazon S3, so instinctively our ingests tend to follow a pipeline
 pattern of landing data, potentially transforming it, then passing it off to
 our consumers. It's essentially verboten to go in and modify data that has
@@ -116,4 +116,5 @@ versions containing the erased information.
 ## Conclusion
 
 These are just a few important details you need to take into account when
-dealing with Right to Erasure.
+dealing with Right to Erasure. If there is interest I can go into excruciating
+detail related to building and deploying such a system.
