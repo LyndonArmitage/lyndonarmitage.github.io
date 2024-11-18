@@ -9,8 +9,8 @@ tags:
 - right to erasure
 - rte
 - privacy
+date: 2024-11-18 12:39 +0000
 ---
-
 GDPR and specifically, the [Right to
 Erasure](https://gdpr-info.eu/art-17-gdpr/) (aka 'right to be forgotten') are
 tough nuts to crack in the world of Data. Given our predilection to data
