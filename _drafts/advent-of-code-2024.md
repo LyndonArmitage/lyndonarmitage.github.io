@@ -1,0 +1,33 @@
+---
+layout: post
+title: Advent of Code 2024
+tags:
+- coding
+- programming
+- advent of code
+- python
+---
+
+It's come again, [Advent of Code 2024](https://adventofcode.com/). I don't
+think I have ever fully finished one of these, I probably came close in one of
+the earlier ones during the 2010's.
+
+Instead of polluting this blog with posts per day, I will do as I did in
+[2023]({% post_url 2023-12-01-adventofcode-2023 %}) and post summaries and
+interesting bits based on where I get to.
+
+Last year, I tried to use Advent of Code to learn [Zig](https://ziglang.org/)
+and ended up doing parts of it in [Rust]({% post_url
+2023-12-13-adventofrust-2023 %}) and [Python](https://www.python.org/). This
+year I am concentrating on my Python skills first and perhaps will return to
+problems with another programming language later.
+
+I've already completed Day 1 of Advent of Code 2024. It was a nice and simple
+pair of challenges to get started, sorting lists and comparing values within
+them. Nothing too complicated.
+
+I would advise anyone doing these challenges to keep efficiency in the back of
+their mind, because, in previous years, some of the inputs were quite large and
+did not lend themselves very well to brute force approaches. Normally, the
+challenges that require these efficient solutions are the second parts to each
+day.
