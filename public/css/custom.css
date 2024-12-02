@@ -13,7 +13,7 @@ img.profile {
   max-width: 100%;
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 48rem) and (min-height: 37rem) {
 
   img.profile {
     display: block;
