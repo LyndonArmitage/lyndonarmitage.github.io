@@ -54,3 +54,22 @@ making it relatively simple.
 It is likely possible to do Part B in a single loop rather than by running the
 solution to Part A multiple times, but in the interest of speed and readability
 I opted not to do this.
+
+## Day 3
+
+[Day 3](https://adventofcode.com/2024/day/3) gets a little harder than the
+first 2 days.
+
+These puzzles have you implement a rudimentary parser/interpreter.
+
+Part A was simple enough and can be done with a simple [Regular
+Expression](https://en.wikipedia.org/wiki/Regular_expression) like
+`mul\((\d{1,3}),(\d{1,3})\)` or by writing a manual string parser.
+
+Part B is a little more difficult as it involves conditional turning on and off
+of the previous command. In theory, if you wrote a manual parser, you could do
+this on the fly as you parse the instructions. I however opted for an easier,
+less efficient approach. I wrote 2 more regular expressions to detect the `do`
+and `don't` instructions, and ran all 3 expressions on the input, collected the
+output, and sorted them by location. Then I just iterated over the instructions
+one at a time, keeping track of the enabled state.
