@@ -73,3 +73,17 @@ less efficient approach. I wrote 2 more regular expressions to detect the `do`
 and `don't` instructions, and ran all 3 expressions on the input, collected the
 output, and sorted them by location. Then I just iterated over the instructions
 one at a time, keeping track of the enabled state.
+
+## Day 4
+
+[Day 4](https://adventofcode.com/2024/day/4) was probably on par in difficulty
+with Day 3.
+
+The first part was a nice simple wordsearch. I built a data structure
+containing all the characters in it, essentially a 2 dimensional array. From
+there I looked through each character in all the compass directions for the
+search string.
+
+Thanks to the way I structured my code in the first part, the second part
+wasn't too hard to achieve as the search code I wrote could be applied to the 4
+different X configurations.
