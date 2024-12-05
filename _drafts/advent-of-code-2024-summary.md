@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Advent of Code 2024: Summary'
+title: 'Advent of Code 2024: Summary of Days 1 to 6'
 tags:
 - coding
 - programming
@@ -9,11 +9,11 @@ tags:
 - 2024
 ---
 
-This page serves as a summary of my experience with [Advent of Code
-2024](https://adventofcode.com/). A mentioned in my [original post]({% post_url
-2024-12-01-advent-of-code-2024 %}), I decided against forcing myself to learn
-another programming language as well as opted not to post an article for each
-challenge.
+This page serves as the first part of a summary of my experience with [Advent
+of Code 2024](https://adventofcode.com/). A mentioned in my [original post]({%
+post_url 2024-12-01-advent-of-code-2024 %}), I decided against forcing myself
+to learn another programming language as well as opted not to post an article
+for each challenge.
 
 As per the [FAQ](https://adventofcode.com/2024/about), I won't be including the
 puzzle text or raw inputs in this post. Please use the links to the questions
@@ -22,6 +22,9 @@ for context.
 The notes within this article could potentially be helpful for those getting
 stuck on questions, if used as hints. I will eventually publish my solutions as
 a repository.
+
+This post covers the first 6 days of Advent of Code 2024. For subsequent days
+see other posts.
 
 ## Day 1
 
@@ -156,3 +159,7 @@ A step-by-step, stationary version of this GIF can be seen
 
 Part A could have been solved by implementing the sorting algorithm for Part B
 and comparing the 2 outputs. If you did it this way, well done!
+
+## Day 6
+
+[Day 6](https://adventofcode.com/2024/day/6)
