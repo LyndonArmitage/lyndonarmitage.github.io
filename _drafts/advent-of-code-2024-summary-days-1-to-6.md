@@ -28,12 +28,12 @@ see other posts.
 
 ## Day 1
 
-As mentioned in my original post, the [Day
-1](https://adventofcode.com/2024/day/1) challenges were not difficult. They
-require you to be comfortable sorting lists and comparing values.
+[Day 1](https://adventofcode.com/2024/day/1) introduced relatively
+straightforward challenges focussing on sorting lists and comparing values.
 
-I opted to insert data into the 2 lists in order, rather than loading them and
-calling a sort function. This meant iterating over the lists for each entry.
+I opted to insert the data presented into the 2 lists in order, rather than
+loading them and calling a sort function. This meant iterating over the lists
+for each entry.
 
 Part A was done by simply
 [zipping](https://docs.python.org/3/library/functions.html#zip) the two
@@ -162,4 +162,31 @@ and comparing the 2 outputs. If you did it this way, well done!
 
 ## Day 6
 
-[Day 6](https://adventofcode.com/2024/day/6)
+[Day 6](https://adventofcode.com/2024/day/6) came out on a Friday and capped
+off the first full working week of December 2024 and will serve as my stopping
+point in this post.
+
+## Overall
+
+Overall, the first quarter of Advent of Code wasn't too difficult and offered a
+nice set of brainteasers. I'd recommend them to people of all skill levels.
+They test you on your fundamentals and are great programming practice that can
+sharpen both your problem-solving and comprehension skills
+
+I am already enjoying the steady increase of difficulty and variety of the
+problems. Day 5 Part B was especially fun, and I was quite proud of my
+solution. While Python’s well-documented [sorting
+techniques](https://docs.python.org/3/howto/sorting.html) could have made it
+more concise, manually coding my sorting routine was a great reminder of good
+algorithm design practices.
+
+If you're tackling the challenges yourself, I'd love to hear about your
+experience, your solutions, what you found difficult and any other impressions
+you have. So feel free to comment under this post wherever I share it.
+
+## Further Days
+
+I will release an additional post for the next 6 days. My goal is to release
+these at least a day after the last day mentioned on them in an effort to avoid
+spoiling the challenge for others.
+
