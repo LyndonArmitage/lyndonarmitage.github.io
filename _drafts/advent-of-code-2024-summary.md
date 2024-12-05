@@ -114,3 +114,31 @@ different X configurations.
   src='{{ "assets/aoc2024/4-x-configurations.webp" | absolute_url }}'
   class='blog-image'
 />
+
+## Day 5
+
+Day 5 was the first puzzle whose input is divided into 2 parts that need
+parsing. This was very easy since the data is well formatted and divided by a
+blank line.
+
+Part A involved filtering the list of rules presented as the first part of the
+input to those valid for each list of integers in the second part of the input.
+After which you had to verify if the list matched those rules. This is
+relatively simple as the rules are formatted as `number1|number2` which means
+that `number1` must come before `number2` in the list, which can be checked
+with simple nested loops that exit early upon failure.
+
+Part B required you to take the lists that were invalid, and sort them based
+on the rules that applied to that list. This was a little more involved, but I
+settled on a simple sorting algorithm that did the following:
+
+1. Starting at the back of the list, set the current index to be the last index
+   in the list
+2. Find the earliest index the current number can be in the list based on the
+   rules
+3. Shift the current number to the earliest index if it needs to move,
+   otherwise move backward in the list and set the current index to 1 less
+4. Repeat steps 2 and 3 until the current index reaches -1
+
+Part A could have been solved by implementing the sorting algorithm for Part B
+and comparing the 2 outputs. If you did it this way, well done!
