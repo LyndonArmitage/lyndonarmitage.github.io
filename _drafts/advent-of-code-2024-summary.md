@@ -32,8 +32,20 @@ require you to be comfortable sorting lists and comparing values.
 I opted to insert data into the 2 lists in order, rather than loading them and
 calling a sort function. This meant iterating over the lists for each entry.
 
-Part A was done by simply zipping the two collections together and comparing
-the values.
+Part A was done by simply
+[zipping](https://docs.python.org/3/library/functions.html#zip) the two
+collections together and comparing the values. The diagram below shows how this
+works based on the [Scala Visual
+Reference](https://superruzafa.github.io/visual-scala-reference/zip/):
+
+<img
+  title='Visualisation of Zipping 2 collections'
+  alt='Diagram illustrating the zip function: pairs elements from two sequences
+  by index, truncating to the length of the shorter sequence, and outputs a
+  collection of tuples.'
+  src='{{ "assets/aoc2024/zip.webp" | absolute_url }}'
+  class='blog-image'
+/>
 
 Part B was done with some nested loops. Additionally, I cached the scores for
 each unique number to avoid needless extra loops.
@@ -84,6 +96,21 @@ containing all the characters in it, essentially a 2 dimensional array. From
 there I looked through each character in all the compass directions for the
 search string.
 
+<img
+  title='There are 8 compass directions'
+  alt='Diagram showing the 8 compass directions: north, northeast, east,
+  southeast, south, southwest, west, northwest'
+  src='{{ "assets/aoc2024/compass-directions.webp" | absolute_url }}'
+  class='blog-image'
+/>
+
 Thanks to the way I structured my code in the first part, the second part
 wasn't too hard to achieve as the search code I wrote could be applied to the 4
 different X configurations.
+
+<img
+  title='There are only 4 possible X configurations'
+  alt='Diagram showing the 4 X configurations'
+  src='{{ "assets/aoc2024/4-x-configurations.webp" | absolute_url }}'
+  class='blog-image'
+/>
