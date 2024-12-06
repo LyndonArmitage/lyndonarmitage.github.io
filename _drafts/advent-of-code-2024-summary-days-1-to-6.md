@@ -17,7 +17,9 @@ for each challenge.
 
 As per the [FAQ](https://adventofcode.com/2024/about), I won't be including the
 puzzle text or raw inputs in this post. Please use the links to the questions
-for context.
+for context. I've opted to call the 2 parts to each question Part A and Part B,
+these are normally just called Part One and Part Two in the questions, but I
+think A and B differentiate them more clearly.
 
 The notes within this article could potentially be helpful for those getting
 stuck on questions, if used as hints. I will eventually publish my solutions as
@@ -228,6 +230,6 @@ you have. So feel free to comment under this post wherever I share it.
 ## Further Days
 
 I will release an additional post for the next 6 days. My goal is to release
-these at least a day after the last day mentioned on them in an effort to avoid
+these a while after the last day mentioned on them in an effort to avoid
 spoiling the challenge for others.
 
