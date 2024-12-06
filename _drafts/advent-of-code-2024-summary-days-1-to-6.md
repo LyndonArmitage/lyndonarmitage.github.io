@@ -166,6 +166,47 @@ and comparing the 2 outputs. If you did it this way, well done!
 off the first full working week of December 2024 and will serve as my stopping
 point in this post.
 
+Day 6 marked a difficulty spike with a simple pathfinding puzzle. Part A was
+straightforward: you needed to track your guard's movements around the map and
+count the amount of unique locations they visited.
+
+Having done Advent of Code previously, I recalled that some of these path
+finding grid puzzles involve loops. Detecting loops is important because they
+can lead to infinite traversal, which will cause your algorithm to run
+continuously if not dealt with.
+
+To account for loops and infinite traversal, I added loop detection to my Part
+A solution, I did this by keeping track of the walls that the guard collided
+with and from what direction. This works because the rule of turning 90 degrees
+upon collision means that if you encounter the same wall from the same
+direction you must be stuck in a loop.
+
+Part B of Day 6 required putting the guard in a loop by placing a single
+obstacle on the map. This meant my loop detection code was readily applicable.
+My approach to this challenge was brute force: I placed a wall at every unique
+visited location before rerunning the path finding from the start. While this
+is a **slow** approach, it effectively solves the problem. 
+
+<img
+  title='Example of solving the path for Part A then finding a loop'
+  alt='A diagram of example given at Advent of Code'
+  src='{{ "assets/aoc2024/day6-partb.webp" | absolute_url }}'
+  class='blog-image'
+/>
+
+I'm certain there are faster solutions to Part B, such as projecting collision
+paths instead of testing every possibility, and I plant to revisit this
+challenge to explore these optimisations.
+
+<img
+  title='Example of projecting collisions and finding their intersections'
+  alt='A diagram showing the projection of collisions backwards and where they
+  intersect, text reads: Checking just the intersections would reduce the
+  search space from 41 to 18 in this example'
+  src='{{ "assets/aoc2024/day6-partb-opti.webp" | absolute_url }}'
+  class='blog-image'
+/>
+
 ## Overall
 
 Overall, the first quarter of Advent of Code wasn't too difficult and offered a
