@@ -37,3 +37,27 @@ Part B added a single new operator, concatenation. Again the flexibility of
 Python meant I could add this a simple operation using strings
 `int(f"{a}{b})"`. Of course, this is likely slower than doing the equivalent
 math. I will revisit this to optimise it further.
+
+## Day 8
+
+[Day 8](https://adventofcode.com/2024/day/8) came out on a Sunday.
+Unfortunately, I was very busy that day so I only managed to look at the
+problem in earnest in the evening. With my tired eyes I still managed to
+complete Part A, but the wording on both questions proved a little difficult to
+decipher at the time.
+
+Again, [itertools](https://docs.python.org/3/library/itertools.html) really
+helped with these challenges. This time it was the `combinations` function that
+proved useful in getting the unique combinations of antennas.
+
+Part A was relatively simple once you understand the problem. Simply find the
+difference between the two antennas points and project a point from each in
+either direction. I struggled to get the correct answer to this briefly, as I
+made a mistake when loading the puzzle input and increased the width of my grid
+by a single digit! This didn't break the example given, but with the actual
+puzzle input I had it resulted in 14 extra antinodes appearing along the
+rightmost column.
+
+After some well earned rest, I was able to tackle Part B. This just consisted
+of creating antinodes at every interval along the lines produced by two
+antennas. This interval is the distance between the two antennas.
