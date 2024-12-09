@@ -92,12 +92,23 @@ each other, before finally calculating a simple checksum.
 Initially, my solution to Part A involved me converting the input string into
 an expanded string, similar to how the examples were explained in the question.
 This worked well for the example input, as it only included 10 total unique
-IDs, but when ran on the real puzzle input my code was faulty. Eventually,
-after much time spent frustrated, I looked to the internet for some hints,
-careful to avoid any full solutions. It didn't take long to see that others had
-made a similar mistake. In the actual puzzle input there are many more unique
-IDs, and as a consequence of using a string these become treated as IDs between
-0-9. Thankfully, with the problem known, it was simple to rectify, instead of
+IDs, but when ran on the real puzzle input my code was faulty.
+
+Eventually, after much time spent frustrated, I looked to the internet for some
+hints, careful to avoid any full solutions. It didn't take long to see that
+others had made a similar mistake. In the actual puzzle input there are many
+more unique IDs than the 10 in the example. As a consequence of using a string
+the IDs that are greater than 9 were being treated as multiple IDs between 0-9.
+
+<img
+  title='Visualisation of decoding issue'
+  alt='Diagram showing the decoding issue when using strings for input with
+  more than 10 unique IDs'
+  src='{{ "assets/aoc2024/day9-decoding-issue.webp" | absolute_url }}'
+  class='blog-image'
+/>
+
+Thankfully, with the problem known, it was simple to rectify, instead of
 creating a new expanded string I instead stuck with a list of either IDs or
 `None` entries like so `list[Optional[int]]`.
 
