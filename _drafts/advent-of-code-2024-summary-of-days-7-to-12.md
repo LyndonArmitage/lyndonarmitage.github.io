@@ -61,3 +61,62 @@ rightmost column.
 After some well earned rest, I was able to tackle Part B. This just consisted
 of creating antinodes at every interval along the lines produced by two
 antennas. This interval is the distance between the two antennas.
+
+## Day 9
+
+So [Day 9](https://adventofcode.com/2024/day/9) seemed like a spike in
+difficulty compared to the previous days. These challenges invoked memories of
+running disk defragmentation software in the early 2000s.
+
+For both parts, you take the puzzle input and decode it to represent
+a disk containing files and free space, and then operate on it:
+
+<img
+  title='Visualisation of expanding input data'
+  alt='Shows input example `2333133121414131402` becoming output
+  `00...111...2...333.44.5555.6666.777.888899`'
+  src='{{ "assets/aoc2024/day9-expand.webp" | absolute_url }}'
+  class='blog-image'
+/>
+
+Then the objective of Part A was to move blocks of data so they are all next to
+each other, before finally calculating a simple checksum.
+
+<img
+  title='Visualisation of Part A data moving'
+  alt='Diagram showing data moving in Part A'
+  src='{{ "assets/aoc2024/day9-parta.webp" | absolute_url }}'
+  class='blog-image'
+/>
+
+Initially, my solution to Part A involved me converting the input string into
+an expanded string, similar to how the examples were explained in the question.
+This worked well for the example input, as it only included 10 total unique
+IDs, but when ran on the real puzzle input my code was faulty. Eventually,
+after much time spent frustrated, I looked to the internet for some hints,
+careful to avoid any full solutions. It didn't take long to see that others had
+made a similar mistake. In the actual puzzle input there are many more unique
+IDs, and as a consequence of using a string these become treated as IDs between
+0-9. Thankfully, with the problem known, it was simple to rectify, instead of
+creating a new expanded string I instead stuck with a list of either IDs or
+`None` entries like so `list[Optional[int]]`.
+
+As anyone who ran disk defragmentation in the past knows, storing all your data
+close together is all well and good, but what you really want is like for like
+data near each other so you avoid those time consuming seeks. This was the
+objective of Part B. I solved this by using a simple algorithm that walked from
+the end of the list backward, then when it found a chunk of non-empty data I
+would pause and then search from the front of the list for an empty space large
+enough for that chunk and move it there. After which the backward search would
+continue.
+
+<img
+  title='Visualisation of Part B data moving'
+  alt='Diagram showing data moving in Part B'
+  src='{{ "assets/aoc2024/day9-partb.webp" | absolute_url }}'
+  class='blog-image'
+/>
+
+This algorithm is relatively slow as it will search for empty space for every
+block of non-empty data found. I could improve upon this by keeping track of
+both what data was moved and an index of the empty space available.
