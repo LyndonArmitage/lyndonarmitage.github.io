@@ -15,10 +15,11 @@ rather than cave completely to the likes of Google Analytics, I've opted to
 investigate some minimal, privacy friendly tracking solutions.
 
 In the past I've been happy blogging to the void and not knowing how popular my
-posts are or where they're being linked from, but recently, with my Advent of
-Code posts, I've been interested in how many people if any have actually seen
-them. Additionally, the basic analytics you get from platforms like X and
-LinkedIn aren't always sufficient.
+posts are or where they're being linked from, but recently, with my [Advent of
+Code posts]({% post_url 2024-12-06-advent-of-code-2024-summary-days-1-to-6 %}),
+I've been interested in how many people if any have actually seen them.
+Additionally, the basic analytics you get from platforms like X and LinkedIn
+aren't always sufficient.
 
 So my first port of call was to figure out what was out there. Recently, we've
 been evaluating ChatGPT Enterprise at my work, so I thought I'd challenge it to
