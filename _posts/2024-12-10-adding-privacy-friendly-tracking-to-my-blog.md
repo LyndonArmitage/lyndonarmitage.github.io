@@ -8,8 +8,8 @@ tags:
 - goatcounter
 - goaccess
 - analytics
+date: 2024-12-10 11:04 +0000
 ---
-
 I've recently caved into the idea of adding some tracking onto my blog, but
 rather than cave completely to the likes of Google Analytics, I've opted to
 investigate some minimal, privacy friendly tracking solutions.
