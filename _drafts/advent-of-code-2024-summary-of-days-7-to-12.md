@@ -158,15 +158,19 @@ algorithm](https://en.wikipedia.org/wiki/Flood_fill). Starting at a 0 height,
 at each stage you'd be looking for values that are 1 higher up until 9. Scoring
 becomes a matter of counting the unique 9-height tiles reached.
 
-Being familiar with pathfinding problems, I opted to do some optimisations at
-the start of my Part A solution, these were ultimately unneeded for Part A but
-were useful for Part B. The first step I took in finding the trailheads was to
-find all the starts and ends of possible trails by simply searching for 0 and 9
-height tiles on the map. With these positions, I then created pairs of
+Being familiar with pathfinding problems, I noticed you can potentially do some
+optimisations to reduce the search space, these were ultimately
+unneeded as using the contents of the flood-fill is enough to limit
+calculations in both parts.
+
+One optimisation that can be done is in finding the trailheads: You can find
+all the starts and ends of possible trails by simply searching for 0 and 9
+height tiles on the map, then with these positions, you can create pairs of
 potential trail starts and trail ends. Because we can only move 1 value up in
 height at a time, we know that any ending points that are further away than 9
 steps (0 to 9) cannot possibly be reached. We can even avoid using the proper
-2D distance formula for this since we cannot travel diagonally.
+2D distance formula to measure this distance because we cannot travel
+diagonally.
 
 ```py
 from math import sqrt
@@ -184,13 +188,13 @@ def taxicab_dist(a: XY, b: XY) -> int:
     return abs(b[0] - a[0]) + abs(b[1] - a[1])
 ```
 
-As you can see below the min "taxicab" distance an end tile can be from a start
-tile is 1 and the maximum is 9:
+As you can see from the examples below the min "taxicab" distance an end tile
+can be from a start tile is 1 and the maximum is 9:
 
 <img
   title='Example of possible paths'
   alt='Example of min and max paths'
-  src='{{ "assets/aoc2024/day10-parta-distances.png" | absolute_url }}'
+  src='{{ "assets/aoc2024/day10-parta-distances.webp" | absolute_url }}'
   class='blog-image'
 />
 
@@ -198,3 +202,16 @@ So a modified flood-fill solves Part A, but Part B requires you to keep track
 of unique paths, which means each start and end pair can have multiple paths.
 Thankfully, our flood-fill from Part A can serve as a way of limiting any
 more advanced search.
+
+If we modify our flood filling algorithm to make a note of all the possible
+sources a tile can be reach from we end up building a graph.
+
+<img
+  title='This is also called a flow field'
+  alt='Example showing the flow from a height 9 to 0'
+  src='{{ "assets/aoc2024/day10-flow-field.webp" | absolute_url }}'
+  class='blog-image'
+/>
+
+From this graph we can easily generate all the possible unique paths, solving
+Part B.
