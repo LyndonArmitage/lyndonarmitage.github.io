@@ -214,4 +214,13 @@ sources a tile can be reach from we end up building a graph.
 />
 
 From this graph we can easily generate all the possible unique paths, solving
-Part B.
+Part B. Below is a visualisation of all these paths on my input:
+
+<img
+  title='All the paths on my input, red is the end of a path and green is the
+  start'
+  alt='All the paths on my input, red is the end of a path and green is the
+  start'
+  src='{{ "assets/aoc2024/day10-partb.png" | absolute_url }}'
+  class='blog-image'
+/>
