@@ -131,3 +131,70 @@ continue.
 This algorithm is relatively slow as it will search for empty space for every
 block of non-empty data found. I could improve upon this by keeping track of
 both what data was moved and an index of the empty space available.
+
+## Day 10
+
+[Day 10](https://adventofcode.com/2024/day/10) assigns us challenges involving
+a [topographic map](https://en.wikipedia.org/wiki/Topographic_map). Thankfully,
+the inputs use only the numbers 0-9 to represent various heights. These can be
+mapped easily to greyscale.
+
+<img
+  title='My input turned into a greyscale image'
+  alt='Image version of my input'
+  src='{{ "assets/aoc2024/day10-input.png" | absolute_url }}'
+  class='blog-image'
+/>
+
+Part A requires us to find trailheads and add up their scores. A trailhead is
+made from paths on the map. These paths have to start at a value of 0 and end
+on a value of 9, with each step only increasing the tile value by 1. In this
+challenge we can only move in the cardinal compass directions, i.e. North,
+East, South, or West. The trailhead score is the count of 9 height tiles
+reachable from its 0 height start.
+
+You can solve Part A with a modified [flood-fill
+algorithm](https://en.wikipedia.org/wiki/Flood_fill). Starting at a 0 height,
+at each stage you'd be looking for values that are 1 higher up until 9. Scoring
+becomes a matter of counting the unique 9-height tiles reached.
+
+Being familiar with pathfinding problems, I opted to do some optimisations at
+the start of my Part A solution, these were ultimately unneeded for Part A but
+were useful for Part B. The first step I took in finding the trailheads was to
+find all the starts and ends of possible trails by simply searching for 0 and 9
+height tiles on the map. With these positions, I then created pairs of
+potential trail starts and trail ends. Because we can only move 1 value up in
+height at a time, we know that any ending points that are further away than 9
+steps (0 to 9) cannot possibly be reached. We can even avoid using the proper
+2D distance formula for this since we cannot travel diagonally.
+
+```py
+from math import sqrt
+from typing import TypeAlias
+
+XY: TypeAlias = (int, int)
+
+# This is the 2D distance formula
+def dist(a: XY, b: XY) -> float:
+    return sqrt(pow(b[0] - a[0], 2) + pow(b[1] - a[1], 2))
+
+# This is an approximation we can use
+# Since we cannot move diagonally, simple addition works
+def taxicab_dist(a: XY, b: XY) -> int:
+    return abs(b[0] - a[0]) + abs(b[1] - a[1])
+```
+
+As you can see below the min "taxicab" distance an end tile can be from a start
+tile is 1 and the maximum is 9:
+
+<img
+  title='Example of possible paths'
+  alt='Example of min and max paths'
+  src='{{ "assets/aoc2024/day10-parta-distances.png" | absolute_url }}'
+  class='blog-image'
+/>
+
+So a modified flood-fill solves Part A, but Part B requires you to keep track
+of unique paths, which means each start and end pair can have multiple paths.
+Thankfully, our flood-fill from Part A can serve as a way of limiting any
+more advanced search.
