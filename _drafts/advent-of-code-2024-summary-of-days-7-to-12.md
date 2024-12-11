@@ -224,3 +224,63 @@ Part B. Below is a visualisation of all these paths on my input:
   src='{{ "assets/aoc2024/day10-partb.png" | absolute_url }}'
   class='blog-image'
 />
+
+## Day 11
+
+[Day 11](https://adventofcode.com/2024/day/11) takes us back to a set of 1
+dimensional challenges involving an ever growing list. Part A introduces us to
+our problem space, a list where the contents change after each "blink" based on
+some rules. This is very much reminiscent of a [Cellular
+Automaton](https://en.wikipedia.org/wiki/Cellular_automaton) although in a
+single dimension rather than 2.
+
+Part A was very simple, naively applying the rules to the input works in a
+quick amount of time. Part B however, asks you to run the rules for much
+longer, and applying the rules naively will quickly run you out of memory and
+take an inordinate amount of time.
+
+So how do we solve Part B?
+
+One thing we can do is examine the rules for any ways we can optimise
+their application.
+
+> - If the stone is engraved with the number 0, it is replaced by a stone
+>   engraved with the number 1.
+> - If the stone is engraved with a number that has an even number of digits,
+>   it is replaced by two stones. The left half of the digits are engraved on
+>   the new left stone, and the right half of the digits are engraved on the
+>   new right stone. (The new numbers don't keep extra leading zeroes: 1000
+>   would become stones 10 and 0.)
+> - If none of the other rules apply, the stone is replaced by a new stone; the
+>   old stone's number multiplied by 2024 is engraved on the new stone.
+
+Even without diagramming the rules it seem obvious that there exist some
+patterns:
+
+- 0 is always turned to a 1 which will then turn into a 2024 on the next
+  iteration
+- The number of stones will always increase due to the turning of 0 to 1 to
+  2024
+- Numbers will inevitably tend towards multiples of 2024 due to the third rule
+- As soon as we get a number with an even count of digits we inevitably iterate
+  down to single digits
+
+So I decide to analyse the pattern the rules produce for a single input of
+`0`. I did this by hand and produced this monstrosity:
+
+<img
+  title='How the rules apply to an input of 0'
+  alt='How the rules apply to an input of 0'
+  src='{{ "assets/aoc2024/day11-all-0.webp" | absolute_url }}'
+  class='blog-image'
+/>
+
+While it may be hard to see, I have highlighted all the single digits in blue.
+
+I am sure you can write code to use this kind of tree, but that would be time
+consuming and difficult. So I opted for another approach,
+[Memoization](https://en.wikipedia.org/wiki/Memoization). 
+
+I essentially kept a cheat list of number and iteration to the count of
+results. Then when I run my code on each single element in the given input I
+can reuse these results and severely reduce the computation.
