@@ -15,9 +15,9 @@ of Code 2024](https://adventofcode.com/), covering days 7 to 12. For the first
 2024-12-06-advent-of-code-2024-summary-days-1-to-6 %}).
 
 As mentioned previously and in the Advent of Code
-[FAQ](https://adventofcode.com/2024/about), I won't be including the puzzle
-text or raw inputs in this post, and I'll be referring to each part of the
-question as Part A and Part B.
+[FAQ](https://adventofcode.com/2024/about), I will avoid including the full
+puzzle text or raw inputs in this post, and I'll be referring to each part of
+the question as Part A and Part B.
 
 ## Day 7
 
@@ -130,7 +130,8 @@ continue.
 
 This algorithm is relatively slow as it will search for empty space for every
 block of non-empty data found. I could improve upon this by keeping track of
-both what data was moved and an index of the empty space available.
+both what data was moved and an index of the empty space available. I may
+revisit this, time permitting.
 
 ## Day 10
 
@@ -172,6 +173,8 @@ steps (0 to 9) cannot possibly be reached. We can even avoid using the proper
 2D distance formula to measure this distance because we cannot travel
 diagonally.
 
+Below is an example of these kind of distance functions:
+
 ```py
 from math import sqrt
 from typing import TypeAlias
@@ -186,6 +189,10 @@ def dist(a: XY, b: XY) -> float:
 # Since we cannot move diagonally, simple addition works
 def taxicab_dist(a: XY, b: XY) -> int:
     return abs(b[0] - a[0]) + abs(b[1] - a[1])
+
+# In theory taxicab_dist will be faster as it doesn't do a square root
+# In practice the difference may well be negligible as modern CPUs 
+# have dedicated instructions for square root
 ```
 
 As you can see from the examples below the min "taxicab" distance an end tile
@@ -213,8 +220,9 @@ sources a tile can be reach from we end up building a graph.
   class='blog-image'
 />
 
-From this graph we can easily generate all the possible unique paths, solving
-Part B. Below is a visualisation of all these paths on my input:
+From this graph, sometimes called a flow field, we can easily generate all the
+possible unique paths, solving Part B. Below is a visualisation of all these
+paths on my input:
 
 <img
   title='All the paths on my input, red is the end of a path and green is the
@@ -262,8 +270,9 @@ patterns:
 - The number of stones will always increase due to the turning of 0 to 1 to
   2024
 - Numbers will inevitably tend towards multiples of 2024 due to the third rule
-- As soon as we get a number with an even count of digits we inevitably iterate
-  down to single digits
+- As soon as we get a number with an even count of digits we will inevitably
+  reach single digits as we apply the rules, which will again tend towards
+  multiplying by 2024
 
 So I decide to analyse the pattern the rules produce for a single input of
 `0`. I did this by hand and produced this monstrosity:
@@ -277,10 +286,51 @@ So I decide to analyse the pattern the rules produce for a single input of
 
 While it may be hard to see, I have highlighted all the single digits in blue.
 
-I am sure you can write code to use this kind of tree, but that would be time
-consuming and difficult. So I opted for another approach,
+I am sure you can write code to use this kind of tree-like structure, but that
+would be time consuming and difficult. So I opted for another approach,
 [Memoization](https://en.wikipedia.org/wiki/Memoization). 
 
-I essentially kept a cheat list of number and iteration to the count of
+I essentially kept a cheat sheet of number and iteration to the count of
 results. Then when I run my code on each single element in the given input I
 can reuse these results and severely reduce the computation.
+
+If coded recursively, a single call to `solve(stone=0, iterations=75)` will
+populate the cheat sheet with all the values in the above tree, and reuse them
+when needed. Then subsequent runs for other numbers help populate this cheat
+sheet more and more.
+
+## Day 12
+
+[Day 12](https://adventofcode.com/2024/day/12) returned to a set of 2
+dimensional map puzzles. This time they focus on extracting regions from a map,
+finding their perimeter and areas.
+
+Part A was very simple. In fact, I again used a flood-fill algorithm to find
+all the regions in the input. For perimeter I simply scanned each regions
+contents for tiles that were not fully surrounded by members of the same
+region. I could have done this when initially building the region to speed up
+this part, however it was conceptually easier to do this after building the
+regions.
+
+Part B was again a nice little increase in difficulty. Instead of calculating
+total perimeter, you needed to find the sides of the regions. This is still
+relatively simple since you have the regions from part A.
+
+## Overall
+
+This was the second post detailing 6 days of Advent of Code 2024. If you want
+to view my post on days 1 to 6 you can do so [here]({% post_url
+2024-12-06-advent-of-code-2024-summary-days-1-to-6 %}).
+
+Overall, the challenge has increased from the first 6 days, with at least one
+puzzle, Day 11, not being amenable to a brute force approach.
+
+I am enjoying these days so far, and I think this is the furthest I have got
+with Advent of Code in some years! I especially enjoyed Days 9 and 10, along
+with Part B of Day 11, which I puzzled over the course of a day.
+
+I'd love to hear how you are finding it, and also please share any links to
+interesting breakdowns of the problems by others. I'm already following [Josiah
+Winslow's posts](https://winslowjosiah.com/blog/category/advent-of-code/) with
+interest, and even simplified my solution to Day 12 Part B based on his
+example.
