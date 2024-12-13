@@ -25,8 +25,9 @@ The notes within this article could potentially be helpful for those getting
 stuck on questions, if used as hints. I will eventually publish my solutions as
 a repository.
 
-This post covers the first 6 days of Advent of Code 2024. For subsequent days
-see other posts.
+This post covers the first 6 days of Advent of Code 2024. For days 7 to 12 see
+the [next post]({% post_url
+2024-12-13-advent-of-code-2024-summary-of-days-7-to-12 %}).
 
 ## Day 1
 
@@ -233,3 +234,5 @@ I will release an additional post for the next 6 days. My goal is to release
 these a while after the last day mentioned on them in an effort to avoid
 spoiling the challenge for others.
 
+For days 7 to 12 see the [next post]({% post_url
+2024-12-13-advent-of-code-2024-summary-of-days-7-to-12 %}).
