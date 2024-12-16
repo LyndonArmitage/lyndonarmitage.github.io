@@ -1,0 +1,268 @@
+<html>
+  <head>
+    <title>Minimum Distance between a Point and a Line</title>
+  <style>
+body {
+
+}
+
+#content {
+	width: 810px;
+	margin: auto;
+	border: 1px solid black;
+	padding: 10px;
+	box-shadow: black 0px 0px 10px;
+	text-align: center;
+}
+
+canvas {
+	border: 1px solid black;
+}
+
+.point {
+	font-weight: bold;
+}
+  </style>
+  </head>
+
+  <body>
+
+  <div id="content">
+	<h1>Minimum Distance between a Point and a Line</h1>
+	<p class="note">See <a href="http://paulbourke.net/geometry/pointlineplane/" target="_blank">here</a> for a detailed explanation of this example and others.</p>
+	<div id="minDistContainer">
+		<h2>The Equations</h2>
+		<p>The equation:</p><pre class="equation">P = P1 + u (P2 - P1)</pre>
+		<p>Denotes how to find the point of where p3 would cross the line P1,P2.</p>
+		<p>u is worked out by the equation:</p>
+		<pre class="equation">u = ((x3 - x1)(x2 - x1) + (y3 - y1)(y2 - y1)) / (||P2 - P1||^2)</pre>
+		<p>This makes the two equations for the intersection:</p>
+		<pre class="equation">x = x1 + u (x2 - x1)
+y = y1 + u (y2 - y1)
+		</pre>
+		<p>This makes working out the distance between P3 and the line (P1,P2) equal the same as
+			working out the distance between P3 and (x,y).</p>
+		<p>Using the distance formula:</p>
+		<pre class="equation">distance = sqrt((x2 - x1)^2 + (y2 - y1)^2)</pre>
+		<p>Where x1 and y1 are the P3's x and y coordinates. And x2 and y2 are P's x and y coordinates.</p>
+		<h2>Worked Example</h2>
+		<canvas id="minDist" width="200" height="200">Your browser does not support the canvas tag.</canvas>
+		<form id="pointsForm">
+			<span class="point">Point 1:</span>
+			<span>x: </span><input id="p1x" type="range" min="0" max="200" step="1" value="10" onchange="drawMinDist();">
+			<span>y: </span><input id="p1y" type="range" min="0" max="200" step="1" value="10" onchange="drawMinDist();"> <br>
+			<span class="point">Point 2:</span>
+			<span>x: </span><input id="p2x" type="range" min="0" max="200" step="1" value="100" onchange="drawMinDist();">
+			<span>y: </span><input id="p2y" type="range" min="0" max="200" value="50" onchange="drawMinDist();"> <br>
+			<span class="point">Point 3:</span>
+			<span>x: </span><input id="p3x" type="range" min="0" max="200" step="1" value="45" onchange="drawMinDist();">
+			<span>y: </span><input id="p3y" type="range" min="0" max="200" step="1" value="100" onchange="drawMinDist();"> <br>
+		</form>
+		<p>Using the above equations and coordinates we get the following equations:</p>
+		<pre class="equation">u = ((<span class="p3x_u">45</span> - <span class="p1x_u">33</span>)(<span class="p2x_u">100</span> - <span class="p1x_u">33</span>) + (<span class="p3y_u">100</span> - <span class="p1y_u">10</span>)(<span class="p2y_u">50</span> - <span class="p1y_u">10</span>)) / (||P2 - P1||^2)</pre>
+		<pre class="equation">u = <span class="u_top">4404</span> / (||P2 - P1||^2)</pre>
+		<pre class="equation">u = <span class="u_top">4404</span> / <span class="u_bottom">6089.000000000001</span></pre>
+		<pre class="equation">u = <span class="u_value">0.7232714731483001</span></pre>
+		<p>This makes the position of P:</p>
+		<pre class="equation">x = <span class="p1x_u">33</span> + u (<span class="p2x_u">100</span> - <span class="p1x_u">33</span>)
+y = <span class="p1y_u">10</span> + u (<span class="p2y_u">50</span> - <span class="p1y_u">10</span>)
+
+x = <span class="x_value">81.4591887009361</span>
+y = <span class="y_value">38.930858925932</span>
+		</pre>
+		<p>Using these coordinates we can work out the distance between P3 and the line now:</p>
+		<pre class="equation">distance = sqrt((<span class="x_value">81.4591887009361</span> - <span class="p3x_u">45</span>)^2 + (<span class="y_value">38.930858925932</span> - <span class="p3y_u">100</span>)^2)</pre>
+		<pre class="equation">distance = <span class="distance_value">71.12462606056278</span></pre>
+	</div>
+	<p>Example JavaScript &amp; HTML by Lyndon Armitage<br>
+		Implementation of theory by Paul Bourke
+	</p>
+  </div>
+  <script>
+/**
+ * Created with IntelliJ IDEA.
+ * User: Lyndon
+ * Date: 06/05/13
+ * Time: 13:48
+ * To change this template use File | Settings | File Templates.
+ */
+
+var point = function (x, y) {
+	this.x = x;
+	this.y = y;
+	this.subtract = function(p) {
+		var newX = this.x - p.x;
+		var newY = this.y - p.y;
+		return new point(newX, newY);
+	}
+	this.add = function(p) {
+		var newX = this.x + p.x;
+		var newY = this.y + p.y;
+		return new point(newX, newY);
+	}
+	this.magnitude = function() {
+		return Math.sqrt(this.x * this.x + this.y * this.y);
+	}
+}
+
+function drawMinDist() {
+	var canvas = document.getElementById("minDist");
+	var width = parseInt(canvas.getAttribute("width"));
+	var height = parseInt(canvas.getAttribute("height"));
+	var ctx = canvas.getContext("2d");
+	ctx.clearRect(0, 0, width, height);
+
+	// draw point 1
+	ctx.beginPath();
+	var p1 = new point(parseFloat(document.getElementById("p1x").value), parseFloat(document.getElementById("p1y").value));
+//	ctx.rect(p1.x, p1.y, 1, 1);
+	ctx.arc(p1.x, p1.y, 2, 0, 2 * Math.PI, false);
+	ctx.fillStyle = "black";
+	ctx.fill();
+
+	// draw point 2
+	ctx.beginPath();
+	var p2 = new point(parseFloat(document.getElementById("p2x").value), parseFloat(document.getElementById("p2y").value));
+//	ctx.rect(p2.x, p2.y, 1, 1);
+	ctx.arc(p2.x, p2.y, 2, 0, 2 * Math.PI, false);
+	ctx.fillStyle = "red";
+	ctx.fill();
+
+	// draw point 3
+	ctx.beginPath();
+	var p3 = new point(parseFloat(document.getElementById("p3x").value), parseFloat(document.getElementById("p3y").value));
+//	ctx.rect(p3.x, p3.y, 1, 1);
+	ctx.arc(p3.x, p3.y, 2, 0, 2 * Math.PI, false);
+	ctx.fillStyle = "blue";
+	ctx.fill();
+
+	// draw line
+	ctx.beginPath();
+	ctx.moveTo(p1.x, p1.y);
+	ctx.lineTo(p2.x, p2.y);
+	ctx.strokeStyle = "black";
+	ctx.stroke();
+
+	// show workings
+	var elements = document.getElementsByClassName("p3x_u");
+	for(var i = 0; i < elements.length; i ++) {
+		var el = elements.item(i);
+		el.innerHTML = p3.x;
+	}
+
+	elements = document.getElementsByClassName("p1x_u");
+	for(var i = 0; i < elements.length; i ++) {
+		var el = elements.item(i);
+		el.innerHTML = p1.x;
+	}
+
+	elements = document.getElementsByClassName("p2x_u");
+	for(var i = 0; i < elements.length; i ++) {
+		var el = elements.item(i);
+		el.innerHTML = p2.x;
+	}
+
+	elements = document.getElementsByClassName("p3y_u");
+	for(var i = 0; i < elements.length; i ++) {
+		var el = elements.item(i);
+		el.innerHTML = p3.y;
+	}
+
+	elements = document.getElementsByClassName("p1y_u");
+	for(var i = 0; i < elements.length; i ++) {
+		var el = elements.item(i);
+		el.innerHTML = p1.y;
+	}
+
+	elements = document.getElementsByClassName("p2y_u");
+	for(var i = 0; i < elements.length; i ++) {
+		var el = elements.item(i);
+		el.innerHTML = p2.y;
+	}
+
+	// top of fraction of u
+	elements = document.getElementsByClassName("u_top");
+	for(var i = 0; i < elements.length; i ++) {
+		var el = elements.item(i);
+		el.innerHTML = ((p3.x - p1.x)*(p2.x - p1.x) + (p3.y - p1.y)*(p2.y - p1.y));
+	}
+
+	// bottom of fraction of u
+	elements = document.getElementsByClassName("u_bottom");
+	for(var i = 0; i < elements.length; i ++) {
+		var el = elements.item(i);
+		el.innerHTML = p2.subtract(p1).magnitude() * p2.subtract(p1).magnitude();
+	}
+
+	var u = ((p3.x - p1.x)*(p2.x - p1.x) + (p3.y - p1.y)*(p2.y - p1.y)) / ((p2.subtract(p1).magnitude()) * (p2.subtract(p1).magnitude()));
+	// u_value
+	elements = document.getElementsByClassName("u_value");
+	for(var i = 0; i < elements.length; i ++) {
+		var el = elements.item(i);
+		el.innerHTML = u;
+	}
+
+	// x_value
+	var x_value = p1.x + u * (p2.x - p1.x);
+	elements = document.getElementsByClassName("x_value");
+	for(var i = 0; i < elements.length; i ++) {
+		var el = elements.item(i);
+		el.innerHTML = x_value;
+	}
+
+	// y_value
+	var y_value = p1.y  + u * (p2.y - p1.y);
+	elements = document.getElementsByClassName("y_value");
+	for(var i = 0; i < elements.length; i ++) {
+		var el = elements.item(i);
+		el.innerHTML = y_value;
+	}
+
+	// draw point
+	ctx.beginPath();
+	var pt = new point(x_value, y_value);
+//	ctx.rect(p3.x, p3.y, 1, 1);
+	ctx.arc(pt.x, pt.y, 2, 0, 2 * Math.PI, false);
+	ctx.fillStyle = "green";
+	ctx.fill();
+
+	if(u >= 0 && u <= 1) {
+		// draw line
+		ctx.beginPath();
+		ctx.moveTo(p3.x, p3.y);
+		ctx.lineTo(pt.x, pt.y);
+		ctx.strokeStyle = "red";
+		ctx.stroke();
+	}
+
+	var distance_value = Math.sqrt( Math.pow(x_value - p3.x, 2) + Math.pow(y_value - p3.y, 2) );
+	// distance_value
+	var y_value = p1.y  + u * (p2.y - p1.y);
+	elements = document.getElementsByClassName("distance_value");
+	for(var i = 0; i < elements.length; i ++) {
+		var el = elements.item(i);
+		el.innerHTML = distance_value;
+	}
+}
+
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+
+addLoadEvent(function () {drawMinDist()});
+
+}
+  </script>
+  </body>
+
+</html>
