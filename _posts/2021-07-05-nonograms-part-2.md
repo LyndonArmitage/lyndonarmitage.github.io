@@ -606,4 +606,5 @@ ensuring that the grid sections match the given widths and heights as well as
 the hint sections. I also do not use the solution section at present.
 
 This has become quite a long and code heavy blog post again so I will continue
-in yet another entry on rendering and writing the Nonograms.
+in yet [another entry]({% post_url 2021-07-07-nonograms-part-3 %}) on rendering
+and writing the Nonograms.

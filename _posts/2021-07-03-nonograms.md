@@ -821,4 +821,5 @@ information.
 
 Now we have settled on a format we need to start thinking about how our program
 will parse it and represent it in memory. And since this blog post has gotten
-rather long and technical I will divide that into the next post in this series.
+rather long and technical I will divide that into the [next post]({% post_url
+2021-07-05-nonograms-part-2 %}) in this series.
