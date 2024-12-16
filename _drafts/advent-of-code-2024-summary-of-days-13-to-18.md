@@ -100,42 +100,52 @@ the frames that contain the Christmas Tree contain no overlaps. So I stopped my
 running search and wrote a short function to find those frames, and, as luck
 would have it, the first frame with 0 overlaps contained my Christmas Tree:
 
-```
-1111111111111111111111111111111
-1.............................1
-1.............................1
-1.............................1
-1.............................1
-1..............1..............1
-1.............111.............1
-1............11111............1
-1...........1111111...........1
-1..........111111111..........1
-1............11111............1
-1...........1111111...........1
-1..........111111111..........1
-1.........11111111111.........1
-1........1111111111111........1
-1..........111111111..........1
-1.........11111111111.........1
-1........1111111111111........1
-1.......111111111111111.......1
-1......11111111111111111......1
-1........1111111111111........1
-1.......111111111111111.......1
-1......11111111111111111......1
-1.....1111111111111111111.....1
-1....111111111111111111111....1
-1.............111.............1
-1.............111.............1
-1.............111.............1
-1.............................1
-1.............................1
-1.............................1
-1.............................1
-1111111111111111111111111111111
-```
+<img
+  title='Day 14 Part B Tree'
+  alt='Day 14 Part B Tree'
+  src='{{ "assets/aoc2024/tree.png" | absolute_url }}'
+  class='blog-image'
+/>
+
+Now, I am not certain this will hold true for all inputs, so doing a different
+kind of search like my original idea might be a better way to find this tree.
 
 ## Day 15
 
-[Day 15](https://adventofcode.com/2024/day/15)
+[Day 15](https://adventofcode.com/2024/day/15) was Sundays challenge.
+Unfortunately, given it is Christmas time, I didn't get a chance to look at the
+challenge until Monday the 16th.
+
+Both parts involve simulating a robot pushing boxes around a warehouse. The
+input consisted of a map of the warehouse and then the moves the robot makes.
+
+These were fun puzzles to solve. Part A was very simple, as it asks you to run
+simulate the movements then sum up the "GPS" positions of each box.
+
+My input data was 500x500 tiles large. The overall movement looked like the following video.
+
+<video 
+  class='blog-image' 
+  autoplay 
+  muted 
+  controls 
+  loop 
+  disablepictureinpicture
+  poster='{{ "assets/aoc2024/day15-0.png" | absolute_url }}'
+>
+  <source src='{{ "assets/aoc2024/day15-parta.mp4" | absolute_url }}' type='video/mp4'>
+Your browser does not support the video tag so below is a still image:
+<img
+  title='Day 15 input'
+  alt='Day 15 input'
+  src='{{ "assets/aoc2024/day15-0.png" | absolute_url }}'
+  class='blog-image'
+/>
+</video>
+
+Black tiles are the walls, red tiles are the boxes and the blue tile is the
+robot. The input had a lot of movements, you can see by the over 5 minutes run
+time.
+
+Part B was similar, except this time the map and boxes have expanded to be
+twice as wide.
