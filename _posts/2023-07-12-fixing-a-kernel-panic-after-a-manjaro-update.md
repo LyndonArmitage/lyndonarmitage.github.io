@@ -75,7 +75,7 @@ manjaro-chroot -a
 
 Unfortunately, it was not this simple for me because my hard drive is LUKS
 encrypted. With much fustration I found [this
-post](https://forum.manjaro.org/t/solved-can-not-mount-partition-to-manjaro-chroot-from-live-usb/46119/2_
+post](https://forum.manjaro.org/t/solved-can-not-mount-partition-to-manjaro-chroot-from-live-usb/46119/2)
 on the same Manjaro Forum. From it and consulting the man pages for the command
 `cryptsetup`, I found that in order to mount my file system I needed to run the
 following:
