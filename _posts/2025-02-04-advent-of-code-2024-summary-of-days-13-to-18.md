@@ -7,8 +7,8 @@ tags:
 - advent of code
 - python
 - 2024
+date: 2025-02-04 17:23 +0000
 ---
-
 This page serves as the third and final part of a summary of my experience with
 [Advent of Code 2024](https://adventofcode.com/).  
 As is normal with December, work and personal commitments got in the way of
