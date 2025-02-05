@@ -24,7 +24,7 @@ adoption and use of the DeepSeek model.
 
 The
 [post](https://www.linkedin.com/posts/roch-mamenas-4714a979_deepseek-as-a-trojan-horse-threat-deepseek-activity-7288965743507894272-xvNq?utm_source=share&utm_medium=member_desktop)
-looks as followed:
+looks as follows:
 
 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7288965741721059329" height="1516" width="504" frameborder="0" allowfullscreen="" title="Embedded post">
 <noscript>
@@ -87,7 +87,7 @@ looks as followed:
 As you can see, it's quite an alarming and inflammatory post, espousing the
 threat that DeepSeek poses to businesses everywhere.
 
-Although, when you dig into it, it's not actually saying much. In fact if I
+When you dig into it, it's not actually saying much. In fact if I
 ask ChatGPT4o to:
 
 > Reduce the following post down to the points it actually makes, without
@@ -124,16 +124,17 @@ business](https://www.linkedin.com/company/employplan/) that provides a
 "Resource Management Platform", for getting people with the right skills
 working on the right project and plugging gaps in skills with training. I've no
 idea how successful it is at this, but given Mr Mamenas has run it as CTO and a
-founder for 5 years I expect it does alright. I do take a little offence to
+founder for 5 years, I expect it does alright. I do take a little offence to
 calling people "resources" but that's pretty standard and less silly than
 saying "bums in seats".
 
 With their business being connecting people with businesses, there may be some
-biases around overpowered AI taking jobs away from the ~~people~~ resources
+biases regarding overpowered AI taking jobs away from the ~~people~~ resources
 EmployPlan wants to connect you with. After all, why hire people when you can
 get a machine to do it? I am being facetious here, as I am a strong believer
 that LLMs can't replace actual skilled developers, but it could be a concern of
-theirs, especially if LLMs replace a lot of Junior Developers.
+theirs, especially if LLMs replace a lot of Junior Developers (again something
+I am dubious of).
 
 There may also be concerns around businesses (even one-man shops) using cheaper
 LLMs themselves to screen candidates rather than use a product like EmployPlan.
@@ -158,10 +159,10 @@ may have some vested interests in the AI space. Although, it could equally mean
 he is invested in the space so has some righteous concerns around DeepSeek.
 
 From his job history, Mamenas has worked in IT for quite some time, going from
-the service desk to bounding between Software Engineer and Analyst for about 6
-years before becoming a Chief Architect for 2 and half years before focussing
-on startups. Point is, at a glance he doesn't appear to be a poseur with a
-cursory understanding of technology.
+the service desk to bouncing between Software Engineer and Analyst for about 6
+years before becoming a Chief Architect for 2 and half years and then finally
+focusing on startups (including EmployPlan) for 7 years. Point is, at a glance
+he doesn't appear to be a poseur with a cursory understanding of technology.
 
 The post could also be largely inflammatory to motivate discussion, raise his
 profile and drive some traffic towards his product. I think the younger
@@ -193,7 +194,7 @@ be said of any software-as-a-service platform. Putting all your eggs in one
 basket is inherently risky. I also like the "80%" stat that comes seemingly out
 of nowhere. As we know 73.6% of all statistics are made up.
 
-The fact DeepSeek have Open-Sourced their model means that, if you are
+The fact DeepSeek have open-sourced their model means that, if you are
 suspicious of them, you can run it yourself on your own hardware. Which
 eliminates the risk of "backdoors" or other leaks to the Chinese state.
 Obviously this can be cost prohibitive for smaller businesses.
@@ -204,11 +205,11 @@ speaking ill of the Chinese Government or could have omitted training data
 related to June 4th 1989, in fact a commenter on the post points out an
 example of DeepSeek's [biased
 answers](https://www.linkedin.com/feed/update/urn:li:activity:7288965743507894272?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7288965743507894272%2C7290117409930162176%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287290117409930162176%2Curn%3Ali%3Aactivity%3A7288965743507894272%29).
-Equally, models like OpenAI have developed their own biases based on training
+Similarly, models like OpenAI have developed their own biases based on training
 material, whether by design or accident.
 
 The point labeled "Trojan Horse Effect" is an interesting one, but it applies
-equally to all software adoption. Microsoft were very good at offering their
+equally to all software adoption. Microsoft was very good at offering its
 products cheaply to schools and universities, which ultimately led to their
 wide adoption due to familiarity. Now they're one of the largest movers in the
 desktop space, and have effectively captured a large amount of the market. I do
@@ -222,10 +223,10 @@ to be better than their predecessors in certain dimensions. As an example, I
 noticed a big difference between the OpenAI models as they advanced, especially
 when it came to understanding source code, and other models are supposed to be
 even better than OpenAI. One of the dimensions that is beneficial for all LLMs
-to optimise for is obviously running costs, especially for service based
+to optimise for is obviously running costs, especially for service-based
 businesses.
 
-The assumption that low-cost = malicious intent, isn't without merit though,
+The assumption that low cost implies malicious intent isn't without merit,
 depending on what you consider "malicious". As I mentioned previously,
 Microsoft used a similar tactic to penetrate markets and drive widespread
 adoption. Large businesses operate at economies of scale that allow them to
@@ -234,18 +235,18 @@ undercut established businesses to bootstrap themselves to success, or disrupt
 an industry with novel approaches, or downright ignoring established
 legislation like ride-sharing apps did with taxi companies.
 
-We also mustn't forget the effect from "standing on the shoulders of giants",
+We also mustn't forget the effect of "standing on the shoulders of giants",
 advancements happen thanks to the work done previously. Normally, this is a
 slow incremental process, but occasionally we see jumps in human understanding
 and knowledge.
 
 Sometimes it is wiser to use the more expensive option or to use a homegrown
-alternative to a foreign business. As the debacles related to shortages of
-personal protective equipment and drugs taught us during the pandemic. Global
-supply-chains are susceptible to disruption and that disruption can be even
-easier in the digital space.
+alternative to a foreign business. The debacles related to shortages of
+personal protective equipment and drugs taught us during the pandemic that
+global supply-chains are susceptible to disruption and that disruption can be
+even easier in the digital space.
 
-Out of interest I asked DeekSeek's uncle, ChatGPT4o, to give me some potential
+Out of curiosity I asked DeekSeek's uncle, ChatGPT4o, to give me some potential
 criticisms of this post:
 
 > 1. **Lack of Evidence**: The post raises concerns about DeepSeek’s security
@@ -281,13 +282,13 @@ criticisms of this post:
 
 Admittedly, it gives a bit of milquetoast answer, not uncommon with LLMs.
 
-ChatGPT did raise an excellent point on ignoring usage contexts. Just because
-something becomes widespread doesn't mean it allows total domination, it's all
-context dependent. Obviously if you plug an LLM into your infrastructure, give
-it free rein to access all your data and systems, you're asking for trouble.
-But with controls in place it's a much smaller issue. If you never supply it
-with sensitive information then even if it leaks that information it's a
-non-issue.
+ChatGPT raised an excellent point about the importance of considering usage
+contexts. Just because something becomes widespread doesn't mean it allows
+total domination, it's all context dependent. Obviously if you plug an LLM into
+your infrastructure, give it free rein to access all your data and systems,
+you're asking for trouble. But with controls in place it's a much smaller
+issue. If you never supply it with sensitive information then even if it leaks
+that information it's a non-issue.
 
 With all that said, I agree with the conclusion about auditing your systems,
 but I'd make a modification to it:
