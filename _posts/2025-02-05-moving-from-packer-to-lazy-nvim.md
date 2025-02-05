@@ -6,8 +6,8 @@ tags:
 - vim
 - terminal
 - programming
+date: 2025-02-05 10:37 +0000
 ---
-
 [Previously]({% post_url 2023-11-28-refreshing-my-neovim-installation %}) I
 mentioned that I use NeoVim as my editor of choice and updated to using
 [Packer](https://github.com/folke/lazy.nvim) as a plugin manager. At the end of
