@@ -1,7 +1,7 @@
 ---
 layout: post
 title: DeepSeek Scaremongering
-image: /assets/deepseek/trojan.webp
+image: "/assets/deepseek/trojan.webp"
 tags:
 - ai
 - llm
@@ -10,8 +10,8 @@ tags:
 - chatgpt
 - open source
 - employplan
+date: 2025-02-06 11:29 +0000
 ---
-
 Recently I stumbled upon a post about the Chinese developed Large Language
 Model (LLM) [DeepSeek](https://www.deepseek.com/) on LinkedIn that I wanted to
 address. Specifically the post was scaremongering about security concerns with
