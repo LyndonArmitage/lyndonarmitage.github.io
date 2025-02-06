@@ -1,6 +1,7 @@
 ---
 layout: post
 title: DeepSeek Scaremongering
+image: /assets/deepseek/trojan.webp
 tags:
 - ai
 - llm
@@ -11,16 +12,10 @@ tags:
 - employplan
 ---
 
-Recently I stumbled upon a post about the Chinese backed Large Language Model
-[DeepSeek](https://www.deepseek.com/) on LinkedIn that I wanted to address.
-Specifically the post was scaremongering about security concerns with wide
-adoption and use of the DeepSeek model.
-
-<img
-  alt='DeepSeek Logo'
-  src='{{ "assets/deepseek/DeepSeek_logo.svg" | absolute_url }}'
-  class='blog-image'
-/>
+Recently I stumbled upon a post about the Chinese developed Large Language
+Model (LLM) [DeepSeek](https://www.deepseek.com/) on LinkedIn that I wanted to
+address. Specifically the post was scaremongering about security concerns with
+wide adoption and use of the DeepSeek model.
 
 The
 [post](https://www.linkedin.com/posts/roch-mamenas-4714a979_deepseek-as-a-trojan-horse-threat-deepseek-activity-7288965743507894272-xvNq?utm_source=share&utm_medium=member_desktop)
@@ -87,8 +82,8 @@ looks as follows:
 As you can see, it's quite an alarming and inflammatory post, espousing the
 threat that DeepSeek poses to businesses everywhere.
 
-When you dig into it, it's not actually saying much. In fact if I
-ask ChatGPT4o to:
+When you dig into it, it's not actually saying much. In fact if I ask
+[ChatGPT4o](https://chatgpt.com/) to:
 
 > Reduce the following post down to the points it actually makes, without
 > repetition or commenting on the actual points being made:
@@ -177,8 +172,15 @@ into the content of the actual post.
 First off, there is a lack of evidence for any of the points Mamenas puts
 forward.
 
+<img
+  title='DeepSeek Logo'
+  alt='DeepSeek Logo'
+  src='{{ "assets/deepseek/DeepSeek_logo.svg" | absolute_url }}'
+  class='blog-image'
+/>
+
 So far DeepSeek doesn't appear to have any backdoors in it's code, given that
-it is [Open-Source](https://github.com/deepseek-ai) we can verify this and fix
+it is [open-source](https://github.com/deepseek-ai) we can verify this and fix
 any issues when they appear.
 
 Obviously, we **cannot** guarantee that their live service application is
@@ -187,26 +189,44 @@ exist, and any SaSS product in general. This is actually one of the ongoing
 issues related to the Tik-Tok ban in the US, a proposed solution being to sell
 the American arm of the business to a US based company to avoid potential
 issues with foreign powers getting their hands on sensitive data (of course
-that wouldn't prevent US spying).
+that wouldn't prevent US spying). There are other solutions/workaround to such
+risks, including enforcing no data egress from specific regions or data
+centres.
 
 I agree with the point that "Wide Adoption = Global Risk", but this point can
 be said of any software-as-a-service platform. Putting all your eggs in one
 basket is inherently risky. I also like the "80%" stat that comes seemingly out
 of nowhere. As we know 73.6% of all statistics are made up.
 
+<img
+  title='Even AI art supports open-source'
+  alt='An abstract image contrasting open-source transparency with corporate secrecy'
+  src='{{ "assets/deepseek/open-source.webp" | absolute_url }}'
+  class='blog-image'
+/>
+
 The fact DeepSeek have open-sourced their model means that, if you are
-suspicious of them, you can run it yourself on your own hardware. Which
-eliminates the risk of "backdoors" or other leaks to the Chinese state.
-Obviously this can be cost prohibitive for smaller businesses.
+suspicious of them, you can run it yourself on your own hardware with all the
+accompanying security in place, including
+[air-gapping](https://en.wikipedia.org/wiki/Air_gap_(networking)) it if
+desired. Which eliminates the risk of "backdoors" or other leaks to the Chinese
+state. Obviously this can be cost prohibitive for smaller businesses.
 
 There is risk when it comes to built-in biases within the model. Again, these
 exist in all other commercial models. For instance, DeepSeek might not like
 speaking ill of the Chinese Government or could have omitted training data
-related to June 4th 1989, in fact a commenter on the post points out an
-example of DeepSeek's [biased
+related to June 4th 1989, in fact a commenter on the post points out an example
+of DeepSeek's [biased
 answers](https://www.linkedin.com/feed/update/urn:li:activity:7288965743507894272?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7288965743507894272%2C7290117409930162176%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287290117409930162176%2Curn%3Ali%3Aactivity%3A7288965743507894272%29).
-Similarly, models like OpenAI have developed their own biases based on training
-material, whether by design or accident.
+Similarly, models like [OpenAI](https://openai.com/) have developed their own
+biases based on training material, whether by design or accident.
+
+<img
+  title='This image of a Trojan Horse is brought to you by an AI!'
+  alt='A cyberpunk-themed Trojan horse made of digital code looming over a futuristic city.'
+  src='{{ "assets/deepseek/trojan.webp" | absolute_url }}'
+  class='blog-image'
+/>
 
 The point labeled "Trojan Horse Effect" is an interesting one, but it applies
 equally to all software adoption. Microsoft was very good at offering its
