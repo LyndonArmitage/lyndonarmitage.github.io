@@ -78,6 +78,15 @@ this simple process, and while it means you write twice, once locally and once
 to S3, it's by far the simplest way of avoiding keeping a large object in
 memory.
 
+<img
+  title='Each individual streamed chunk of data from the GetObject call can be
+  dropped from memory quickly.'
+  alt='Diagram visualising doing a streaming GetObject and a local storage
+  PutObject'
+  src='{{ "assets/efficient-s3/get-streamed-put-temp.webp" | absolute_url }}'
+  class='blog-image'
+/>
+
 ## Multipart Uploads
 
 While using `PutObject` with a temporary file is very easy, you might want to
@@ -121,11 +130,27 @@ Of course, things can go wrong with multipart uploads so you can use
 to abort the upload, but be sure to read the caveats associate with this in
 regards to ongoing uploads.
 
+<img
+  title='Multipart uploads are very simple.'
+  alt='Diagram visualising doing a multipart upload'
+  src='{{ "assets/efficient-s3/multipart-upload-process.webp" | absolute_url }}'
+  class='blog-image'
+/>
+
 If you want to use as little memory as possible in your program and know that
 your uploaded file is going to be less than 48.82 GiB (i.e. 50,000 MiB), you
 should upload parts of the minimum 5 MiB size. Even if what you are uploading
 is less 100 MiB this will allow your program to only store roughly 5 MiB of
 data to upload at any one time.
+
+<img
+  title='You can minimise both temporary storage and main memory when doing
+  small multipart uploads.'
+  alt='Diagram visualising doing a multipart upload in terms of minimal memory
+  use when using 5 MiB part sizes.'
+  src='{{ "assets/efficient-s3/multipart-upload-memory.webp" | absolute_url }}'
+  class='blog-image'
+/>
 
 ## Combining it all together
 
@@ -180,6 +205,13 @@ SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html) that
 can alleviate this issue, unfortunately, SnapStart doesn't work with ephemeral
 storage sizes above 512 MiB.
 
+<img
+  title="Preferring compiled languages for performance efficiency doesn't mean
+  the non-preferred languages are bad."
+  src='{{ "assets/efficient-s3/language-considerations.webp" | absolute_url }}'
+  class='blog-image'
+/>
+
 For the most efficient Lambdas you should be looking into using compiled
 languages like
 [Go](https://docs.aws.amazon.com/lambda/latest/dg/lambda-golang.html) and
@@ -192,14 +224,15 @@ directly on the hardware. The binaries produced by these languages will often
 be much smaller in size and memory footprint than the most optimised VM based
 language. In the case of Rust, no garbage collection is done so memory is freed
 as soon as possible, but even with garbage collection in Go you'll still see
-much faster Lambdas than the likes of C# and Java.
+much faster Lambdas than the likes of C# and Java thanks to the compiled nature
+of the code.
 
 I would caution against rewriting all your Lambdas into a compiled language
-though, especially into Rust. As the time saved in runtime may well be
-outstretched in terms of learning and debugging an unfamiliar language. Using
+though, especially into Rust. As the time saved in runtime may not be worth it
+in terms of learning, debugging and supporting an unfamiliar language. Using
 SnapStart and following the [best
 practices](https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html)
-will get you a long way.
+will get you a long way even in one of the less efficient languages.
 
 #### Lambda Running Time
 
@@ -207,14 +240,15 @@ When writing Lambdas you need to be aware of how long your individual
 invocations will run for as you only have 15 minutes per invocation. This post
 is primarily about reading and writing from S3 so I won't go into too much
 detail about working within this restriction, but the main way to do this is to
-keep your Lambdas lean. Make sure they are doing as small an action as possible
-whilst remaining idempotent and atomic. When it comes to S3, that tends to mean
-your Lambda should only be reading a single S3 object and/or writing a single
-S3 object. If you find your Lambda needs to read and write many S3 objects you
-may want to split it. However, you should think of this in terms similar to
-[Big O notation](https://www.bigocheatsheet.com/). Specifically, your Lambda
-code should generally be `O(1)` if possible or `O(n)` if not. Reading and/or
-writing single S3 Objects being the ideal.
+keep your Lambdas lean. Make sure they are doing as small an action as they can
+reasonably do whilst remaining idempotent and atomic. When it comes to S3, that
+tends to mean your Lambda should only be reading a single S3 object and/or
+writing a single S3 object. If you find your Lambda needs to read and write
+many S3 objects you may want to split it. You should think of this in terms
+similar to [Big O notation](https://www.bigocheatsheet.com/). Specifically,
+your Lambda code should generally be `O(1)` if possible or `O(n)` if not in
+terms of objects read and written. Reading and/or writing single S3 Objects
+is the ideal.
 
 <img
   title='Various Big Os'
@@ -222,3 +256,6 @@ writing single S3 Objects being the ideal.
   src='{{ "assets/efficient-s3/big-o.svg" | absolute_url }}'
   class='blog-image'
 />
+
+The above diagram is a reminder that once you move beyond `O(n)` small
+increases can drastically increase computation. 
