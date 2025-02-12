@@ -18,8 +18,8 @@ tags:
 - cost-optimization
 - streaming
 - multipart-upload
+date: 2025-02-12 15:52 +0000
 ---
-
 Back in January 2024 I wrote a post about [efficiently writing to S3 in
 Python]({% post_url 2024-01-31-efficiently-writing-to-s3-in-python %}) that has
 become relatively popular on this blog (thanks to [GoatCounter]({% post_url
