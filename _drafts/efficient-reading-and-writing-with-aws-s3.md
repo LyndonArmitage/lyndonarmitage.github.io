@@ -258,18 +258,22 @@ will get you a long way even in one of the less efficient languages.
 #### Lambda Running Time
 
 When writing Lambdas you need to be aware of how long your individual
-invocations will run for as you only have 15 minutes per invocation. This post
-is primarily about reading and writing from S3 so I won't go into too much
-detail about working within this restriction, but the main way to do this is to
-keep your Lambdas lean. Make sure they are doing as small an action as they can
-reasonably do whilst remaining idempotent and atomic. When it comes to S3, that
-tends to mean your Lambda should only be reading a single S3 object and/or
-writing a single S3 object. If you find your Lambda needs to read and write
-many S3 objects you may want to split it. You should think of this in terms
-similar to [Big O notation](https://www.bigocheatsheet.com/). Specifically,
-your Lambda code should generally be `O(1)` if possible or `O(n)` if not in
-terms of objects read and written. Reading and/or writing single S3 Objects
-is the ideal.
+invocations will run for since AWS limits each invocation to a maximum of 15
+minutes. This post is primarily about reading and writing from S3 so I won't go
+into too much detail about working within this restriction, but the main way to
+do this is to keep your Lambdas lean. Make sure they are performing the
+smallest possible action while remaining idempotent and atomic. When it
+comes to S3, that tends to mean your Lambda should ideally be reading a single
+S3 object and/or writing a single S3 object. If you find your Lambda needs
+to read and write many S3 objects you may want to split it.
+
+#### Big-O
+
+You should think of this in terms similar to [Big O
+notation](https://www.bigocheatsheet.com/) when it comes to the number of S3
+objects being read and written. Specifically, your Lambda code should generally
+be `O(1)` if possible or `O(n)` if not. Reading and/or writing single S3
+objects is the ideal.
 
 <img
   title='Various Big Os'
