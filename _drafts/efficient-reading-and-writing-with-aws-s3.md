@@ -322,7 +322,7 @@ run, as code often only needs to reach a 'good enough' state rather than
 perfection.
 
 Ultimately, efficiently reading and writing to S3 requires understanding how
-your program interacts with data—its access patterns, memory usage, and
+your program interacts with data- its access patterns, memory usage, and
 constraints. By modeling these behaviors and applying the right techniques, you
 can significantly improve performance and resource efficiency. Experiment with
 different configurations, benchmark your approach, and refine your
