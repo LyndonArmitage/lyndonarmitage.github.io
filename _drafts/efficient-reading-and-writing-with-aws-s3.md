@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Efficient reading and writing with AWS S3
+image: "/assets/efficient-s3/get-put-object.webp"
 tags:
 - data
 - programming
@@ -11,13 +12,16 @@ tags:
 - efficiency
 ---
 
-Way back in January 2024 I wrote a post about [efficently writing to S3 in
+Back in January 2024 I wrote a post about [efficiently writing to S3 in
 Python]({% post_url 2024-01-31-efficiently-writing-to-s3-in-python %}) that has
 become relatively popular on this blog (thanks to [GoatCounter]({% post_url
 2024-12-10-adding-privacy-friendly-tracking-to-my-blog %}) for revealing this.)
-So I thought I'd take a broader look the most efficient ways to read and write
-from S3 with special attention paid to AWS Lambdas and resource constrained
-containers in general.
+So I thought I'd take a broader look at the most efficient ways to read and
+write from S3 with special attention paid to AWS Lambdas and resource
+constrained containers in general.
+
+I won't be giving detailed code examples in this post as I want to focus on
+general best practices for reading and writing data in S3 efficiently. 
 
 ## GetObject and PutObject
 
@@ -32,15 +36,22 @@ and
   class='blog-image'
 />
 
-Both are perfectly adequate in a lot of scenarios. Whatever programming
-language you are using will likely have language bindings for both of these API
-end points, be it Python, Java, Rust or Scala.
+Both are perfectly adequate in most scenarios. Whatever programming language
+you are using will likely have [language
+bindings](https://aws.amazon.com/developer/tools/) for both of these API end
+points, be it
+[Python](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html),
+[Java](https://sdk.amazonaws.com/java/api/latest/),
+[Rust](https://crates.io/crates/aws-sdk-s3),
+[Go](https://github.com/aws/aws-sdk-go-v2) or
+[JavaScript](https://github.com/aws/aws-sdk-js-v3).
 
 `GetObject` will return the whole object to you via a HTTP request, with the
 body of the response being the contents of the object. Likewise `PutObject`
 expects the body of your request to be the object you'd like to upload.
 
-There's performance considerations you can make with just these two operations.
+There are performance considerations you can make with just these two
+operations.
 
 For starters, if you can, you should stream the contents of `GetObject` through
 your program. As an example, in Java based languages the API provides you with
@@ -49,8 +60,10 @@ a kind of
 which means you can use the full range of classes and wrappers for
 `InputStream` instances, including an
 [InputStreamReader](https://docs.oracle.com/javase/8/docs/api/java/io/InputStreamReader.html).
-So if what you're reading is some kind of textual format you don't need to load
-it all into memory all at once.
+Similarly, in Python the `Body` of your
+[get_object](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/get_object.html)
+response is streamable. So if what you're reading is some kind of textual
+format you don't need to load it all into memory all at once.
 
 A good example of this is if you are reading [line-separated
 JSON](https://jsonlines.org/), that is each line in the object represents a
@@ -92,7 +105,7 @@ memory.
 While using `PutObject` with a temporary file is very easy, you might want to
 go a step further if you're short on temporary storage, don't want to touch it
 all, or know you'll be uploading very large objects that you don't want to
-incur the cost of writing twice with. For this you can use [Multipart
+incur the cost of writing the data twice. For this you can use [Multipart
 upload](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html).
 
 Multipart upload lets you upload a single S3 Object in many smaller parts and
@@ -106,17 +119,19 @@ networks, you only need to retry the parts that fail to upload.
 A downside of multipart uploads is that you cannot add any custom metadata to
 an object being uploaded after the upload has begun. This means that, for
 example, if you are generating a count of results based on some computation
-that is ongoing, you cannot tag the S3 object with metadata when it completes.
+that is ongoing, you cannot tag the S3 object with that metadata when it
+completes.
 
 Multipart uploads can have a maximum of 10,000 parts, with each part having a
 maximum size of 5GiB. Up to date limits can be read
-[here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/qfacts.html).
+[here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/qfacts.html), but
+as of time of writing a single S3 object can be up to 5 TiB in size.
 
-Aside from the last part, each part must be at least 5 MiB in size. This means
-that your program needs at least 5 MiB of free memory to properly make use of
-multipart uploads. If your resources are so constrained that you don't have 5
-MiB to spare, you should just use `PutObject` and use your temporary storage
-for large file uploads.
+Aside from the last part (which can also be the only part), each part must be
+at least 5 MiB in size. This means that your program needs at least 5 MiB of
+free memory to properly make use of multipart uploads. If your resources are so
+constrained that you don't have 5 MiB to spare, you should opt for `PutObject`
+and use your temporary storage for large file uploads.
 
 To perform multipart uploads, you first need to call
 [CreateMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html)
@@ -152,6 +167,12 @@ data to upload at any one time.
   class='blog-image'
 />
 
+Something else you can do with multipart uploads is use existing S3 objects, or
+even parts of them, as part of your upload by using
+[UploadPartCopy](https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPartCopy.html).
+This can be useful if you are combining objects, sampling them or extracting
+the headers out of them.
+
 ## Combining it all together
 
 For a memory efficient program that both reads and writes to S3 you probably
@@ -176,11 +197,11 @@ This will work especially well if your Lambdas only need under 512 MiB of
 ephemeral storage space as that is provided at no cost by AWS.
 
 If you really want to reduce the memory consumption of your Lambda, and what
-your implementing can be done in a streaming fashion, you should use a
+you're implementing can be done in a streaming fashion, you should use a
 multipart upload approach, even if the S3 objects will still be relatively
 small (at least 15 MiB big). This allows you to not incur any extra costs for
-ephemeral storage, provided you can spare a few more MiB of memory for each
-Lambda.
+ephemeral storage, provided you can spare at least 5 more MiB of memory for
+each Lambda.
 
 #### Larger S3 Objects
 
@@ -228,7 +249,7 @@ much faster Lambdas than the likes of C# and Java thanks to the compiled nature
 of the code.
 
 I would caution against rewriting all your Lambdas into a compiled language
-though, especially into Rust. As the time saved in runtime may not be worth it
+though, especially into Rust. As the time and memory saved may not be worth it
 in terms of learning, debugging and supporting an unfamiliar language. Using
 SnapStart and following the [best
 practices](https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html)
@@ -258,4 +279,4 @@ is the ideal.
 />
 
 The above diagram is a reminder that once you move beyond `O(n)` small
-increases can drastically increase computation. 
+increases can drastically increase computation.
