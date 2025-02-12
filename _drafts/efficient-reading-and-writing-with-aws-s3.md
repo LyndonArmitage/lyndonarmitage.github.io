@@ -284,3 +284,38 @@ objects is the ideal.
 
 The above diagram is a reminder that once you move beyond `O(n)` small
 increases can drastically increase computation.
+
+## Conclusion
+
+To summarise, the most efficient way to read and write to S3 heavily depends on
+the specific constraints of the container of your program such as main memory,
+local storage, processing power, and time limits.
+
+You should:
+
+- Prefer streaming reads when possible, so you aren't holding large objects in
+  memory
+- Offload to temporary storage for writes to avoid holding data that you are
+  done processing in memory
+- Leverage multipart uploads for large uploads and to avoid holding onto data
+  in both main memory and local storage
+- Keep your lambdas lean and their operations efficient
+- Optimise your choice of language for writing Lambdas, if possible, or use
+  best practices and features like SnapStart to reduce the impact of your
+  language runtime.
+
+While trying to follow these steps, you should be pragmatic. The most optimal
+decision isn't always the most memory- or operation-efficient; often, it
+depends on your expertise and non-functional requirements.
+
+You should also benchmark the approaches you take to see what is actually the
+bottleneck in terms of efficiency, and by how much. Collecting such metrics
+will save you time in the long run, as code often only needs to reach a 'good
+enough' state rather than perfection.
+
+Ultimately, efficiently reading and writing to S3 requires understanding how
+your program interacts with data—its access patterns, memory usage, and
+constraints. By modeling these behaviors and applying the right techniques, you
+can significantly improve performance and resource efficiency. Experiment with
+different configurations, benchmark your approach, and refine your
+implementation to find what works best for your use case.
