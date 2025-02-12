@@ -17,8 +17,8 @@ Python]({% post_url 2024-01-31-efficiently-writing-to-s3-in-python %}) that has
 become relatively popular on this blog (thanks to [GoatCounter]({% post_url
 2024-12-10-adding-privacy-friendly-tracking-to-my-blog %}) for revealing this.)
 So I thought I'd take a broader look at the most efficient ways to read and
-write from S3 with special attention paid to AWS Lambdas and resource
-constrained containers in general.
+write from S3 with special attention paid to AWS Lambdas and
+resource-constrained containers in general.
 
 I won't be giving detailed code examples in this post as I want to focus on
 general best practices for reading and writing data in S3 efficiently. 
@@ -38,8 +38,8 @@ and
 
 Both are perfectly adequate in most scenarios. Whatever programming language
 you are using will likely have [language
-bindings](https://aws.amazon.com/developer/tools/) for both of these API end
-points, be it
+bindings](https://aws.amazon.com/developer/tools/) for both of these API
+endpoints, be it
 [Python](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html),
 [Java](https://sdk.amazonaws.com/java/api/latest/),
 [Rust](https://crates.io/crates/aws-sdk-s3),
@@ -208,7 +208,7 @@ each Lambda.
 You should also use the above approach when dealing with larger S3 objects, but
 can tune your part sizes above the 5 MiB minimum depending on how much larger
 the objects are, how well your lambdas perform and how much memory you are
-willing to give each Lambda instance. A good tool for turning the latter is
+willing to give each Lambda instance. A good tool for tuning the latter is
 [aws-lambda-power-tuning](https://github.com/alexcasalboni/aws-lambda-power-tuning),
 and you could go a step further and graph similar tests for tuning the part
 sizes.
@@ -219,9 +219,9 @@ Lastly, if you want to squeeze the most performance out of your Lambdas you
 should really consider what programming language your code is written in.
 Unfortunately, languages like Python, Java and C# have much higher overheads
 thanks to their runtime environments. A large issue with these languages is
-Cold Starts, that is when a Lambda instance is first created. This is because a
-Cold Start requires the runtime environment to be setup. Luckily, AWS have
-something called [Lambda
+Cold Starts-when a Lambda instance is first created. This is because a Cold
+Start requires the runtime environment to be setup. Luckily, AWS have something
+called [Lambda
 SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html) that
 can alleviate this issue, unfortunately, SnapStart doesn't work with ephemeral
 storage sizes above 512 MiB.
@@ -308,10 +308,10 @@ While trying to follow these steps, you should be pragmatic. The most optimal
 decision isn't always the most memory- or operation-efficient; often, it
 depends on your expertise and non-functional requirements.
 
-You should also benchmark the approaches you take to see what is actually the
-bottleneck in terms of efficiency, and by how much. Collecting such metrics
-will save you time in the long run, as code often only needs to reach a 'good
-enough' state rather than perfection.
+You should also benchmark your approaches to identify bottlenecks and their
+impact on efficiency. Collecting such metrics will save you time in the long
+run, as code often only needs to reach a 'good enough' state rather than
+perfection.
 
 Ultimately, efficiently reading and writing to S3 requires understanding how
 your program interacts with data—its access patterns, memory usage, and
