@@ -10,6 +10,14 @@ tags:
 - aws
 - etl
 - efficiency
+- aws-s3
+- cloud-computing
+- performance-optimization
+- serverless
+- best-practices
+- cost-optimization
+- streaming
+- multipart-upload
 ---
 
 Back in January 2024 I wrote a post about [efficiently writing to S3 in
