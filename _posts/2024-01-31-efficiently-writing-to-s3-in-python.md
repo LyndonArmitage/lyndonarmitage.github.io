@@ -19,6 +19,11 @@ and landed them in [Amazon S3](https://aws.amazon.com/s3/) as
 [JSON](https://www.json.org/) (gzipped [JSON Lines
 files](https://jsonlines.org/) to be specific), started to fail.
 
+<p class="message">
+For a more general look at how to efficiently read and write to S3,
+see <a href="{% post_url 2025-02-12-efficient-reading-and-writing-with-aws-s3 %}"> my post from 2025</a>.
+</p>
+
 This data ingest was part of a larger framework written in Python that had
 other lambdas running and working fine, which skewed investigation toward there
 being some change in the API or its output that was causing the outage.
