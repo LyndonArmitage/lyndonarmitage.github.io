@@ -11,7 +11,6 @@ promptly.
 | Channel  | Details                                                       |
 | -------- | ------------------------------------------------------------- |
 | Email    | [Lyndon.Armitage@gmail.com](mailto:lyndon.armitage@gmail.com) |
-| Matrix   | [@lyndog:matrix.org](https://matrix.to/#/@lyndog:matrix.org)  |
 | Mastodon | [@lyndon@fosstodon.org](https://fosstodon.org/@lyndon)        |
 | LinkedIn | [LyndonArmitage](https://www.linkedin.com/in/lyndonarmitage/) |
 | Twitter  | [@LyndonArmitage](https://twitter.com/LyndonArmitage)         |
