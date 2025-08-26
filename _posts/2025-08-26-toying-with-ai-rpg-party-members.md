@@ -7,8 +7,8 @@ tags:
 - ai
 - llm
 - python
+date: 2025-08-26 18:28 +0100
 ---
-
 With the rise of Large Language Models (LLMs), I've been spending some of my
 free time experimenting with them. I've mainly been interested in seeing what
 can be built with them, getting to grips in general with how they work, and
