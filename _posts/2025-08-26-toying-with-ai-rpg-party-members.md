@@ -377,3 +377,6 @@ RAG application, and can now choose when to call external tools that they are
 made aware of. I could use this ability to integrate more specific memories for
 the AI agents or to allow them to interact with a more complete RPG system via
 dice rolling tools or stats sheet tools.
+
+The code for this project is available on my GitHub at
+[github.com/LyndonArmitage/rpg-player](https://github.com/LyndonArmitage/rpg-player).
