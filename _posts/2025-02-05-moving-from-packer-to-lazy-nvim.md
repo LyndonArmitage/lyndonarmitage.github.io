@@ -16,7 +16,7 @@ project to [Lazy.nvim](https://github.com/folke/lazy.nvim).
 
 This migration went much smoother than I anticipated. I won't go as heavy into
 the details as I did in my previous post on moving from
-[vim-plug](https://github.com/junegunn/vim-plug) to Packer, but sufficed to say
+[vim-plug](https://github.com/junegunn/vim-plug) to Packer. Sufficed to say,
 moving from one Lua based package manager to another is much simpler than
 migrating from Vimscript to Lua. I mostly followed the information from
 [Lazy.nvim's documentation
@@ -28,7 +28,7 @@ The only big change was going from
 own LSP plugins. Thankfully, the folks responsible for `lsp-zero.nvim` opted to
 alter their
 [documentation](https://lsp-zero.netlify.app/docs/getting-started.html) to
-covering this very issue.
+cover this very issue.
 
 Other smaller changes included moving a lot of my configuration from Lua files
 in `after/plugin/` into the same place their lazy loading was defined.
