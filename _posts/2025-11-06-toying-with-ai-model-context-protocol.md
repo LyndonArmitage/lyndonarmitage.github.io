@@ -8,8 +8,8 @@ tags:
 - llm
 - python
 - mcp
+date: 2025-11-06 11:35 +0000
 ---
-
 [Model Context Protocol](https://modelcontextprotocol.io/) or MCP, is quickly
 being adopted as a standard for extending Large Language Model (LLM) based AI
 functionality. But what is it? By the end of this post I hope to have
