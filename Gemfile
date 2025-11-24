@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "3.1.2"
+ruby "3.4.4"
 gem 'jekyll-seo-tag'
 gem 'jekyll-sitemap'
 gem 'jekyll-paginate'
