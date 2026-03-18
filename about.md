@@ -16,9 +16,9 @@ knowledge and things I (Lyndon Armitage) find interesting.
 
 ## Work
 
-My primary experience is with developing Scala/Java/JVM based Big Data solutions
-although I have experience working with a full range of web technologies and
-programming languages as well.
+My primary experience is with developing Python and Scala/Java/JVM based data
+solutions although I have experience working with a wide range of web
+technologies and programming languages as well as dev-ops and CI/CD solutions.
 
 I am currently employed as a Lead Data Engineer at [Holland and
 Barrett](https://www.hollandandbarrett.com/) where I work with Big Data using
