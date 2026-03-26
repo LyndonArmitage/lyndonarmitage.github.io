@@ -162,8 +162,8 @@ article.
 
 Overall, I see a potential long-term future of AI models not collapsing under
 the weight of generated "slop", but it requires both users and model publishers
-to be careful in how they use the data from AI models. It's my opinion, that AI
-is here to stay, that LLMs are useful tools, but they're not all that they are
-hyped up to be. I base this opinion on my own anecdotal use of AI, anecdotes of
+to be careful in how they use the data from AI models. In my opinion, AI is
+here to stay, and LLMs are useful tools, but they're not all they're hyped up
+to be. I base this opinion on my own anecdotal use of AI, anecdotes of
 colleagues, reading up on how they work, news/media reports, and looking into
 research around their uses and potential issues.
