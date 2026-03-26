@@ -31,7 +31,7 @@ has proven to be a problem by researchers, with LLM performance degrading
 substantially after a handful of generations being trained solely on the output
 of previous generations. It's also a known problem in non-text models like
 Variational Autoencoders (VAE), where repeated training on generated samples
-causes the outputs to collapses to a few modes. You can see that degeneration
+causes the outputs to collapse to a few modes. You can see that degeneration
 much more clearly in images than text.
 
 <img title='Example of a VAE Autoencoder
@@ -60,8 +60,8 @@ Why don't I think so? Well for one thing, not all online content is "AI slop",
 even if there is an increasing amount of it. So the apocalyptic Model Collapse
 in a short time is probably not going to happen. But studies like
 [ahrefs.com's](https://ahrefs.com/blog/what-percentage-of-new-content-is-ai-generated/)
-from May 2025 which suggests that, from 900,000 web pages, 74% of them
-contained "AI-generated content" do raise some concerns of an
+from May 2025 which suggests that, from 900,000 web pages, 74% contained
+"AI-generated content" do raise some concerns of an
 [Ouroboros](https://en.wikipedia.org/wiki/Ouroboros) like effect of AI
 consuming its own output.
 
