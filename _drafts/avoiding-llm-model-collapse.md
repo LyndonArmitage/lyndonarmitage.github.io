@@ -51,10 +51,10 @@ and use a few extra layers to achieve much more impressive feats.
 
 So why is Model Collapse a problem? You can just not train on the output from
 previous generations right? Unfortunately, today's AI models have such a large
-amount of parameters that they need to be trained on data in the order of
-magnitude of the whole internet. And what has been cropping up on the internet
-since these models were made widely available? A lot of LLM generated content,
-and not all of it is true
+amount of parameters that they need to be trained on web-scale datasets. And
+what has been cropping up on the internet since these models were made widely
+available? A lot of LLM generated content, and not all of it is of high
+quality.
 
 So are we doomed to a future of Model Collapse or stagnated Large Language
 Models like many doomsayers proclaim? Probably not.
