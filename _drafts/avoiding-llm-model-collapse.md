@@ -142,7 +142,8 @@ For one thing we can improve upon the training data used generally by these
 models. Filtering out clearly synthetic data can reduce the ratio of it to
 "real" data, but using quality "real" data will have a clear positive effect.
 That is to say, you can't just dump unfiltered data from the internet into your
-training data.
+training data and expect good results, especially once that data is saturated
+with low-quality synthetic text.
 
 More importantly, we can specialise Large Language Models, which is already
 being actively done. This is done by filtering training data to bias towards
