@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Avoiding LLM Model Collapse
+image: "assets/model-collapse/snake.webp"
 tags:
 - ai
 - llm
@@ -34,9 +35,11 @@ Variational Autoencoders (VAE), where repeated training on generated samples
 causes the outputs to collapse to a few modes. You can see that degeneration
 much more clearly in images than text.
 
-<img title='Example of a VAE Autoencoder
-undergoing Model Collapse' src='{{ "assets/model-collapse/vae-fs8.webp" |
-absolute_url }}' class='blog-image' />
+<img 
+  title='Example of a VAE Autoencoder undergoing Model Collapse' 
+  src='{{ "assets/model-collapse/vae-fs8.webp" | absolute_url }}' 
+  class='blog-image'
+/>
 
 This isn't too surprising given that LLMs are basically statistical models with
 some extra-sauce. You can compare them to the old Markov chain text generators
@@ -64,6 +67,12 @@ from May 2025 which suggests that, from 900,000 web pages, 74% contained
 "AI-generated content" do raise some concerns of an
 [Ouroboros](https://en.wikipedia.org/wiki/Ouroboros) like effect of AI
 consuming its own output.
+
+<img 
+  title='An Ouroboros is a snake eating its own tail' 
+  src='{{ "assets/model-collapse/snake.webp" |absolute_url }}' 
+  class='blog-image' 
+/>
 
 The main reason I think it's unlikely is the stronger of the two. The training
 regime used to predict Model Collapse within those few generations was based on
