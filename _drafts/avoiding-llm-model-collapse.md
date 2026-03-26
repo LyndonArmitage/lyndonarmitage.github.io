@@ -19,20 +19,14 @@ water, that all they produce is "slop", and they're going to take away
 everyone's jobs. As with most things in life, the reality is likely somewhere
 in the middle.
 
-It's my opinion, that "AI" is here to stay, that LLMs are useful tools, but
+It's my opinion, that AI is here to stay, that LLMs are useful tools, but
 they're not all that they are hyped up to be. I base this opinion on my own
-anecdotal use of "AI", anecdotes of colleagues, reading up on how they work,
-news/media reports, and looking into research around their uses and
-potential issues.
+anecdotal use of AI, anecdotes of colleagues, reading up on how they work,
+news/media reports, and looking into research around their uses and potential
+issues.
 
 The big issue that I wanted to discuss was the idea of "Model Collapse", why
 it's bad, why it too might be overblown, and ways to avoid it.
-
-Before I begin, you might notice that I sometimes quote the word "AI" when
-talking about LLMs. This is partly due to my stance that Large Language Models
-aren't really Artificial Intelligence *per se*, and my annoyance at that term
-being plastered onto so many things over the years that it has become
-a buzzword. 
 
 To put it simply, Model Collapse is when LLM output degrades over generations
 of training, and specifically pertains to parts (or all) of said training data
@@ -52,11 +46,10 @@ cadence to the inputs. LLMs make use of many orders of magnitude more inputs
 and use a few extra layers to achieve much more impressive feats.
 
 So why is Model Collapse a problem? You can just not train on the output from
-previous generations right? Unfortunately, today's "AI" models have such
-a large amount of parameters that they need to be trained on data in the order
-of magnitude of the whole internet. And what has been cropping up on the
-internet since these models were made widely available? A lot of LLM generated
-content!
+previous generations right? Unfortunately, today's AI models have such a large
+amount of parameters that they need to be trained on data in the order of
+magnitude of the whole internet. And what has been cropping up on the internet
+since these models were made widely available? A lot of LLM generated content!
 
 So are we doomed to a future of Model Collapse or stagnated Large Language
 Models like many doomsayers proclaim? Probably not.
@@ -114,13 +107,13 @@ get. We call this [garbage in, garbage
 out](https://en.wikipedia.org/wiki/Garbage_in,_garbage_out).
 
 The fact that initial training data is important actually mirrors other issues
-with using "AI" models. Like how wording questions differently can have a large
+with using AI models. Like how wording questions differently can have a large
 effect on outputs, and including presuppositions e.g. "I think the answer is X"
 or "Why is this unlikely?" can cause LLMs to agree even when sources or
-training data disagrees. Anyone who has used "AI" to help debug issues in
-production can tell you that you can spend a long time following "AI"
-suggestions that are simply irrelevant, trying fixes that are based upon
-hallucinations, or just going in circles.
+training data disagrees. Anyone who has used AI to help debug issues in
+production can tell you that you can spend a long time following AI suggestions
+that are simply irrelevant, trying fixes that are based upon hallucinations, or
+just going in circles.
 
 So what can be done to avoid the slower Model Collapse? Quite a lot actually.
 
@@ -142,9 +135,9 @@ are useful tools.
 Speaking of tools, giving LLMs (especially specialised ones) access to tools
 can greatly help reduce errors in their outputs by biasing them to use the tool
 output over their own. That can reduce the classic "how many Rs are there in
-strawberry?" mistakes "AI" make. Although LLM tool uses is a topic for another
+strawberry?" mistakes AI make. Although LLM tool uses is a topic for another
 article.
 
-Overall, I see a potential long-term future of "AI" models not collapsing under
+Overall, I see a potential long-term future of AI models not collapsing under
 the weight of generated "slop", but it requires both users and model publishers
-to be careful in how they use the data from "AI" models.
+to be careful in how they use the data from AI models.
