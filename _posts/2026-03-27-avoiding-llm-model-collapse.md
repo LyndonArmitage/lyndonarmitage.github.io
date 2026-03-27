@@ -1,15 +1,15 @@
 ---
 layout: post
 title: Avoiding LLM Model Collapse
-image: "assets/model-collapse/snake.webp"
+image: assets/model-collapse/snake.webp
 tags:
 - ai
 - llm
 - openai
 - chatgpt
 - model collapse
+date: 2026-03-27 09:49 +0000
 ---
-
 Large Language Models (LLMs, and what is currently being called AI) are
 incredibly divisive right now. On one side you have those hyping them up as a
 small step from ushering in [the
