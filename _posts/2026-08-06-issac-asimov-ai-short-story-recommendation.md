@@ -7,8 +7,8 @@ tags:
 - llm
 - reading
 - book
+date: 2026-08-06 10:20 +0100
 ---
-
 I've recently been rereading short stories from The Complete Robot by Issac
 Asimov. I'm particularly fond of the Powell and Donovan stories and the Susan
 Calvin stories. It was while rereading "Galley Slave" that I realised the
