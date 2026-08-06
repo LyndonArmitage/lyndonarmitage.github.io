@@ -1,6 +1,11 @@
 ---
 layout: post
 title: Issac Asimov AI Short Story Recommendation
+tags:
+- ai
+- llm
+- reading
+- book
 ---
 
 I've recently been rereading short stories from The Complete Robot by Issac
@@ -70,7 +75,9 @@ The monologue that I felt was prescient to today's AI world went as follows:
 As you can see, the concerns around automation have always been present. While
 Asimov would likely have been an enthusiastic proponent of large language model
 powered AI, he nevertheless understood the concerns around automation,
-especially in the creative fields.
+especially in the creative fields. He clearly understood the risks in
+automating away the very things people take pleasure and build their competence
+around.
 
 You can read the full short story on
 [archive.org](https://archive.org/details/galaxymagazine-1957-12/page/n9/mode/2up)
