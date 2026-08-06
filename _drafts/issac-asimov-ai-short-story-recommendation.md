@@ -83,7 +83,7 @@ As you can see, the concerns around automation have always been present. While
 Asimov would likely have been an enthusiastic proponent of large language model
 powered AI, he nevertheless understood the concerns around automation,
 especially in the creative fields. He clearly understood the risks in
-automating away the very things people take pleasure and build their competence
+automating away the very things people take pleasure and build their competency
 around.
 
 You can read the full short story on
