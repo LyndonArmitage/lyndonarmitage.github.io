@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Issac Asimov AI Short Story Recommendation
+image: assets/asimov/book.webp
 tags:
 - ai
 - llm
@@ -13,6 +14,12 @@ Asimov. I'm particularly fond of the Powell and Donovan stories and the Susan
 Calvin stories. It was while rereading "Galley Slave" that I realised the
 monologue at the end of the story by the professor was quite prescient to our
 modern AI and Large Language Model world.
+
+<img 
+  title='My rather battered physical copy of The Complete Robot' 
+  src='{{ "assets/asimov/book.webp" | absolute_url }}' 
+  class='blog-image'
+/>
 
 Originally published in 1957, [Galley
 Slave](https://archive.org/details/galaxymagazine-1957-12/page/n9/mode/2up) is
