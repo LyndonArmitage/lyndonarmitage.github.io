@@ -26,3 +26,7 @@ I have been using [rvm](https://rvm.io/) to manage the Ruby version.
 ## Deployment
 
 This is deployed to both GitHub pages and DigitalOcean.
+
+## Upgrading
+
+`bundle update` should upgrade libraries.
