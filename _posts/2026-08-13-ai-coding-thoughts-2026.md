@@ -28,7 +28,9 @@ referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 I encourage you to watch it first to put my thoughts in context. I've also used
 a tool to [summarise the
 video](https://youtubesummary.com/summary/2ZU3j4GQ4K8), but these summaries are
-never as good as watching the whole thing.
+never as good as watching the whole thing. Brett also wrote a [blog
+post](https://brettcodes.com/im-done-using-ai/) related to the video, but I am
+addressing the video content rather than that post.
 
 First of all, his early experience with the Copilot's autocomplete function
 partially mirrors my own experience with some AI-based tools. They can be
