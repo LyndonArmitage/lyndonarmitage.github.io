@@ -30,7 +30,7 @@ a tool to [summarise the
 video](https://youtubesummary.com/summary/2ZU3j4GQ4K8), but these summaries are
 never as good as watching the whole thing.
 
-First of all, his early experiences with the Copilot's function autocomplete
+First of all, his early experience with the Copilot's autocomplete function
 partially mirrors my own experience with some AI-based tools. They can be
 distracting and not useful when you're in a flow state. We had mostly learnt
 this lesson with auto correction software for text, but in recent years it
@@ -44,7 +44,7 @@ overreaches. Now we have editors suggesting multiple words and phrases, robbing
 you of the thought process that goes into writing and/or biasing you towards
 more sterile language. I know in recent emails I have sent that I got very
 annoyed at the suggestion of how I should sign off. I will choose when I am
-being sincere, thankful or curt thanks!
+being sincere, thankful or curt.
 
 Brett also describes an incident when debugging an issue in 2022/2023 related
 to an AI hallucinated software dependency version. I've experienced something
@@ -77,8 +77,9 @@ how he should doubt AI-generated output and always remember that he isn't
 actually communicating with a reasoning being when engaging with a chatbot.
 Again, AI isn't completely useless here. Provided you give it enough context
 and take what it says with a grain of salt, it can help narrow down a
-potential ailment. But you have to always remember that there's no substitute
-for a medical doctor's training and experience.
+potential ailment based on symptoms so you are better prepared when seeing a
+doctor. But you have to always remember that there's no substitute for a
+medical doctor's training and experience.
 
 AI chatbots, more often than not, act more like a mirror when you present them
 with emotional language or leading arguments/phrases. This isn't that
@@ -95,8 +96,8 @@ AI providers.
 In the second half of his video, he describes his experiences using AI coding
 tools and agents. The existential dread, building becoming review, and distance
 from the creative process reducing care, are all things I can sympathise with.
-Again, I recommend you watch the video as I won't to retread all his points in
-detail.
+Again, I recommend you watch the video as I don't want to retread all his
+points in detail.
 
 The feelings of dread and purposelessness are highly relatable, and I think
 stem a lot from the hype and discussions around AI replacing creative work like
@@ -119,7 +120,7 @@ The things we need to remember about all this are threefold:
    number of successful businesses built off of the back of AI. Sure, it's
    being used successfully to some extent, but the jury is still largely out on
    the effectiveness and usefulness.
-3. Anything with the monumental spend that AI has had in the last few years,
+3. Anything with the monumental spend that AI has had in the last few years
    would have produced some of the results we are seeing. Take the security
    vulnerabilities found, had the same amount of money and effort been spent on
    security hackers and research, it's likely that we'd have seen a similar
@@ -147,13 +148,13 @@ implementing something close enough to what I was imagining.
 
 I can and do use LLM tools like Codex to generate unit tests for code I have
 written. The generated tests run and essentially work to ensure the current
-functionality persists over time. This is similar to how you write tests in
-non test-driven development. I can still write said tests myself, and sometimes
-do, at least initially, but they're tedious and not the area I want to spend
-time and focus on.
+functionality doesn't change over time. This is similar to how you write tests
+in non test-driven development. I can still write said tests myself, and
+sometimes do, at least initially, but they're tedious and not the area I want
+to spend time and focus on.
 
 Of course, with my generated tests I have to understand that the generated code
-is neither infallible or revolutionary. More importantly, I need to review
+is neither infallible nor revolutionary. More importantly, I need to review
 them to make sure they're valid.
 
 Has the AI removed some benefits and increased my distance from the code?
@@ -162,15 +163,15 @@ removes you from the coding feedback loop. Every moment you are coding, you are
 making micro-level decisions, you're solving problems, and evolving your
 understanding of the wider whole of the software being built. Even when writing
 tests this is true; I might spot a logic error, typo or other nonfunctional
-issue for example. These are things that AI generated code just breezes through
+issue for example. These are things that AI-generated code just breezes through
 or makes assumptions on your behalf about.
 
 This micro-decision problem is magnified when you ask a coding agent to do
 non-simple tasks. Suddenly, you're no longer involved beyond the occasional
-prompt. You're understanding of the software doesn't become much deeper than
-the high-level design, and if you want it to, you then fall into the AI code
-review trap. Either you review every statement and internalise it, or you rely
-on the AI to have been correct.
+prompt. Your understanding of the software doesn't become much deeper than the
+high-level design, and if you want it to, you then fall into the AI code review
+trap. Either you review every statement and internalise it, or you rely on the
+AI to have been correct.
 
 When reviewing code written by a fellow human you can rely on them since they
 have an ego, a level of experience, competence, their own style, and an
@@ -181,9 +182,9 @@ result. A coding agent has no ego, making a mistake to it doesn't cause it
 anxiety, it doesn't bear the risks, it can simply vomit out code that is
 statistically "good enough".
 
-So what I am saying is, we have misaligned how we use these AI tools and that
-is causing a lot of the friction and woes Brett talks about in his video. If
-any higher-ups in business are reading this, I implore you to not mandate
+So what I am saying is, we have misaligned our use these AI tools and that is
+causing a lot of the friction and woes Brett talks about in his video. If any
+higher-ups in business are reading this, I implore you to not mandate
 specifically how your teams use AI. Instead, you should empower them to use it
 within limits, remind them to use it to smooth over the parts of their work
 that are more mechanical and frustrating. Don't tie metrics to its direct use,
