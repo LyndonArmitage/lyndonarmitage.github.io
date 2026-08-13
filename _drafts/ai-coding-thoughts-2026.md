@@ -115,11 +115,13 @@ The things we need to remember about all this are threefold:
    and infrastructure providers. They have clear monetary incentives to get you
    on board their hype train, either in support or in opposition, either way
    you're thinking about them and/or spending money on them.
-2. We've not actually seen these supposed gains of AI. At least not the
-   outrageous claims that are thrown about. There's been no explosion in the
-   number of successful businesses built off of the back of AI. Sure, it's
-   being used successfully to some extent, but the jury is still largely out on
-   the effectiveness and usefulness.
+2. We've not seen these supposed gains from AI. At least not consistently,
+   especially not the outrageous claims that are often thrown about. There's
+   been no obvious economy-wide explosion in productivity or in the number of
+   successful businesses built primarily around AI. Sure, it's being used
+   successfully to some extent, and there are businesses being built around it,
+   but the jury is still largely out on these businesses since many are still
+   in their early funding stages.
 3. Any investment on the same scale as what AI has received in the last few
    years would inevitably have produced results like those we are seeing. Take
    the security vulnerabilities found: had the same amount of money and effort
