@@ -113,18 +113,18 @@ The things we need to remember about all this are threefold:
 
 1. There's a lot of marketing hype from these AI companies, chip manufacturers
    and infrastructure providers. They have clear monetary incentives to get you
-   on board their hype-train, either in support or in opposition, either way
+   on board their hype train, either in support or in opposition, either way
    you're thinking about them and/or spending money on them.
 2. We've not actually seen these supposed gains of AI. At least not the
    outrageous claims that are thrown about. There's been no explosion in the
    number of successful businesses built off of the back of AI. Sure, it's
    being used successfully to some extent, but the jury is still largely out on
    the effectiveness and usefulness.
-3. Anything with the monumental spend that AI has had in the last few years
-   would have produced some of the results we are seeing. Take the security
-   vulnerabilities found, had the same amount of money and effort been spent on
-   security hackers and research, it's likely that we'd have seen a similar
-   amount of found vulnerabilities.
+3. Any investment on the same scale as what AI has received in the last few
+   years would inevitably have produced results like those we are seeing. Take
+   the security vulnerabilities found: had the same amount of money and effort
+   been spent on security research, it's likely that we'd have found a similar
+   number of vulnerabilities.
 
 I'm sure I could make other points too, but the above three are hopefully
 enough to fight off the dread and ennui.
