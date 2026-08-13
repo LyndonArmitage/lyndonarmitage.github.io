@@ -138,9 +138,9 @@ often reminded that "a bad workman blames his tools," normally when I am
 yelling at my computer about a mistake that is inevitably revealed to be my
 own!
 
-We should be using AI to automate the parts we don't like out of process, not
-letting it take over the things we enjoy. I know an early experimentation with
-AI generated code in my RPG Party Members project yielded workable code in one
+We should be using AI to automate the parts we don't like out of the process,
+not letting it take over the things we enjoy. I know an early experiment with
+AI-generated code in my RPG Party Members project yielded workable code in one
 of the interfaces, but it ended up being code I did not wholly understand. It
 robbed me of the pleasure of learning how to do something myself, while
 implementing something close enough to what I was imagining.
@@ -168,7 +168,7 @@ or makes assumptions on your behalf about.
 This micro-decision problem is magnified when you ask a coding agent to do
 non-simple tasks. Suddenly, you're no longer involved beyond the occasional
 prompt. You're understanding of the software doesn't become much deeper than
-the high level design, and if you want it to, you then fall into the AI code
+the high-level design, and if you want it to, you then fall into the AI code
 review trap. Either you review every statement and internalise it, or you rely
 on the AI to have been correct.
 
@@ -181,11 +181,11 @@ result. A coding agent has no ego, making a mistake to it doesn't cause it
 anxiety, it doesn't bear the risks, it can simply vomit out code that is
 statistically "good enough".
 
-So what I am saying is, we have misaligned how we use these AI tools to an
-extent and that is causing a lot of the friction and woes Brett talks about in
-his video. If any higher-ups in business are reading this, I implore you to not
-mandate specifically how your teams use AI. Instead, you should empower them to
-use it within limits, remind them to use to smooth over the parts of their work
+So what I am saying is, we have misaligned how we use these AI tools and that
+is causing a lot of the friction and woes Brett talks about in his video. If
+any higher-ups in business are reading this, I implore you to not mandate
+specifically how your teams use AI. Instead, you should empower them to use it
+within limits, remind them to use it to smooth over the parts of their work
 that are more mechanical and frustrating. Don't tie metrics to its direct use,
 that'll create perverse incentives and more than likely run up your bill while
 making some people miserable, and risk deskilling your teams, forcing reliance
