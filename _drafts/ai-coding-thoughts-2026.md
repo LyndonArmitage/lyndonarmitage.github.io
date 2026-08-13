@@ -10,13 +10,13 @@ tags:
 - thoughts
 ---
 
-Recently a video popped up in my feed about a developers experience of coding
+Recently a video popped up in my feed about a developer's experience of coding
 with AI and why they were done with it. I found it interesting and began
 writing a comment to respond to it, only to realise it became rather long. So I
-thought I'd expand it into a blog post about my thoughts on coding with AI, LLM
-based agents etc.
+thought I'd expand it into a blog post about my thoughts on coding with AI,
+LLM-based agents etc.
 
-First of all the video in question was one from the YouTube channel [Brett
+First of all, the video in question was one from the YouTube channel [Brett
 Codes](https://www.youtube.com/@brettcodes) titled "I'm done coding with AI":
 
 <iframe width="560" height="315"
@@ -30,8 +30,8 @@ a tool to [summarise the
 video](https://youtubesummary.com/summary/2ZU3j4GQ4K8), but these summaries are
 never as good as watching the whole thing.
 
-First of all, his early experiences with the Copilot function autocomplete
-partially mirrors my own experience with some AI based tools. They can be
+First of all, his early experiences with the Copilot's function autocomplete
+partially mirrors my own experience with some AI-based tools. They can be
 distracting and not useful when you're in a flow state. We had mostly learnt
 this lesson with auto correction software for text, but in recent years it
 seems to have been unlearned.
@@ -39,51 +39,51 @@ seems to have been unlearned.
 Previously, it was normal to see a red or green underline in your editor. You'd
 later correct the mistake, or go back quickly and correct it as you wrote. We
 then switched to autocorrect fixing common typos, which works well most of the
-time, when it is correct simple things, but can be annoying if it overreaches.
-Now we have editors suggesting multiple words and phrases, robbing you of the
-thought process that goes into writing and/or biasing you towards more sterile
-language. I know in recent emails I have sent that I got very annoyed at the
-suggestion of how I should sign off. I will choose when I am being sincere,
-thankful or curt thanks!
+time, when it is correcting simple things, but can be annoying when it
+overreaches. Now we have editors suggesting multiple words and phrases, robbing
+you of the thought process that goes into writing and/or biasing you towards
+more sterile language. I know in recent emails I have sent that I got very
+annoyed at the suggestion of how I should sign off. I will choose when I am
+being sincere, thankful or curt thanks!
 
 Brett also describes an incident when debugging an issue in 2022/2023 related
-to an AI hallucinated software dependency version. I've experience similar even
-going into 2026. Large Language Model training currently cannot stop such
-hallucinations, and it is a fundamental issue with the architecture they're
-built on. Much to the chagrin of AI evangelists, who've claimed that
+to an AI hallucinated software dependency version. I've experienced something
+similar even going into 2026. Large Language Model training currently cannot
+stop such hallucinations, and it is a fundamental issue with the architecture
+they're built on. Much to the chagrin of AI evangelists, who've claimed that
 hallucinations no longer occur.
 
 I am sure hallucinations happen less frequently than before, thanks to better
 tooling providing more live context, but that doesn't prevent it. This is a
 main reason why you should always be sceptical of the output of AI. It can
-confidently "cite" sourced which, when you come to read them, don't actually
+confidently "cite" sources which, when you come to read them, don't actually
 say what the AI produced text claims they say. The issue the evangelists have
 is something akin to [Gell-Mann
 Amnesia](https://en.wiktionary.org/wiki/Gell-Mann_Amnesia_effect), they
 believe the bluster from the AI because of the source and their own limited
 knowledge of the subject.
 
-With all that said, it doesn't mean AI isn't a useful tool. Summarising
-documents you've written or read for example, is a task that a large language
+With all that said, it doesn't mean AI isn't a useful tool. For example,
+summarising documents you've written or read is a task that a large language
 model is well suited to do for you, since you know the contents. I know I've
 had limited successes with them summarising meeting transcripts, provided I
-either prompted it with my own notes or steer it to the items of importance.
+either prompt it with my own notes or steer it to the items of importance.
 
 Brett mentions a health incident where he erroneously went to the emergency
 department based on the advice of a chatbot. While I hope he is well, this
 isn't that dissimilar from people heading to see doctors after Googling their
 symptoms or looking them up on WebMD. It was definitely a good wake-up call on
-how he should doubt AI generated output and always remember that he isn't
+how he should doubt AI-generated output and always remember that he isn't
 actually communicating with a reasoning being when engaging with a chatbot.
-Again AI isn't completely useless here, provided you give it enough context and
-take what it says with a grain of salt, you can help narrow down a potential
-ailment. But you have to always remember that there's no substitute for a
-medical doctors training and experience.
+Again, AI isn't completely useless here. Provided you give it enough context
+and take what it says with a grain of salt, it can help narrow down a
+potential ailment. But you have to always remember that there's no substitute
+for a medical doctor's training and experience.
 
-AI chatbots, more often that not, act more like a mirror when you present them
+AI chatbots, more often than not, act more like a mirror when you present them
 with emotional language or leading arguments/phrases. This isn't that
-surprising when you understand how the raw model works after pre-training. Next
-token prediction will naturally try to continue on the given context, that's
+surprising when you understand how the raw model works after pre-training.
+Next-token prediction will naturally try to continue on the given context; that's
 fundamentally what it's designed to do. Even with post-training, this behaviour
 still exists, it's just mixed in with the question and answers format.
 
@@ -92,21 +92,21 @@ in a lot of industries can sympathise with, and I think he does identify one of
 the key reasons why: pressure from higher-ups who've bought into the hype from
 AI providers.
 
-Into the second half of his video, he describes his experiences using AI coding
+In the second half of his video, he describes his experiences using AI coding
 tools and agents. The existential dread, building becoming review, and distance
 from the creative process reducing care, are all things I can sympathise with.
 Again, I recommend you watch the video as I won't to retread all his points in
 detail.
 
-The dread and purposelessness feelings are highly relatable, and I think stem a
-lot from the hype and discussions around AI replacing creative work like
+The feelings of dread and purposelessness are highly relatable, and I think
+stem a lot from the hype and discussions around AI replacing creative work like
 software engineering. We're however many years into the "AI will replace coders
-in 6 months" era, and that constant uncertainty is sure to play on any ones
+in 6 months" era, and that constant uncertainty is sure to play on anyone's
 mind, even if they don't fully believe it. We've seen claims around 100x
-improvements to work, people proclaiming themselves to be productivity wizards
-with 5+ Anthropic subscriptions, "autonomous" agents hacking websites, and
-dozens of security vulnerabilities revealed by AI models. It's enough to make
-you want to cut your internet lines and live in the woods.
+improvements in output, people proclaiming themselves to be productivity
+wizards with 5+ Anthropic subscriptions, "autonomous" agents hacking websites,
+and dozens of security vulnerabilities revealed by AI models. It's enough to
+make you want to cut your internet lines and live in the woods.
 
 The things we need to remember about all this are threefold:
 
@@ -128,7 +128,7 @@ The things we need to remember about all this are threefold:
 I'm sure I could make other points too, but the above three are hopefully
 enough to fight off the dread and ennui.
 
-Brett's other concerns around the work becoming tedium, the impact on caring,
+Brett's other concerns around the work becoming tedious, the impact on caring,
 learning and quality all stem from what could be called misuse of AI, in my
 opinion. Not Brett's misuse itself, but the wider industry and attitudes
 towards it in general.
