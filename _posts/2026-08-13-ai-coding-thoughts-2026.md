@@ -8,8 +8,8 @@ tags:
 - coding
 - programming
 - thoughts
+date: 2026-08-13 14:29 +0100
 ---
-
 Recently a video popped up in my feed about a developer's experience of coding
 with AI and why they were done with it. I found it interesting and began
 writing a comment to respond to it, only to realise it became rather long. So I
