@@ -144,10 +144,12 @@ own!
 
 We should be using AI to automate the parts we don't like out of the process,
 not letting it take over the things we enjoy. I know an early experiment with
-AI-generated code in my RPG Party Members project yielded workable code in one
-of the interfaces, but it ended up being code I did not wholly understand. It
-robbed me of the pleasure of learning how to do something myself, while
-implementing something close enough to what I was imagining.
+AI-generated code in my
+[RPG Party Members project]({% post_url 2025-08-26-toying-with-ai-rpg-party-members %})
+yielded workable code in one of the interfaces, but it ended up being code I
+did not wholly understand. It robbed me of the pleasure of learning how to do
+something myself, while implementing something close enough to what I was
+imagining.
 
 I can and do use LLM tools like Codex to generate unit tests for code I have
 written. The generated tests run and essentially work to ensure the current
