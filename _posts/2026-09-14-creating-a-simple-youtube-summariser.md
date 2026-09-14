@@ -9,6 +9,7 @@ tags:
 - coding
 - youtube
 - python
+date: 2026-09-14 12:39 +0100
 ---
 In this post I aim to quickly go over how I built my own simple YouTube video
 summarising tool using a combination of a few tools including a call to a
