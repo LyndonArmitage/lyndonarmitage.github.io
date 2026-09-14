@@ -11,7 +11,7 @@ tags:
 - python
 ---
 
-I this post I aim to quickly go over how I built my own simple YouTube video
+In this post I aim to quickly go over how I built my own simple YouTube video
 summarising tool using a combination of a few tools including a call to a
 large-language model.
 
@@ -38,11 +38,12 @@ the whole video.
 You might note that there already exists tools like
 [YouTubeSummary.com](https://youtubesummary.com/) that satisfy a lot of my
 requirements. In such a situation, you can use these existing tools as
-inspiration. Linus Torvald was inspired by
+inspiration. Linus Torvalds was inspired by
 [BitKeeper](https://www.bitkeeper.org/) when he created
 [Git](https://git-scm.com/), but he wanted something free with specific
-features that did not exist in the alternatives at that time. In fact, with Git
-Linus took some of the existing systems of examples of what he wanted to avoid.
+features that did not exist in the alternatives at that time. In fact, with
+Git, Linus took features from existing systems as examples of what he wanted to
+avoid.
 
 In my case, YouTubeSummary does a good job at 80% of what I want, but it
 doesn't output Markdown, and I am not in control of how it decides to summarise
@@ -59,14 +60,14 @@ some linting and code quality tools;
 [ruff](https://docs.astral.sh/ruff/) for linting, and
 [black](https://black.readthedocs.io/en/stable/) for formatting. Alongside
 these I also added in [pytest](https://docs.pytest.org/en/stable/), although
-for such a small and personal project I did not implement many unit-tests. That
+for such a small and personal project I did not implement many unit tests. That
 is one of the perks of building your own tools, you can decide upon how you
 develop and what tools you use when building the new tool. You'll also suffer
 for all of these decisions if/when you decide to share your tool with the
 world!
 
 I've taken to using [uv](https://docs.astral.sh/uv/) as my project manager for
-python projects, which made installing the above tools a breeze and later made
+Python projects, which made installing the above tools a breeze and later made
 making my tool available on my system easy thanks to
 [uv tool install](https://docs.astral.sh/uv/concepts/tools/).
 
@@ -76,11 +77,11 @@ notes have settled on using a tool called
 [zk](https://zk-org.github.io/zk/index.html) which is built upon the idea of
 keeping notes in a plain-text
 [Zettelkasten](https://zettelkasten.de/introduction/); something like a
-personal-wiki, similar to [Obsidian](https://obsidian.md/). So I took some of
+personal wiki, similar to [Obsidian](https://obsidian.md/). So I took some of
 the raw ideas I had and collated them into their own page and iterated over
 them.
 
-I've used a Python based tool for downloading YouTube videos for a while now
+I've used a Python-based tool for downloading YouTube videos for a while now
 called [yt-dlp](https://github.com/yt-dlp/yt-dlp). It includes a feature for
 downloading subtitles. Subtitles are what YouTubeSummary and other tools tend
 to use for generating summaries. So I took a note that `yt-dlp` may be a useful
@@ -104,29 +105,28 @@ My initial plan for the tool became the following:
 In my notes, I even wrote the words "Nice and simple." Unfortunately, it was
 neither. At least not right away.
 
-I initially thought the complicated part would be the converting of the
-subtitles to simple plain-text. This was due to how `yt-dlp` wrote out the
-`webvtt` files, which included keeping the same lines of text in multiple
-segments.
+I initially thought the complicated part would be converting the subtitles to
+simple plain-text. This was due to how `yt-dlp` wrote out the `webvtt` files,
+which included keeping the same lines of text in multiple segments.
 
 However, it turns out that `yt-dlp` isn't really built to be used
-programmatically by other Python code. My attempts to do so, worked, to an
+programmatically by other Python code. My attempts to do so worked, to an
 extent but, as my type-checker and linting tools kept reminding me, it was
 suboptimal.
 
 So after some time I reopened my browser and found that there already existed
-libraries in python for extracting subtitles from YouTube.
-The purpose-built library I settled on was
-[youtube-transcript-api](https://pypi.org/project/youtube-transcript-api/).
-Which also made converting the subtitle parts into coherent text even easier,
+libraries in Python for extracting subtitles from YouTube. The purpose-built
+library I settled on was
+[youtube-transcript-api](https://pypi.org/project/youtube-transcript-api/),
+which also made converting the subtitle parts into coherent text even easier,
 as it did not try to align to the `webvtt` format.
 
 Summarising text is something large-language models are already good at, so
 that still remained simple. With a few lines of a simple prompt, and a call to
-a Markdown formatted I was able to have my summariser working!
+a Markdown formatter I was able to have my summariser working!
 
 Now in theory, that could be the end of the tool. It can get subtitle
-transcripts and feed them to an LLM and output the results. And when testing
+transcripts and feed them to an LLM and output the results. When I tested it
 said results were serviceable. However, I wanted this tool to be easy to use.
 
 So I polished the interface you use to call the tool. Specifically I switched
@@ -153,8 +153,65 @@ And with all that work, I had created a tool that essentially replicated some
 of the features of other YouTube summary generators but was available to me
 within my terminal workflow and suited my needs.
 
+The design is slightly different to the initial 6 points I mentioned
+previously:
+
+1. It still extracts a YouTube video ID from a given URL
+2. It calls out to a transcript provider, which is now using the
+   `youtube-transcript-api` library. This module of the project does all the
+   combining of the transcript lines and returns plain-text
+3. It extracts some metadata from the video using `yt-dlp`. These details
+   include things like the video title, channel name, video length, and any
+   chapter titles
+4. It generates a summary using an LLM. This part is a little more involved
+   now, as it builds the prompt dynamically based upon the metadata it has
+5. It formats the output as Markdown, following my preferred format in terms of
+   column width etc. and adds the front matter
+6. It finally outputs the summary to the terminal, and optionally saves it to a
+   given path
+
+After some testing using `uv` in the project directory directly like so:
+
+```sh
+uv run youtube-summary \
+  --youtube-url https://www.youtube.com/watch\?v\=YwNs1Z0qRY0 \
+  --extra-tags foo bar baz \
+  --save-markdown '${id}.md'
+```
+
+I was happy to install the tool with `uv tool install --editable` and can now
+use it anywhere in my terminal via a command like:
+
+```sh
+youtube-summary \
+  --youtube-url https://www.youtube.com/watch?v=ShusuVq32hc \
+  --save-markdown 'youtube/${id}.md'
+```
+
+You can see I even made sure that the URL parser part could work with both
+escaped and not escaped versions of a YouTube URL. It'll even work with mobile
+and URL shortened YouTube links, which means I can evaluate a video sent to me
+if I desire without having to convert the link myself.
+
 I now reach for this tool as opposed to other online tools. With some personal
 defaults, I can keep a record of videos I have watched and found interesting.
 Alongside my own notes, the video summary lets me quickly reference an idea
 without having to watch a video again, and I am less beholden on some
-third-party.
+third party.
+
+It's still not a perfect tool. There's more I could add to it and likely some
+failure modes I have yet to accounted for. But that's the beauty of building
+your own tools; you don't need to add many of the features that other people
+*might* desire, and you can fix issues when you encounter them.
+
+For example, I have tested this tool on an interview that lasts almost 2 hours
+and 30 minutes and it worked well, but even longer videos might have
+transcripts that don't fit neatly into a large-language model's context window.
+In which case, I'd need to fix the tool if I wanted it to summarise such.
+However, I don't need to account for this yet, and the need may never arise.
+
+An example of a possible addition I could write was found when I was
+researching how YouTubeSummary.com worked. I noted that they likely use
+different prompts based upon the category and content of a video. This sounds
+like it could be a useful enhancement for my own tool, but for now I have
+something useable, so it can sit as a possible future extension.
