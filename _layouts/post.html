@@ -51,15 +51,26 @@ layout: default
     {%- endif -%}
   <h2>Recent Posts</h2>
   <ul class="related-posts">
-    {%- for post in site.posts limit:3 -%}
-      <li>
-        <h3>
-          <a href="{{ post.url }}">
-            {{ post.title }}
-            <small>{{ post.date | date_to_string }}</small>
-          </a>
-        </h3>
-      </li>
+    {%- assign maxRecent = 3 -%}
+    {%- assign recentCounter = 0 -%}
+
+    {%- for post in site.posts -%}
+      {%- if post.url != page.url -%}
+        <li>
+          <h3>
+            <a href="{{ post.url }}">
+              {{ post.title }}
+              <small>{{ post.date | date_to_string }}</small>
+            </a>
+          </h3>
+        </li>
+
+        {%- assign recentCounter = recentCounter | plus: 1 -%}
+
+        {%- if recentCounter >= maxRecent -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endif -%}
     {%- endfor -%}
   </ul>
 </div>
