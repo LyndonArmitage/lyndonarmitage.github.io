@@ -21,8 +21,6 @@ The
 [post](https://www.linkedin.com/posts/roch-mamenas-4714a979_deepseek-as-a-trojan-horse-threat-deepseek-activity-7288965743507894272-xvNq?utm_source=share&utm_medium=member_desktop)
 looks as follows:
 
-<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7288965741721059329" height="1516" width="504" frameborder="0" allowfullscreen="" title="Embedded post">
-<noscript>
 > DeepSeek as a Trojan Horse Threat.
 > 
 > DeepSeek, a Chinese-developed AI model, is rapidly being installed into
@@ -76,8 +74,6 @@ looks as follows:
 > 
 > The price may look attractive, but the real cost could be our collective
 > security. Don’t fall for the fairytale.
-</noscript>
-</iframe>
 
 As you can see, it's quite an alarming and inflammatory post, espousing the
 threat that DeepSeek poses to businesses everywhere.
