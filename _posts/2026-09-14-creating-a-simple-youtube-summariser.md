@@ -263,4 +263,6 @@ extension.
 Overall, I enjoyed building this YouTube Summariser tool. It fills a need I
 have and scratched the itch for building something I'd actually use day-to-day.
 Hopefully, by sharing the process, I've inspired you to build a tool that
-solves a problem of your own.
+solves a problem of your own. If you want to see the code for my tool in all
+it's rough and ready glory, you can find it on my GitHub:
+[github.com/LyndonArmitage/youtube-summary](https://github.com/LyndonArmitage/youtube-summary)
